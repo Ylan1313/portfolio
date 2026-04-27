@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio - Ylan Harrault</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600;700&display=swap');
+    :root{
+      --cream:#f3efe6; --paper:#fbf7ef; --rust:#a74d18; --rust-dark:#74350f; --gold:#c89b55; --ink:#171410; --muted:#6f6258; --olive:#9cbf55;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,Arial,sans-serif;line-height:1.55}
+    a{color:inherit}
+    .container{
+      width:min(1120px,92%);margin:auto
+    }
+    
+    .sr-badge{
+      border:2px solid var(--cream);
+      background:var(--rust);color:var(--cream);
+      width:58px;
+      height:58px;border-radius:50%;
+      display:grid;place-items:center;
+      font-family:Playfair Display,serif;
+      font-weight:700;box-shadow:0 8px 20px #0002
+    }
+    
+    .kicker{
+      font-family:Bebas Neue,sans-serif;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--rust-dark);
+      font-size:1.1rem
+    }
+    .script{
+      font-family:Playfair Display,serif;
+      color:var(--rust);
+      font-size:clamp(2.2rem,7vw,6rem);
+      line-height:.9}
+      
+    .title{
+      font-family:Bebas Neue,sans-serif;
+      font-size:clamp(2.2rem,5vw,4.6rem);
+      line-height:1;
+      letter-spacing:.02em
+    }
+      
+    .subtitle{
+      font-size:1.05rem;
+      color:var(--muted);max-width:760px
+    }
+    
+    .line{height:1px;
+    background:var(--gold);flex:1
+    }
+    
+    .btn{
+      display:inline-block;
+      border-bottom:2px solid var(--ink);
+      font-family:Bebas Neue,sans-serif;
+      letter-spacing:.05em;
+      text-decoration:none;
+      padding:.3rem 0;
+      margin-right:2rem
+    }
+      
+    .hero{
+      min-height:100vh;
+      display:grid;align-items:center;
+      background:linear-gradient(90deg,var(--cream) 0 62%,var(--rust) 62% 100%);
+      position:relative;overflow:hidden
+    }
+      
+    .hero:after{
+      content:"";
+      position:absolute;
+      inset:auto 0 0 0;
+      height:150px;
+      background:linear-gradient(180deg,transparent,#00000012)
+    }
+      
+    .nav{
+      position:absolute;
+      top:32px;
+      left:4%;
+      right:4%;
+      display:flex;
+      align-items:center;
+      gap:20px;
+      z-index:2
+    }
+      
+    .brand{
+      font-family:Playfair Display,serif;
+      font-style:italic
+    }
+      
+    .hero-grid{
+      display:grid;grid-template-columns:1.1fr .9fr;
+      gap:40px;
+      align-items:center
+    }
+      
+    .hero-card{
+      background:var(--paper);
+      padding:46px;border-left:5px solid var(--rust);
+      box-shadow:0 24px 70px #0002
+    }
+    
+    .portrait{
+      min-height:430px;
+      border-radius:48% 48% 6px 6px;
+      background:linear-gradient(135deg,#c78a5c,#5a290e);
+      display:grid;
+      place-items:center;
+      color:var(--cream);
+      font-family:Playfair Display,serif;
+      font-size:3rem;
+      text-align:center;
+      padding:30px;
+      box-shadow:0 24px 70px #0004
+    }
+    
+    .section{padding:92px 0;border-bottom:1px solid #d7c7ad}
+    
+    .section-head{display:flex;align-items:center;gap:24px;margin-bottom:42px}
+    
+    .section h2{font-family:Playfair Display,serif;color:var(--rust);font-size:clamp(2rem,4vw,3.6rem);margin:0}
+    
+    .toc{display:grid;grid-template-columns:repeat(2,1fr);gap:24px 80px;margin-top:34px}
+    
+    .toc a{display:flex;align-items:center;gap:22px;text-decoration:none;border-bottom:1px solid var(--gold);padding:16px 0;font-family:Bebas Neue,sans-serif;font-size:1.25rem}
+    
+    .toc span{color:var(--rust);font-family:Playfair Display,serif}
+    
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+    
+    .card{background:var(--paper);padding:32px;border-radius:4px;box-shadow:0 10px 30px #0000000d}
+    
+    .card h3{font-family:Bebas Neue,sans-serif;font-size:2rem;margin:0 0 14px}
+    
+    .swot{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    
+    .swot .card{min-height:190px}
+    
+    .tag{display:inline-block;background:#efe3cf;color:var(--rust-dark);padding:6px 10px;margin:4px 4px 4px 0;border-radius:999px;font-weight:700;font-size:.88rem}
+    
+    .competence{border-left:7px solid var(--rust);margin-bottom:24px}
+    
+    .competence.analyser{border-color:#eb8b3a}
+    
+    .competence.valoriser{border-color:#d6be22}
+    
+    .competence.modeliser{border-color:var(--olive)}
+    
+    .project{margin-top:24px;padding-top:24px;border-top:1px solid #d6c6aa}
+    
+    .project h4{font-family:Bebas Neue,sans-serif;font-size:1.75rem;margin:0 0 8px}
+    
+    .meta{font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;color:var(--rust);font-weight:700}
+    
+    .columns{columns:2;column-gap:40px}.footer{padding:54px 0;background:var(--rust);color:var(--cream);text-align:center}
+    
+    .footer h2{font-family:Playfair Display,serif;font-size:3rem;margin:0 0 10px}
+    
+    .top-link{position:fixed;
+    right:20px;
+    bottom:20px;
+    background:var(--rust);
+    color:var(--cream);
+    padding:12px 16px;
+    border-radius:999px;
+    text-decoration:none;
+    font-family:Bebas Neue,sans-serif;
+    box-shadow:0 8px 20px #0003
+    }
+    
+    
+    @media(max-width:800px){
+      .hero{background:var(--cream)}
+      .hero-grid,.grid-2,.toc{grid-template-columns:1fr}
+      .portrait{min-height:250px}.columns{columns:1}
+      .nav{position:static;padding:22px 4%}
+      .hero-card{padding:28px}
+      .section{padding:58px 0}
+    }
+  </style>
+</head>
+<body id="top">
+  <header class="hero">
+    <nav class="nav"><div class="brand">Ylan Harrault</div><div class="line"></div><div class="sr-badge">SR</div></nav>
+    <div class="container hero-grid">
+      <div class="hero-card">
+        <div class="kicker">Portfolio</div>
+        <h1 class="script">Ylan Harrault</h1>
+        <p class="subtitle">Étudiant en BUT Science des Données, passionné par l’informatique, les mathématiques, l’analyse et la valorisation de données.</p>
+        <a href="#sommaire" class="btn">Voir le sommaire</a><a href="#apropos" class="btn">À propos</a>
+      </div>
+      <div class="portrait">SR<br><small style="font-size:1rem">Science des données</small></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="sommaire"><div class="container"><div class="section-head"><h2>Sommaire</h2><div class="line"></div></div><div class="toc">
+      <a href="#apropos"><span>03</span> À propos de moi</a><a href="#projet"><span>04</span> Mon projet professionnel</a><a href="#parcours"><span>05</span> Mon parcours personnel et professionnel</a><a href="#traiter"><span>07</span> Traiter</a><a href="#analyser"><span>12</span> Analyser</a><a href="#valoriser"><span>17</span> Valoriser</a>
+    </div></div></section>
+
+    <section class="section" id="apropos"><div class="container grid-2"><div><div class="kicker">À propos de moi</div><h2>Bonjour, je m'appelle Ylan</h2><p>Personne impliquée et persévérante, j’ai suivi dès mes 13 ans un cursus spécial en section sportive handball. Cette expérience m’a permis d’acquérir l’investissement, la prise de conscience des engagements, le dépassement de soi et l’esprit d’équipe.</p><p>Au lycée, j’ai intégré le pôle espoir handball en parallèle de mes études. Ce double cursus a renforcé ma rigueur, mon autonomie et ma capacité à travailler dans des environnements exigeants.</p></div><div class="card"><h3>Profil</h3><p><strong>Email :</strong> ylan.harrault@gmail.com</p><p><strong>Domaine :</strong> Science des Données, analyse, traitement et visualisation.</p><a class="btn" href="#sommaire">Retour au sommaire</a></div></div></section>
+
+    <section class="section" id="projet"><div class="container"><div class="section-head"><h2>Mon projet professionnel</h2><div class="line"></div></div><div class="swot"><div class="card"><h3>Forces</h3><span class="tag">Persévérant</span><span class="tag">Créatif</span><span class="tag">Calme</span><span class="tag">Polyvalent</span><span class="tag">Sérieux</span></div><div class="card"><h3>Faiblesses</h3><span class="tag">Réservé</span><span class="tag">Obstiné</span></div><div class="card"><h3>Opportunités</h3><p>Savoir s’adapter dans une entreprise est une compétence recherchée dans une société qui évolue rapidement.</p></div><div class="card"><h3>Menaces</h3><p>Rester attentif à l’évolution constante des outils, méthodes et attentes du secteur de la data.</p></div></div></div></section>
+
+    <section class="section" id="parcours"><div class="container"><div class="section-head"><h2>Mon parcours personnel et professionnel</h2><div class="line"></div></div><p class="columns">C’est en me questionnant dès le collège que j’ai compris que le monde de l’informatique et des mathématiques me passionnait. Au lycée, j’ai choisi de suivre ces matières tout en continuant un double cursus dans le handball. Après l’obtention de mon baccalauréat, l’IUT d’Avignon s’est imposé comme un chemin cohérent. J’ai choisi ce parcours pour acquérir la plus grande polyvalence possible et me mettre au service d’une entreprise. Cette polyvalence me permet de basculer d’un domaine à l’autre sans m’ennuyer, même lorsque les sujets sont très différents.</p></div></section>
+
+    <section class="section" id="traiter"><div class="container"><div class="section-head"><h2>Traiter</h2><div class="line"></div></div><div class="card competence"><h3>Traiter des données</h3><p>Traiter des données consiste à collecter, nettoyer, transformer, intégrer, réduire et sécuriser des données brutes pour les rendre exploitables dans une analyse fiable.</p><div class="project"><div class="meta">BUT 1</div><h4>Traiter des données structurées</h4><p>Conception d’un reporting à partir de données stockées dans une base relationnelle. Extraction, structuration sous Excel, tableaux croisés dynamiques, formules avancées et comparaison des années 2013 et 2015 pour identifier des tendances de consommation et production.</p></div><div class="project"><div class="meta">BUT 2</div><h4>Automatiser le traitement de données multidimensionnelles</h4><p>Développement d’un programme Python automatisant la création d’un modèle polynomial explicatif. Le programme identifie les variables corrélées avec Spearman et sélectionne la meilleure loi polynomiale, notamment dans Databricks.</p></div><div class="project"><div class="meta">BUT 3</div><h4>Intégrer le traitement de données complexes</h4><p>Consolidation des compétences en intégration, automatisation et préparation de données complexes.</p></div></div></div></section>
+
+    <section class="section" id="analyser"><div class="container"><div class="section-head"><h2>Analyser</h2><div class="line"></div></div><div class="card competence analyser"><h3>Analyser les données</h3><p>L’analyse consiste à explorer les données, produire des statistiques descriptives, identifier des relations et interpréter les résultats pour transformer des données brutes en informations utiles à la décision.</p><div class="project"><div class="meta">BUT 1</div><h4>Mettre en œuvre une analyse descriptive</h4><p>Création de graphiques clairs et esthétiques avec des outils comme R, ggplot et des visualisations interactives afin de rendre les résultats compréhensibles pour un public non spécialiste.</p></div><div class="project"><div class="meta">BUT 2</div><h4>Mettre en œuvre une analyse exploratoire</h4><p>Analyse de l’évolution mensuelle des taux de NO₂ sur 18 ans, avec séries temporelles, autocorrélation, décomposition additive, moyenne mobile, régression linéaire et modèle ARIMA.</p></div><div class="project"><div class="meta">BUT 3</div><h4>Analyse exploratoire de données complexes</h4><p>Approfondissement de l’analyse de données complexes et de l’interprétation critique des résultats.</p></div></div></div></section>
+
+    <section class="section" id="valoriser"><div class="container"><div class="section-head"><h2>Valoriser</h2><div class="line"></div></div><div class="card competence valoriser"><h3>Valoriser un rapport</h3><p>Valoriser signifie mettre en avant les résultats, conclusions et recommandations afin de maximiser l’impact d’un travail et de le rendre utile pour un public cible.</p><div class="project"><div class="meta">BUT 1</div><h4>Contextualiser et présenter les données</h4><p>Projet sur les feux de forêt : structuration des données, création de visualisations avec RStudio, questionnaire, analyse des biais et communication des résultats pour mieux comprendre les facteurs liés aux incendies.</p></div><div class="project"><div class="meta">Concours</div><h4>Concours de Datavisualisation</h4><p>Analyse de données météorologiques fournies par Météo France. Le travail de groupe a permis de contextualiser les données et de mettre en évidence des résultats clés à l’aide d’indicateurs pertinents dans un délai imparti.</p></div></div></div></section>
+
+    <section class="section" id="modeliser"><div class="container"><div class="section-head"><h2>Modéliser</h2><div class="line"></div></div><div class="card competence modeliser"><h3>Développer une solution décisionnelle</h3><p>Évaluation de méthodes statistiques comme le sondage aléatoire simple, la stratification et le redressement. Le projet a renforcé la manipulation de données complexes, le calcul d’estimations fiables, la comparaison de méthodes et la formulation de recommandations chiffrées.</p></div></div></section>
+  </main>
+
+  <footer class="footer"><h2>Ylan Harrault</h2><p>Portfolio — Science des Données</p></footer><a href="#sommaire" class="top-link">Sommaire</a>
+</body>
+</html>

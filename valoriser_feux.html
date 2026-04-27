@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projet - Feux de forêt</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600;700&display=swap');
+
+    :root {
+      --cream: #f3efe6;
+      --paper: #fbf7ef;
+      --rust: #a74d18;
+      --rust-dark: #74350f;
+      --gold: #c89b55;
+      --ink: #171410;
+      --muted: #6f6258;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: Inter, Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: auto;
+    }
+
+    .hero {
+      min-height: 70vh;
+      display: grid;
+      align-items: center;
+      background: linear-gradient(90deg, var(--cream) 0 65%, var(--rust) 65% 100%);
+      padding: 80px 0;
+    }
+
+    .hero-content {
+      background: var(--paper);
+      padding: 48px;
+      border-left: 6px solid var(--rust);
+      box-shadow: 0 24px 70px #0002;
+      max-width: 1000px;
+    }
+
+    .kicker {
+      font-family: Bebas Neue, sans-serif;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--rust-dark);
+      font-size: 1.1rem;
+    }
+
+    h1 {
+      font-family: Playfair Display, serif;
+      color: var(--rust);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: .95;
+      margin: 14px 0;
+    }
+
+    h2 {
+      font-family: Playfair Display, serif;
+      color: var(--rust);
+      font-size: 2.2rem;
+      margin-top: 0;
+    }
+
+    h3 {
+      font-family: Bebas Neue, sans-serif;
+      font-size: 1.7rem;
+      margin: 0 0 10px;
+    }
+
+    p {
+      color: var(--muted);
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 24px;
+      border-bottom: 2px solid var(--ink);
+      font-family: Bebas Neue, sans-serif;
+      letter-spacing: .05em;
+      text-decoration: none;
+      color: var(--ink);
+      padding-bottom: 4px;
+    }
+
+    .section {
+      padding: 80px 0;
+      border-bottom: 1px solid #d7c7ad;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .card {
+      background: var(--paper);
+      padding: 32px;
+      border-left: 5px solid var(--rust);
+      box-shadow: 0 10px 30px #0000000d;
+    }
+
+    .steps {
+      display: grid;
+      gap: 20px;
+    }
+
+    .step {
+      background: var(--paper);
+      padding: 26px;
+      border-left: 4px solid var(--gold);
+      box-shadow: 0 10px 30px #0000000d;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      background: #efe3cf;
+      color: var(--rust-dark);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: .9rem;
+    }
+
+    .highlight {
+      background: var(--rust);
+      color: var(--cream);
+      padding: 48px;
+    }
+
+    .highlight h2,
+    .highlight p {
+      color: var(--cream);
+    }
+
+    .footer {
+      padding: 44px 0;
+      text-align: center;
+      background: var(--rust);
+      color: var(--cream);
+    }
+
+    .footer p {
+      color: var(--cream);
+    }
+
+    @media(max-width:800px) {
+      .hero {
+        background: var(--cream);
+        min-height: auto;
+      }
+
+      .hero-content {
+        padding: 32px;
+      }
+
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .highlight-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    
+    .project-image.small img {
+      max-width: 100%;
+      max-height: 320px;
+      object-fit: contain;
+      margin: auto;
+    }
+    
+    .result-text {
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="kicker">Projet — Valoriser</div>
+        <h1>Contextualiser et présenter les données</h1>
+
+        <p>
+          Projet d’analyse autour des feux de forêt, avec pour objectif de structurer les données,
+          produire des visualisations claires et présenter des résultats utiles à la compréhension des risques.
+        </p>
+
+        <a href="index.html#valoriser" class="btn">← Retour à Valoriser</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="section">
+      <div class="container grid-2">
+
+        <div class="card">
+          <h3>Objectif du projet</h3>
+          <p>
+            Créer un rapport clair et structuré sur les données liées aux feux de forêt afin de comprendre
+            les facteurs qui peuvent influencer leur apparition et leur intensité.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Contexte</h3>
+          <p>
+            Le projet a été réalisé en groupe. Il visait à apprendre à organiser des données, identifier les biais
+            possibles et communiquer les résultats de manière compréhensible pour un public professionnel.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Méthodologie</h2>
+
+        <div class="steps">
+          <div class="step">
+            <h3>Exploration des données</h3>
+            <p>
+              Analyse des variables disponibles afin d’identifier les informations pertinentes :
+              température, périodes de départ de feu, fréquence des incendies et conditions observées.
+            </p>
+          </div>
+
+          <div class="step">
+            <h3>Création d’un questionnaire</h3>
+            <p>
+              Mise en place d’un questionnaire pour comprendre l’importance d’une formulation précise
+              et nuancée dans la collecte et la communication des informations.
+            </p>
+          </div>
+
+          <div class="step">
+            <h3>Visualisation avec RStudio</h3>
+            <p>
+              Création de tableaux et graphiques clairs afin de représenter les mois les plus à risque,
+              les températures observées et les relations entre différentes variables.
+            </p>
+          </div>
+
+          <div class="step">
+            <h3>Interprétation des résultats</h3>
+            <p>
+              Analyse des tendances observées pour proposer une lecture utile des données et aider
+              à mieux comprendre les facteurs liés aux feux de forêt.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container grid-2">
+
+        <div>
+          <h2>Outils utilisés</h2>
+          <div class="tags">
+            <span class="tag">RStudio</span>
+            <span class="tag">ggplot2</span>
+            <span class="tag">Questionnaire</span>
+            <span class="tag">Tableaux synthétiques</span>
+            <span class="tag">Graphiques</span>
+            <span class="tag">Analyse statistique</span>
+          </div>
+        </div>
+
+        <div>
+          <h2>Compétences développées</h2>
+          <div class="tags">
+            <span class="tag">Contextualisation</span>
+            <span class="tag">Communication des résultats</span>
+            <span class="tag">Travail en groupe</span>
+            <span class="tag">Visualisation de données</span>
+            <span class="tag">Analyse des biais</span>
+            <span class="tag">Interprétation statistique</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+    
+        <div class="highlight">
+          <h2>Résultat obtenu</h2>
+    
+          <div class="highlight-content">
+    
+            <!-- IMAGE -->
+            <figure class="project-image small">
+              <img src="images/map_traiter.png" alt="Carte des zones de feux de forêt">
+              <figcaption>
+                Répartition géographique des zones les plus touchées par les feux de forêt.
+              </figcaption>
+            </figure>
+    
+            <!-- TEXTE -->
+            <div class="result-text">
+              <p>
+                Le projet a permis de produire une analyse plus claire des feux de forêt
+                et de mettre en évidence l’importance des synthèses graphiques et numériques.
+              </p>
+    
+              <p>
+                Il met également en évidence l’intérêt d’étudier les relations entre variables
+                afin d’identifier des tendances utiles à la prévention et à la compréhension des risques.
+              </p>
+            </div>
+    
+          </div>
+    
+        </div>
+    
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>Ylan Harrault — Portfolio Science des Données</p>
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projet - Modéliser</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600;700&display=swap');
+
+    :root {
+      --cream: #f3efe6;
+      --paper: #fbf7ef;
+      --rust: #a74d18;
+      --rust-dark: #74350f;
+      --gold: #c89b55;
+      --ink: #171410;
+      --muted: #6f6258;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: Inter, Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: auto;
+    }
+
+    .hero {
+      min-height: 70vh;
+      display: grid;
+      align-items: center;
+      background: linear-gradient(90deg, var(--cream) 0 65%, var(--rust) 65% 100%);
+      padding: 80px 0;
+    }
+
+    .hero-content {
+      background: var(--paper);
+      padding: 48px;
+      border-left: 6px solid var(--rust);
+      box-shadow: 0 24px 70px #0002;
+      max-width: 1000px;
+    }
+
+    .kicker {
+      font-family: Bebas Neue, sans-serif;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--rust-dark);
+      font-size: 1.1rem;
+    }
+
+    h1 {
+      font-family: Playfair Display, serif;
+      color: var(--rust);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: .95;
+      margin: 14px 0;
+    }
+
+    h2 {
+      font-family: Playfair Display, serif;
+      color: var(--rust);
+      font-size: 2.2rem;
+      margin-top: 0;
+    }
+
+    h3 {
+      font-family: Bebas Neue, sans-serif;
+      font-size: 1.7rem;
+      margin: 0 0 10px;
+    }
+
+    p {
+      color: var(--muted);
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 24px;
+      border-bottom: 2px solid var(--ink);
+      font-family: Bebas Neue, sans-serif;
+      letter-spacing: .05em;
+      text-decoration: none;
+      color: var(--ink);
+      padding-bottom: 4px;
+    }
+
+    .section {
+      padding: 80px 0;
+      border-bottom: 1px solid #d7c7ad;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .card {
+      background: var(--paper);
+      padding: 32px;
+      border-left: 5px solid var(--rust);
+      box-shadow: 0 10px 30px #0000000d;
+    }
+
+    .steps {
+      display: grid;
+      gap: 20px;
+    }
+
+    .step {
+      background: var(--paper);
+      padding: 26px;
+      border-left: 4px solid var(--gold);
+      box-shadow: 0 10px 30px #0000000d;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      background: #efe3cf;
+      color: var(--rust-dark);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: .9rem;
+    }
+
+    .highlight {
+      background: var(--rust);
+      color: var(--cream);
+      padding: 48px;
+    }
+
+    .highlight h2,
+    .highlight p {
+      color: var(--cream);
+    }
+
+    .footer {
+      padding: 44px 0;
+      text-align: center;
+      background: var(--rust);
+      color: var(--cream);
+    }
+
+    .footer p {
+      color: var(--cream);
+    }
+
+    @media(max-width:800px) {
+      .hero {
+        background: var(--cream);
+        min-height: auto;
+      }
+
+      .hero-content {
+        padding: 32px;
+      }
+
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .project-image {
+      margin-top: 30px;
+      background: var(--paper);
+      padding: 18px;
+      box-shadow: 0 10px 30px #0000000d;
+    }
+    
+    .project-image img {
+      width: 100%;
+      display: block;
+      border-radius: 4px;
+    }
+    
+    .project-image figcaption {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="kicker">Projet BUT 2 — Modéliser</div>
+        <h1>Développer un composant d’une solution décisionnelle</h1>
+
+        <p>
+          Projet d’évaluation de méthodes statistiques comme le sondage aléatoire simple,
+          la stratification et le redressement afin de produire des estimations fiables
+          et formuler des recommandations à partir de données chiffrées.
+        </p>
+
+        <a href="index.html#modeliser" class="btn">← Retour à Modéliser</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="section">
+      <div class="container grid-2">
+
+        <div class="card">
+          <h3>Objectif du projet</h3>
+          <p>
+            Comparer plusieurs méthodes statistiques pour évaluer leur efficacité,
+            leur précision et leur capacité à réduire les biais dans l’analyse des données.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Problématique</h3>
+          <p>
+            Comment obtenir des estimations fiables à partir d’un échantillon,
+            tout en tenant compte de la structure de la population et des biais possibles ?
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Méthodologie</h2>
+
+        <div class="steps">
+          <div class="step">
+            <h3>Sondage aléatoire simple</h3>
+            <p>
+              Utilisation du sondage aléatoire simple pour estimer un ratio moyen
+              avec une marge d’erreur mesurable.
+            </p>
+          </div>
+
+          <div class="step">
+            <h3>Stratification</h3>
+            <p>
+              Analyse des ratios selon différents groupes afin de comparer les résultats
+              avec une allocation proportionnelle ou optimale.
+            </p>
+          </div>
+
+          <div class="step">
+            <h3>Redressement</h3>
+            <p>
+              Ajustement des estimations pour mieux refléter la population totale
+              et réduire certains biais d’échantillonnage.
+            </p>
+          </div>
+
+          <div class="step">
+            <h3>Comparaison des méthodes</h3>
+            <p>
+              Analyse critique des résultats obtenus pour identifier les avantages,
+              limites et niveaux de précision de chaque méthode.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="container">
+      <figure class="project-image">
+        <img src="images/modeliser-but2-resultats.png" alt="Comparaison des méthodes statistiques">
+        <figcaption>
+          Comparaison des résultats obtenus selon les différentes méthodes : sondage aléatoire, stratification et redressement.
+        </figcaption>
+      </figure>
+    </div>
+
+    <section class="section">
+      <div class="container grid-2">
+
+        <div>
+          <h2>Outils et méthodes</h2>
+          <div class="tags">
+            <span class="tag">Sondage aléatoire simple</span>
+            <span class="tag">Stratification</span>
+            <span class="tag">Redressement</span>
+            <span class="tag">Pondération</span>
+            <span class="tag">Estimations</span>
+            <span class="tag">Variance</span>
+          </div>
+        </div>
+
+        <div>
+          <h2>Compétences développées</h2>
+          <div class="tags">
+            <span class="tag">Modélisation statistique</span>
+            <span class="tag">Analyse critique</span>
+            <span class="tag">Calcul d’intervalles</span>
+            <span class="tag">Structuration de données</span>
+            <span class="tag">Recommandations chiffrées</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="highlight">
+          <h2>Résultat obtenu</h2>
+          <p>
+            Le redressement s’est révélé plus efficace pour améliorer la précision
+            des estimations et réduire certains biais, tandis que la pondération seule
+            était moins recommandée en raison d’une variabilité plus importante.
+          </p>
+
+          <p>
+            Ce projet m’a permis de mieux comprendre les avantages et limites
+            des méthodes statistiques, de manipuler des données complexes et
+            de formuler des recommandations basées sur des résultats chiffrés.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>Ylan Harrault — Portfolio Science des Données</p>
+  </footer>
+
+</body>
+
+</html>
