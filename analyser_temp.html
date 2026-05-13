@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projet BUT 2 - Analyse de données</title>
+  <title>Projet BUT 2 - Analyse temporelle</title>
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600;700&display=swap');
@@ -17,9 +17,14 @@
       --gold: #c89b55;
       --ink: #171410;
       --muted: #6f6258;
+      --soft: #efe3cf;
+      --green: #9cbf55;
+      --red: #b51e1e;
     }
 
     * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -29,25 +34,69 @@
       line-height: 1.6;
     }
 
+    a { color: inherit; }
+
     .container {
-      width: min(1100px, 92%);
+      width: min(1120px, 92%);
       margin: auto;
     }
 
+    .project-nav {
+      position: fixed;
+      top: 0;
+      left: 4%;
+      right: 4%;
+      z-index: 20;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 14px 20px;
+      background: #fbf7efdd;
+      backdrop-filter: blur(10px);
+      border-left: 4px solid var(--rust);
+      box-shadow: 0 10px 30px #00000018;
+    }
+
+    .brand {
+      font-family: Playfair Display, serif;
+      font-style: italic;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      font-family: Bebas Neue, sans-serif;
+      text-decoration: none;
+      letter-spacing: .05em;
+      transition: transform .25s ease, color .25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--rust);
+      transform: translateY(-2px);
+    }
+
     .hero {
-      min-height: 70vh;
-      display: grid;
+      min-height: 100svh;
+      display: flex;
       align-items: center;
       background: linear-gradient(90deg, var(--cream) 0 65%, var(--rust) 65% 100%);
-      padding: 80px 0;
+      padding: 120px 0 70px;
     }
 
     .hero-content {
       background: var(--paper);
-      padding: 48px;
+      padding: clamp(30px, 5vw, 54px);
       border-left: 6px solid var(--rust);
       box-shadow: 0 24px 70px #0002;
-      max-width: 1000px;
+      max-width: min(1000px, 78vw);
     }
 
     .kicker {
@@ -61,7 +110,7 @@
     h1 {
       font-family: Playfair Display, serif;
       color: var(--rust);
-      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-size: clamp(2.3rem, 6vw, 5rem);
       line-height: .95;
       margin: 14px 0;
     }
@@ -69,54 +118,410 @@
     h2 {
       font-family: Playfair Display, serif;
       color: var(--rust);
-      font-size: 2.2rem;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      margin: 0 0 26px;
     }
 
     h3 {
       font-family: Bebas Neue, sans-serif;
-      font-size: 1.6rem;
+      font-size: 1.75rem;
       margin: 0 0 10px;
     }
 
-    p { color: var(--muted); }
+    h4 {
+      font-family: Bebas Neue, sans-serif;
+      color: var(--rust-dark);
+      font-size: 1.3rem;
+      margin: 20px 0 8px;
+    }
+
+    p {
+      color: var(--muted);
+      margin-top: 0;
+    }
 
     .btn {
       display: inline-block;
       margin-top: 24px;
       border-bottom: 2px solid var(--ink);
       font-family: Bebas Neue, sans-serif;
+      letter-spacing: .05em;
       text-decoration: none;
-      color: var(--ink);
+      padding-bottom: 4px;
+      transition: transform .25s ease, color .25s ease;
+    }
+
+    .btn:hover {
+      color: var(--rust);
+      transform: translateX(-4px);
+    }
+
+    .quick-info {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .info-box {
+      background: var(--soft);
+      padding: 15px;
+      border-left: 4px solid var(--rust);
+    }
+
+    .info-box span {
+      display: block;
+      font-family: Bebas Neue, sans-serif;
+      color: var(--rust-dark);
+      font-size: 1.1rem;
     }
 
     .section {
-      padding: 80px 0;
+      padding: 82px 0;
       border-bottom: 1px solid #d7c7ad;
+    }
+
+    .section-desc {
+      max-width: 900px;
+      margin-bottom: 30px;
     }
 
     .grid-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 30px;
+      gap: 28px;
     }
 
-    .card {
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card,
+    .step,
+    .method-card,
+    .visual-card,
+    .difficulty-card {
       background: var(--paper);
-      padding: 30px;
+      padding: 32px;
       border-left: 5px solid var(--rust);
+      box-shadow: 0 10px 30px #0000000d;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .card:hover,
+    .step:hover,
+    .method-card:hover,
+    .visual-card:hover,
+    .difficulty-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px #00000018;
+    }
+
+    .focus-layout {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 28px;
+    }
+
+    .focus-main {
+      background: var(--paper);
+      padding: 36px;
+      border-left: 6px solid var(--rust);
       box-shadow: 0 10px 30px #0000000d;
     }
 
+    .focus-panel {
+      background: var(--rust);
+      color: var(--cream);
+      padding: 36px;
+      box-shadow: 0 18px 50px #00000020;
+    }
+
+    .focus-panel h3,
+    .focus-panel p {
+      color: var(--cream);
+    }
+
+    .focus-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .focus-stat {
+      background: #ffffff12;
+      border: 1px solid #ffffff20;
+      padding: 18px;
+    }
+
+    .focus-stat strong {
+      display: block;
+      font-family: Playfair Display, serif;
+      font-size: 2.5rem;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .focus-stat span {
+      font-family: Bebas Neue, sans-serif;
+      letter-spacing: .05em;
+    }
+
     .steps {
+      counter-reset: step;
       display: grid;
       gap: 20px;
     }
 
     .step {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 20px;
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--rust);
+      color: var(--cream);
+      font-family: Playfair Display, serif;
+      font-weight: 700;
+      font-size: 1.4rem;
+    }
+
+    .methods-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .method-card span {
+      display: inline-block;
+      background: var(--soft);
+      color: var(--rust-dark);
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: .85rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .result-table-wrapper {
+      overflow-x: auto;
       background: var(--paper);
-      padding: 25px;
       box-shadow: 0 10px 30px #0000000d;
-      border-left: 4px solid var(--gold);
+      border-left: 5px solid var(--rust);
+    }
+
+    .result-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+    }
+
+    .result-table th,
+    .result-table td {
+      padding: 16px;
+      text-align: left;
+      border-bottom: 1px solid #d7c7ad;
+    }
+
+    .result-table th {
+      background: var(--rust);
+      color: var(--cream);
+      font-family: Bebas Neue, sans-serif;
+      letter-spacing: .05em;
+      font-size: 1.15rem;
+    }
+
+    .result-table td {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .best-row {
+      background: var(--soft);
+    }
+
+    .comparison-layout {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 28px;
+      align-items: stretch;
+      margin-top: 34px;
+    }
+
+    .best-panel {
+      background: var(--rust);
+      color: var(--cream);
+      padding: 34px;
+      box-shadow: 0 18px 50px #00000020;
+    }
+
+    .best-panel h3,
+    .best-panel p {
+      color: var(--cream);
+    }
+
+    .best-panel strong {
+      display: block;
+      font-family: Playfair Display, serif;
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      line-height: 1;
+      margin: 10px 0 16px;
+    }
+
+    .bar-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .bar-item {
+      background: var(--paper);
+      padding: 20px;
+      box-shadow: 0 10px 30px #0000000d;
+      border-left: 5px solid var(--rust);
+      cursor: help;
+    }
+
+    .bar-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .bar-track {
+      height: 18px;
+      background: #e0d2bd;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: var(--rust);
+      border-radius: 999px;
+    }
+
+    .chart-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 18px 0 8px;
+    }
+
+    .chart-btn {
+      background: var(--soft);
+      color: var(--rust-dark);
+      border: 1px solid #d7c7ad;
+      padding: 10px 14px;
+      font-family: Bebas Neue, sans-serif;
+      letter-spacing: .05em;
+      cursor: pointer;
+      transition: .25s ease;
+    }
+
+    .chart-btn:hover,
+    .chart-btn.active {
+      background: var(--rust);
+      color: var(--cream);
+    }
+
+    .svg-chart {
+      overflow-x: auto;
+      margin-top: 22px;
+    }
+
+    .svg-chart svg {
+      width: 100%;
+      min-width: 980px;
+      height: 520px;
+      display: block;
+      background: #fffaf2;
+    }
+
+    .chart-axis {
+      stroke: #d7c7ad;
+      stroke-width: 1;
+    }
+
+    .chart-grid {
+      stroke: #00000012;
+      stroke-width: 1;
+    }
+
+    .chart-line {
+      fill: none;
+      stroke: var(--rust);
+      stroke-width: 3;
+    }
+
+    .chart-line.secondary {
+      stroke: var(--gold);
+    }
+
+    .chart-point {
+      fill: var(--rust);
+      stroke: var(--paper);
+      stroke-width: 2;
+      cursor: pointer;
+    }
+
+    .chart-point.secondary {
+      fill: var(--gold);
+    }
+
+    .bar {
+      fill: var(--rust);
+      opacity: .85;
+      cursor: pointer;
+    }
+
+    .bar.secondary {
+      fill: var(--gold);
+    }
+
+    .chart-label {
+      fill: var(--ink);
+      font-family: Inter, Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .chart-small-label {
+      fill: var(--muted);
+      font-family: Inter, Arial, sans-serif;
+      font-size: 11px;
+    }
+
+    .chart-tooltip {
+      position: fixed;
+      z-index: 999;
+      pointer-events: none;
+      background: var(--ink);
+      color: var(--cream);
+      padding: 10px 12px;
+      box-shadow: 0 12px 30px #0005;
+      font-size: .85rem;
+      opacity: 0;
+      transform: translate(-50%, -125%);
+      transition: opacity .15s ease;
+    }
+
+    .difficulty-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
     }
 
     .tags {
@@ -126,7 +531,8 @@
     }
 
     .tag {
-      background: #efe3cf;
+      background: var(--soft);
+      color: var(--rust-dark);
       padding: 8px 12px;
       border-radius: 999px;
       font-weight: 700;
@@ -136,38 +542,168 @@
     .highlight {
       background: var(--rust);
       color: var(--cream);
-      padding: 40px;
+      padding: clamp(28px, 5vw, 52px);
+      box-shadow: 0 18px 50px #00000020;
     }
 
+    .highlight h2,
     .highlight p {
       color: var(--cream);
     }
 
-    @media(max-width:800px) {
-      .grid-2 {
-        grid-template-columns: 1fr;
+    .footer {
+      padding: 44px 0;
+      text-align: center;
+      background: var(--rust);
+      color: var(--cream);
+    }
+
+    .footer p,
+    .footer a {
+      color: var(--cream);
+      margin: 0;
+    }
+
+    .footer a {
+      text-decoration: none;
+      border-bottom: 1px solid var(--gold);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    @media(max-width:1050px) {
+      .methods-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      .hero {
-        background: var(--cream);
+      .focus-layout,
+      .comparison-layout {
+        grid-template-columns: 1fr;
       }
     }
 
+    @media(max-width:850px) {
+      .hero {
+        min-height: auto;
+        background: var(--cream);
+        padding: 110px 0 60px;
+      }
+
+      .hero-content {
+        max-width: 100%;
+      }
+
+      .quick-info,
+      .grid-2,
+      .grid-3,
+      .difficulty-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media(max-width:700px) {
+      .project-nav {
+        position: static;
+        margin: 18px auto 0;
+        width: 92%;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero {
+        padding: 50px 0;
+      }
+
+      .step {
+        grid-template-columns: 1fr;
+      }
+
+      .methods-grid,
+      .focus-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 58px 0;
+      }
+    }
+
+    @media(max-width:520px) {
+      .container {
+        width: 94%;
+      }
+
+      .hero-content,
+      .focus-main,
+      .focus-panel,
+      .card,
+      .step,
+      .method-card,
+      .best-panel,
+      .difficulty-card,
+      .visual-card,
+      .highlight {
+        padding: 24px;
+      }
+    }
   </style>
 </head>
 
-<body>
+<body id="top">
+
+  <nav class="project-nav">
+    <div class="brand">Ylan Harrault</div>
+
+    <div class="nav-links">
+      <a href="index.html#analyser">Retour</a>
+      <a href="#objectif">Objectif</a>
+      <a href="#methodologie">Méthode</a>
+      <a href="#resultats">Résultats</a>
+      <a href="#visuels">Graphiques</a>
+      <a href="#anova">ANOVA</a>
+      <a href="#bilan">Bilan</a>
+    </div>
+  </nav>
 
   <header class="hero">
     <div class="container">
       <div class="hero-content">
         <div class="kicker">Projet BUT 2 — Analyser</div>
-        <h1>Analyse exploratoire des données NO₂</h1>
+
+        <h1>Analyse temporelle de la pollution à Pékin</h1>
 
         <p>
-          Étude de l’évolution des concentrations de dioxyde d’azote (NO₂) sur 18 ans
-          afin d’identifier des tendances, cycles et comportements significatifs.
+          Étude d’un jeu de données de pollution atmosphérique à Pékin afin de modéliser
+          la concentration de PM_Dongsi à partir d’autres stations de mesure et de variables météo.
         </p>
+
+        <div class="quick-info">
+          <div class="info-box">
+            <span>Données</span>
+            <strong>Beijing.csv</strong>
+          </div>
+
+          <div class="info-box">
+            <span>Échantillon</span>
+            <strong>Lignes 7000 à 9000</strong>
+          </div>
+
+          <div class="info-box">
+            <span>Méthodes</span>
+            <strong>Régression & ANOVA</strong>
+          </div>
+
+          <div class="info-box">
+            <span>Cible</span>
+            <strong>PM_Dongsi</strong>
+          </div>
+        </div>
 
         <a href="index.html#analyser" class="btn">← Retour à Analyser</a>
       </div>
@@ -176,104 +712,773 @@
 
   <main>
 
-    <section class="section">
-      <div class="container grid-2">
+    <section class="section" id="objectif">
+      <div class="container">
+        <div class="focus-layout">
+          <div class="focus-main">
+            <div class="kicker">Objectif du projet</div>
+            <h2>Expliquer les variations de pollution</h2>
 
-        <div class="card">
-          <h3>Objectif</h3>
-          <p>
-            Comprendre l’évolution des niveaux de pollution NO₂ dans le temps
-            et identifier les tendances principales à l’aide d’outils statistiques.
-          </p>
+            <p>
+              Le projet consiste à analyser les variations de la pollution à Pékin, en particulier
+              la concentration mesurée par la station PM_Dongsi.
+            </p>
+
+            <p>
+              L’objectif est de construire un modèle explicatif fiable, d’identifier les variables
+              les plus influentes et de vérifier la qualité du modèle à l’aide de diagnostics statistiques.
+            </p>
+          </div>
+
+          <div class="focus-panel">
+            <h3>Cadre de l’étude</h3>
+
+            <p>
+              Les données ont d’abord été nettoyées avec suppression des valeurs manquantes.
+              Un échantillon de 2001 lignes a ensuite été sélectionné pour comparer la structure
+              du sous-échantillon avec celle du jeu global.
+            </p>
+
+            <div class="focus-stats">
+              <div class="focus-stat">
+                <strong>2001</strong>
+                <span>lignes étudiées</span>
+              </div>
+
+              <div class="focus-stat">
+                <strong>4</strong>
+                <span>stations PM</span>
+              </div>
+
+              <div class="focus-stat">
+                <strong>19</strong>
+                <span>MSE final</span>
+              </div>
+
+              <div class="focus-stat">
+                <strong>ANOVA</strong>
+                <span>direction du vent</span>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <div class="card">
-          <h3>Problématique</h3>
-          <p>
-            Comment analyser et interpréter une série temporelle longue
-            pour détecter des tendances, cycles et variations significatives ?
-          </p>
-        </div>
-
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="methodologie">
       <div class="container">
         <h2>Méthodologie</h2>
 
         <div class="steps">
-
           <div class="step">
-            <h3>Analyse descriptive</h3>
-            <p>
-              Étude des valeurs globales, moyennes et distribution des données.
-            </p>
+            <div>
+              <h3>Préparation des données</h3>
+              <p>
+                Chargement du fichier Beijing.csv, suppression des valeurs manquantes,
+                transformation de la direction du vent en facteur et sélection de l’échantillon 7000:9000.
+              </p>
+            </div>
           </div>
 
           <div class="step">
-            <h3>Séries temporelles</h3>
-            <p>
-              Analyse de l’évolution mensuelle sur 18 ans pour observer tendances et cycles.
-            </p>
+            <div>
+              <h3>Analyse exploratoire</h3>
+              <p>
+                Comparaison des boxplots entre le jeu global et l’échantillon, puis analyse des corrélations
+                entre les variables de pollution et les variables météorologiques.
+              </p>
+            </div>
           </div>
 
           <div class="step">
-            <h3>Autocorrélation</h3>
-            <p>
-              Mise en évidence des dépendances entre les valeurs dans le temps.
-            </p>
+            <div>
+              <h3>Régression linéaire multiple</h3>
+              <p>
+                Construction d’un modèle expliquant PM_Dongsi avec les autres stations de pollution,
+                la température, l’humidité, la pression, le vent et les précipitations.
+              </p>
+            </div>
           </div>
 
           <div class="step">
-            <h3>Modélisation</h3>
-            <p>
-              Utilisation de la régression linéaire et du modèle ARIMA.
-            </p>
+            <div>
+              <h3>Diagnostics et sélection de variables</h3>
+              <p>
+                Suppression progressive des points influents, analyse des résidus, étude de la multicolinéarité
+                avec le VIF, puis sélection de variables par méthode forward et recherche exhaustive.
+              </p>
+            </div>
           </div>
-
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container grid-2">
+    <section class="section" id="methodes">
+      <div class="container">
+        <h2>Méthodes utilisées</h2>
 
+        <div class="methods-grid">
+          <div class="method-card">
+            <span>Exploration</span>
+            <h3>Boxplots & pairs</h3>
+            <p>Comparaison de l’échantillon au jeu global et visualisation des relations entre variables.</p>
+          </div>
+
+          <div class="method-card">
+            <span>Modèle</span>
+            <h3>Régression multiple</h3>
+            <p>Modélisation de PM_Dongsi à partir des autres mesures de pollution et de variables météo.</p>
+          </div>
+
+          <div class="method-card">
+            <span>ANOVA</span>
+            <h3>Direction du vent</h3>
+            <p>Test de l’effet de la variable cbwd sur le niveau moyen de pollution PM_Dongsi.</p>
+          </div>
+
+          <div class="method-card">
+            <span>Sélection</span>
+            <h3>VIF & BIC</h3>
+            <p>Recherche d’un modèle plus stable en limitant la multicolinéarité entre variables.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+        <section class="section" id="resultats">
+      <div class="container">
+        <h2>Résultats principaux</h2>
+
+        <p class="section-desc">
+          Le modèle final montre que les autres stations de pollution et certaines variables météorologiques
+          expliquent fortement les variations de PM_Dongsi. Les variables les plus significatives sont
+          PM_Dongsihuan, PM_Nongzhanguan, PM_US_Post, DEWP et HUMI.
+        </p>
+
+        <div class="comparison-layout">
+          <div class="best-panel">
+            <h3>Modèle retenu</h3>
+            <strong>Régression multiple</strong>
+            <p>
+              Après suppression des points influents, le modèle devient plus stable et permet
+              une meilleure représentation des données.
+            </p>
+          </div>
+
+          <div class="bar-list">
+            <div class="bar-item" data-tooltip="Variable fortement liée à PM_Dongsi.">
+              <div class="bar-head">
+                <span>PM_Dongsihuan</span>
+                <span>Significative</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill" style="width:92%"></div></div>
+            </div>
+
+            <div class="bar-item" data-tooltip="Variable fortement corrélée avec la pollution locale.">
+              <div class="bar-head">
+                <span>PM_Nongzhanguan</span>
+                <span>Significative</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill" style="width:88%"></div></div>
+            </div>
+
+            <div class="bar-item" data-tooltip="Variable utile, mais attention à la multicolinéarité avec les autres stations.">
+              <div class="bar-head">
+                <span>PM_US_Post</span>
+                <span>Significative</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill" style="width:84%"></div></div>
+            </div>
+
+            <div class="bar-item" data-tooltip="L’humidité a un effet important dans le modèle.">
+              <div class="bar-head">
+                <span>HUMI</span>
+                <span>Significative</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill" style="width:76%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-table-wrapper" style="margin-top:34px;">
+          <table class="result-table">
+            <thead>
+              <tr>
+                <th>Étape</th>
+                <th>Résultat</th>
+                <th>Interprétation</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>Régression initiale</td>
+                <td>R² élevé</td>
+                <td>Le modèle explique bien PM_Dongsi, mais nécessite un diagnostic des résidus.</td>
+              </tr>
+
+              <tr>
+                <td>Nettoyage des points influents</td>
+                <td>2001 → 1982 lignes</td>
+                <td>Les observations atypiques ont été retirées progressivement.</td>
+              </tr>
+
+              <tr class="best-row">
+                <td>Modèle final</td>
+                <td>MSE ≈ 19,95</td>
+                <td>Les prédictions sont correctes, mais il reste une variabilité individuelle.</td>
+              </tr>
+
+              <tr>
+                <td>Multicolinéarité</td>
+                <td>VIF élevé sur certaines stations PM</td>
+                <td>Les stations de pollution sont très corrélées entre elles.</td>
+              </tr>
+
+              <tr>
+                <td>Modèle simplifié</td>
+                <td>PM_US_Post + HUMI + DEWP</td>
+                <td>Le VIF devient faible, donc le modèle est plus stable.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="visuels">
+      <div class="container">
+        <h2>Graphiques interactifs</h2>
+
+        <p class="section-desc">
+          Ces visualisations résument les résultats du projet : évolution de la pollution sur l’échantillon,
+          comparaison observé/prédit, analyse des résidus et effet de la direction du vent.
+        </p>
+
+        <div class="visual-card">
+          <h3>Analyse temporelle de PM_Dongsi</h3>
+          <p>
+            Le graphique montre l’évolution de la pollution sur l’échantillon étudié.
+            Il permet de repérer les pics de pollution et les phases plus stables.
+          </p>
+
+          <div class="chart-controls">
+            <button class="chart-btn active" data-chart="time">Évolution PM_Dongsi</button>
+            <button class="chart-btn" data-chart="prediction">Observé / prédit</button>
+            <button class="chart-btn" data-chart="residuals">Résidus</button>
+            <button class="chart-btn" data-chart="wind">Direction du vent</button>
+          </div>
+
+          <div id="mainChart" class="svg-chart"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="anova">
+      <div class="container">
+        <h2>ANOVA : effet de la direction du vent</h2>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>Objectif</h3>
+            <p>
+              L’ANOVA permet de vérifier si la direction du vent, notée cbwd, influence
+              significativement la concentration moyenne de PM_Dongsi.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Conclusion</h3>
+            <p>
+              La p-value est inférieure à 0,05 : on rejette donc l’hypothèse d’égalité des moyennes.
+              La direction du vent a un effet significatif sur le niveau de pollution.
+            </p>
+          </div>
+        </div>
+
+        <div class="result-table-wrapper" style="margin-top:34px;">
+          <table class="result-table">
+            <thead>
+              <tr>
+                <th>Comparaison</th>
+                <th>Différence moyenne</th>
+                <th>Interprétation</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr class="best-row">
+                <td>cv - NW</td>
+                <td>≈ 51,01</td>
+                <td>Différence très significative : cv présente une pollution plus élevée que NW.</td>
+              </tr>
+
+              <tr class="best-row">
+                <td>cv - NE</td>
+                <td>≈ 34,17</td>
+                <td>Différence significative : cv est plus élevé que NE.</td>
+              </tr>
+
+              <tr class="best-row">
+                <td>cv - SE</td>
+                <td>≈ 21,12</td>
+                <td>Différence significative : cv est plus élevé que SE.</td>
+              </tr>
+
+              <tr>
+                <td>NE - NW</td>
+                <td>≈ 16,84</td>
+                <td>Différence non significative.</td>
+              </tr>
+
+              <tr>
+                <td>SE - NE</td>
+                <td>≈ 13,04</td>
+                <td>Différence non significative.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="selection">
+      <div class="container">
+        <h2>Sélection de variables</h2>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>Méthode forward</h3>
+            <p>
+              Les variables ont été ajoutées progressivement selon leur contribution statistique.
+              La sélection s’arrête lorsque les variables restantes ne sont plus significatives.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Recherche exhaustive</h3>
+            <p>
+              Les critères R² ajusté, BIC et Cp de Mallows ont été utilisés pour comparer
+              les modèles possibles et identifier un compromis entre précision et simplicité.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>VIF</h3>
+            <p>
+              Les variables de pollution étant très corrélées entre elles, le VIF a permis
+              de repérer puis réduire la multicolinéarité.
+            </p>
+          </div>
+        </div>
+
+        <div class="comparison-layout">
+          <div class="best-panel">
+            <h3>Modèle simplifié</h3>
+            <strong>PM_US_Post + HUMI + DEWP</strong>
+            <p>
+              Après suppression des variables trop colinéaires, le modèle devient plus stable,
+              avec des VIF inférieurs à 5.
+            </p>
+          </div>
+
+          <div class="bar-list">
+            <div class="bar-item" data-tooltip="VIF faible après simplification du modèle.">
+              <div class="bar-head">
+                <span>PM_US_Post</span>
+                <span>VIF ≈ 1,49</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill" style="width:30%"></div></div>
+            </div>
+
+            <div class="bar-item" data-tooltip="VIF inférieur à 5 : pas de problème majeur de colinéarité.">
+              <div class="bar-head">
+                <span>HUMI</span>
+                <span>VIF ≈ 1,96</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill" style="width:39%"></div></div>
+            </div>
+
+            <div class="bar-item" data-tooltip="VIF faible, variable conservée dans le modèle simplifié.">
+              <div class="bar-head">
+                <span>DEWP</span>
+                <span>VIF ≈ 1,55</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill" style="width:31%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="difficultes">
+      <div class="container">
+        <h2>Difficultés rencontrées</h2>
+
+        <div class="difficulty-grid">
+          <div class="difficulty-card">
+            <h3>Valeurs aberrantes</h3>
+            <p>
+              Plusieurs points influents perturbaient les diagnostics du modèle. Ils ont été retirés
+              progressivement à partir des graphes de résidus, de Cook et de leverage.
+            </p>
+          </div>
+
+          <div class="difficulty-card">
+            <h3>Normalité des résidus</h3>
+            <p>
+              Les tests statistiques pouvaient rejeter la normalité, mais la taille importante
+              de l’échantillon permet de s’appuyer sur le théorème central limite.
+            </p>
+          </div>
+
+          <div class="difficulty-card">
+            <h3>Multicolinéarité</h3>
+            <p>
+              Les mesures de pollution des différentes stations sont fortement corrélées.
+              Cela rend certains coefficients instables et nécessite une sélection de variables.
+            </p>
+          </div>
+
+          <div class="difficulty-card">
+            <h3>Interprétation du modèle</h3>
+            <p>
+              Un modèle très performant n’est pas forcément le plus lisible.
+              Il a donc fallu trouver un compromis entre précision, stabilité et interprétation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="outils">
+      <div class="container grid-2">
         <div>
-          <h2>Outils</h2>
+          <h2>Outils et méthodes</h2>
+
           <div class="tags">
             <span class="tag">R</span>
             <span class="tag">ggplot2</span>
-            <span class="tag">ARIMA</span>
-            <span class="tag">Séries temporelles</span>
+            <span class="tag">Régression linéaire multiple</span>
+            <span class="tag">ANOVA</span>
+            <span class="tag">TukeyHSD</span>
+            <span class="tag">Scheffé</span>
+            <span class="tag">VIF</span>
+            <span class="tag">BIC</span>
+            <span class="tag">Cp de Mallows</span>
           </div>
         </div>
 
         <div>
-          <h2>Compétences</h2>
+          <h2>Compétences développées</h2>
+
           <div class="tags">
             <span class="tag">Analyse exploratoire</span>
-            <span class="tag">Statistiques</span>
-            <span class="tag">Interprétation</span>
+            <span class="tag">Diagnostic de modèle</span>
+            <span class="tag">Sélection de variables</span>
+            <span class="tag">Interprétation statistique</span>
+            <span class="tag">Prédiction</span>
+            <span class="tag">Communication des résultats</span>
           </div>
         </div>
-
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="bilan">
       <div class="container">
         <div class="highlight">
-          <h2>Résultat</h2>
+          <h2>Bilan du projet</h2>
+
           <p>
-            L’analyse a permis d’identifier des tendances saisonnières
-            ainsi que des variations à long terme des niveaux de NO₂.
+            Ce projet m’a permis de construire une analyse complète autour d’un problème réel :
+            expliquer la pollution atmosphérique à partir de variables environnementales et de mesures
+            provenant de plusieurs stations.
+          </p>
+
+          <p>
+            La régression multiple fournit un modèle explicatif intéressant, mais l’analyse montre aussi
+            l’importance du diagnostic : suppression des points influents, vérification des résidus,
+            prise en compte de la multicolinéarité et comparaison de modèles plus simples.
+          </p>
+
+          <p>
+            L’ANOVA confirme également que la direction du vent influence significativement la pollution,
+            ce qui ajoute une interprétation environnementale aux résultats statistiques.
           </p>
         </div>
       </div>
     </section>
 
   </main>
+
+  <footer class="footer">
+    <p>Ylan Harrault — Portfolio Science des Données</p>
+
+    <div class="footer-links">
+      <a href="index.html#analyser">← Retour aux projets</a>
+      <a href="#top">↑ Retour en haut</a>
+    </div>
+  </footer>
+
+  <script>
+    let chartData = null;
+    const chartButtons = document.querySelectorAll(".chart-btn");
+  
+    function normalizeData(data) {
+      return {
+        time: data.time.map(row => ({
+          index: Number(row.index),
+          pm: Number(row.PM_Dongsi ?? row.pm)
+        })),
+  
+        prediction: data.prediction.map(row => ({
+          index: Number(row.index),
+          obs: Number(row.observe ?? row.obs),
+          pred: Number(row.prediction ?? row.pred)
+        })),
+  
+        residuals: data.residuals.map(row => ({
+          fitted: Number(row.fitted),
+          residual: Number(row.residual)
+        })),
+  
+        wind: data.wind.map(row => ({
+          cbwd: row.cbwd,
+          mean: Number(row.mean)
+        }))
+      };
+    }
+  
+    function createTooltip() {
+      let tooltip = document.querySelector(".chart-tooltip");
+  
+      if (!tooltip) {
+        tooltip = document.createElement("div");
+        tooltip.className = "chart-tooltip";
+        document.body.appendChild(tooltip);
+      }
+  
+      return tooltip;
+    }
+  
+    function activateTooltip() {
+      const tooltip = createTooltip();
+  
+      document.querySelectorAll("[data-tooltip]").forEach(element => {
+        element.onmouseenter = () => {
+          tooltip.innerHTML = element.dataset.tooltip;
+          tooltip.style.opacity = "1";
+        };
+  
+        element.onmousemove = event => {
+          tooltip.style.left = event.clientX + "px";
+          tooltip.style.top = event.clientY - 12 + "px";
+        };
+  
+        element.onmouseleave = () => {
+          tooltip.style.opacity = "0";
+        };
+      });
+    }
+  
+    function renderChart(type) {
+      chartButtons.forEach(button => {
+        button.classList.toggle("active", button.dataset.chart === type);
+      });
+  
+      if (type === "time") renderTimeChart();
+      if (type === "prediction") renderPredictionChart();
+      if (type === "residuals") renderResidualChart();
+      if (type === "wind") renderWindChart();
+    }
+  
+    function renderTimeChart() {
+      const width = 980;
+      const height = 500;
+      const padding = 78;
+      const rows = chartData.time.filter(row => !isNaN(row.pm));
+  
+      const minX = Math.min(...rows.map(row => row.index));
+      const maxX = Math.max(...rows.map(row => row.index));
+      const minY = 0;
+      const maxY = Math.max(...rows.map(row => row.pm)) + 20;
+  
+      const xScale = x => padding + ((x - minX) / (maxX - minX)) * (width - padding * 2);
+      const yScale = y => height - padding - ((y - minY) / (maxY - minY)) * (height - padding * 2);
+  
+      const path = rows.map((row, index) =>
+        `${index === 0 ? "M" : "L"} ${xScale(row.index)} ${yScale(row.pm)}`
+      ).join(" ");
+  
+      document.getElementById("mainChart").innerHTML = `
+        <svg viewBox="0 0 ${width} ${height}">
+          <line class="chart-axis" x1="${padding}" y1="${height - padding}" x2="${width - padding}" y2="${height - padding}"></line>
+          <line class="chart-axis" x1="${padding}" y1="${padding}" x2="${padding}" y2="${height - padding}"></line>
+  
+          ${[0, 50, 100, 150, 200, 250, 300].map(value => `
+            <line class="chart-grid" x1="${padding}" y1="${yScale(value)}" x2="${width - padding}" y2="${yScale(value)}"></line>
+            <text class="chart-small-label" x="28" y="${yScale(value) + 4}">${value}</text>
+          `).join("")}
+  
+          <path class="chart-line" d="${path}"></path>
+  
+          ${rows.map(row => `
+            <circle class="chart-point" cx="${xScale(row.index)}" cy="${yScale(row.pm)}" r="4"
+              data-tooltip="<strong>Index ${row.index}</strong><br>PM_Dongsi : ${row.pm.toFixed(1)}"></circle>
+          `).join("")}
+  
+          <text class="chart-label" x="${padding}" y="${height - 38}">Index temporel</text>
+          <text class="chart-label" x="${padding}" y="${padding - 28}">Évolution de PM_Dongsi</text>
+        </svg>
+      `;
+  
+      activateTooltip();
+    }
+  
+    function renderPredictionChart() {
+      const width = 980;
+      const height = 500;
+      const padding = 78;
+      const rows = chartData.prediction.filter(row => !isNaN(row.obs) && !isNaN(row.pred));
+  
+      const maxY = Math.max(...rows.flatMap(row => [row.obs, row.pred])) + 10;
+      const minY = Math.min(...rows.flatMap(row => [row.obs, row.pred])) - 10;
+  
+      const xScale = index => padding + (index / (rows.length - 1)) * (width - padding * 2);
+      const yScale = y => height - padding - ((y - minY) / (maxY - minY)) * (height - padding * 2);
+  
+      const obsPath = rows.map((row, index) =>
+        `${index === 0 ? "M" : "L"} ${xScale(index)} ${yScale(row.obs)}`
+      ).join(" ");
+  
+      const predPath = rows.map((row, index) =>
+        `${index === 0 ? "M" : "L"} ${xScale(index)} ${yScale(row.pred)}`
+      ).join(" ");
+  
+      document.getElementById("mainChart").innerHTML = `
+        <svg viewBox="0 0 ${width} ${height}">
+          <line class="chart-axis" x1="${padding}" y1="${height - padding}" x2="${width - padding}" y2="${height - padding}"></line>
+          <line class="chart-axis" x1="${padding}" y1="${padding}" x2="${padding}" y2="${height - padding}"></line>
+  
+          <path class="chart-line" d="${obsPath}"></path>
+          <path class="chart-line secondary" d="${predPath}"></path>
+  
+          ${rows.map((row, index) => `
+            <circle class="chart-point" cx="${xScale(index)}" cy="${yScale(row.obs)}" r="5"
+              data-tooltip="<strong>Observation ${index + 1}</strong><br>Observé : ${row.obs.toFixed(1)}<br>Prédit : ${row.pred.toFixed(1)}"></circle>
+            <circle class="chart-point secondary" cx="${xScale(index)}" cy="${yScale(row.pred)}" r="5"
+              data-tooltip="<strong>Observation ${index + 1}</strong><br>Prédit : ${row.pred.toFixed(1)}<br>Observé : ${row.obs.toFixed(1)}"></circle>
+          `).join("")}
+  
+          <g transform="translate(${padding}, ${height - 20})">
+            <rect x="0" y="-10" width="18" height="8" fill="var(--rust)"></rect>
+            <text class="chart-small-label" x="26" y="-3">Observé</text>
+            <rect x="110" y="-10" width="18" height="8" fill="var(--gold)"></rect>
+            <text class="chart-small-label" x="136" y="-3">Prédit</text>
+          </g>
+  
+          <text class="chart-label" x="${padding}" y="${padding - 28}">Comparaison observé / prédit</text>
+        </svg>
+      `;
+  
+      activateTooltip();
+    }
+  
+    function renderResidualChart() {
+      const width = 980;
+      const height = 500;
+      const padding = 78;
+      const rows = chartData.residuals.filter(row => !isNaN(row.fitted) && !isNaN(row.residual));
+  
+      const minX = Math.min(...rows.map(row => row.fitted)) - 5;
+      const maxX = Math.max(...rows.map(row => row.fitted)) + 5;
+      const minY = Math.min(...rows.map(row => row.residual)) - 5;
+      const maxY = Math.max(...rows.map(row => row.residual)) + 5;
+  
+      const xScale = x => padding + ((x - minX) / (maxX - minX)) * (width - padding * 2);
+      const yScale = y => height - padding - ((y - minY) / (maxY - minY)) * (height - padding * 2);
+      const zeroY = yScale(0);
+  
+      document.getElementById("mainChart").innerHTML = `
+        <svg viewBox="0 0 ${width} ${height}">
+          <line class="chart-axis" x1="${padding}" y1="${height - padding}" x2="${width - padding}" y2="${height - padding}"></line>
+          <line class="chart-axis" x1="${padding}" y1="${padding}" x2="${padding}" y2="${height - padding}"></line>
+          <line class="chart-line secondary" x1="${padding}" y1="${zeroY}" x2="${width - padding}" y2="${zeroY}"></line>
+  
+          ${rows.map(row => `
+            <circle class="chart-point" cx="${xScale(row.fitted)}" cy="${yScale(row.residual)}" r="4"
+              data-tooltip="<strong>Résidu</strong><br>Valeur ajustée : ${row.fitted.toFixed(1)}<br>Résidu : ${row.residual.toFixed(1)}"></circle>
+          `).join("")}
+  
+          <text class="chart-label" x="${padding}" y="${height - 38}">Valeurs ajustées</text>
+          <text class="chart-label" x="${padding}" y="${padding - 28}">Résidus vs valeurs ajustées</text>
+        </svg>
+      `;
+  
+      activateTooltip();
+    }
+  
+    function renderWindChart() {
+      const width = 980;
+      const height = 500;
+      const padding = 78;
+      const rows = chartData.wind.filter(row => !isNaN(row.mean));
+  
+      const maxY = Math.max(...rows.map(row => row.mean)) + 20;
+      const yScale = y => height - padding - (y / maxY) * (height - padding * 2);
+      const barWidth = 120;
+      const gap = 70;
+  
+      document.getElementById("mainChart").innerHTML = `
+        <svg viewBox="0 0 ${width} ${height}">
+          <line class="chart-axis" x1="${padding}" y1="${height - padding}" x2="${width - padding}" y2="${height - padding}"></line>
+          <line class="chart-axis" x1="${padding}" y1="${padding}" x2="${padding}" y2="${height - padding}"></line>
+  
+          ${[0, 25, 50, 75, 100, 125].map(value => `
+            <line class="chart-grid" x1="${padding}" y1="${yScale(value)}" x2="${width - padding}" y2="${yScale(value)}"></line>
+            <text class="chart-small-label" x="28" y="${yScale(value) + 4}">${value}</text>
+          `).join("")}
+  
+          ${rows.map((row, index) => {
+            const x = padding + 120 + index * (barWidth + gap);
+            const y = yScale(row.mean);
+            const h = height - padding - y;
+  
+            return `
+              <rect class="bar" x="${x}" y="${y}" width="${barWidth}" height="${h}"
+                data-tooltip="<strong>Vent ${row.cbwd}</strong><br>Moyenne PM_Dongsi : ${row.mean.toFixed(1)}"></rect>
+              <text class="chart-label" x="${x + 45}" y="${height - 38}">${row.cbwd}</text>
+              <text class="chart-small-label" x="${x + 40}" y="${y - 10}">${row.mean.toFixed(1)}</text>
+            `;
+          }).join("")}
+  
+          <text class="chart-label" x="${padding}" y="${padding - 28}">PM_Dongsi moyen selon la direction du vent</text>
+        </svg>
+      `;
+  
+      activateTooltip();
+    }
+  
+    chartButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        renderChart(button.dataset.chart);
+      });
+    });
+  
+    fetch("data/beijing_analyse.json")
+      .then(response => {
+        if (!response.ok) throw new Error("JSON introuvable");
+        return response.json();
+      })
+      .then(data => {
+        chartData = normalizeData(data);
+        renderChart("time");
+      })
+      .catch(() => {
+        document.getElementById("mainChart").innerHTML =
+          "<p>Impossible de charger <strong>data/beijing_analyse.json</strong>. Vérifie le nom et l’emplacement du fichier.</p>";
+      });
+  </script>
 
 </body>
 

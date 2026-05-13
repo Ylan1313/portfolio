@@ -1,4 +1,4 @@
-      <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 
 <head>
@@ -17,10 +17,15 @@
       --gold: #c89b55;
       --ink: #171410;
       --muted: #6f6258;
+      --soft: #efe3cf;
     }
 
     * {
       box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -31,25 +36,77 @@
       line-height: 1.6;
     }
 
+    a {
+      color: inherit;
+    }
+
     .container {
       width: min(1100px, 92%);
       margin: auto;
     }
 
+    .project-nav {
+      position: fixed;
+      top: 0;
+      left: 4%;
+      right: 4%;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 20px;
+      background: #fbf7efcc;
+      backdrop-filter: blur(10px);
+      border-left: 4px solid var(--rust);
+      box-shadow: 0 10px 30px #00000018;
+    }
+
+    .project-nav .brand {
+      font-family: Playfair Display, serif;
+      font-style: italic;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .project-nav .links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .project-nav a {
+      font-family: Bebas Neue, sans-serif;
+      text-decoration: none;
+      letter-spacing: .05em;
+      color: var(--ink);
+      transition: color .25s ease, transform .25s ease;
+    }
+
+    .project-nav a:hover {
+      color: var(--rust);
+      transform: translateY(-2px);
+    }
+
     .hero {
-      min-height: 70vh;
-      display: grid;
+      min-height: 100svh;
+      display: flex;
       align-items: center;
       background: linear-gradient(90deg, var(--cream) 0 65%, var(--rust) 65% 100%);
-      padding: 80px 0;
+      padding: clamp(90px, 10vh, 120px) 0;
+      position: relative;
+      overflow: hidden;
     }
 
     .hero-content {
       background: var(--paper);
-      padding: 48px;
+      padding: clamp(28px, 4vw, 54px);
       border-left: 6px solid var(--rust);
       box-shadow: 0 24px 70px #0002;
-      max-width: 1000px;
+      max-width: min(1000px, 78vw);
+      position: relative;
+      z-index: 1;
     }
 
     .kicker {
@@ -63,7 +120,7 @@
     h1 {
       font-family: Playfair Display, serif;
       color: var(--rust);
-      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-size: clamp(2.5rem, 7vw, 5.4rem);
       line-height: .95;
       margin: 14px 0;
     }
@@ -71,18 +128,27 @@
     h2 {
       font-family: Playfair Display, serif;
       color: var(--rust);
-      font-size: 2.2rem;
-      margin-top: 0;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      margin: 0 0 26px;
     }
 
     h3 {
       font-family: Bebas Neue, sans-serif;
       font-size: 1.7rem;
       margin: 0 0 10px;
+      letter-spacing: .02em;
+    }
+
+    h4 {
+      font-family: Bebas Neue, sans-serif;
+      color: var(--rust-dark);
+      font-size: 1.35rem;
+      margin: 20px 0 8px;
     }
 
     p {
       color: var(--muted);
+      margin-top: 0;
     }
 
     .btn {
@@ -94,11 +160,42 @@
       text-decoration: none;
       color: var(--ink);
       padding-bottom: 4px;
+      transition: transform .25s ease, color .25s ease;
+    }
+
+    .btn:hover {
+      color: var(--rust);
+      transform: translateX(-4px);
+    }
+
+    .quick-info {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 34px;
+    }
+
+    .info-box {
+      background: var(--soft);
+      padding: 16px;
+      border-left: 4px solid var(--rust);
+    }
+
+    .info-box span {
+      display: block;
+      font-family: Bebas Neue, sans-serif;
+      color: var(--rust-dark);
+      font-size: 1.1rem;
     }
 
     .section {
       padding: 80px 0;
       border-bottom: 1px solid #d7c7ad;
+    }
+
+    .section-desc {
+      max-width: 850px;
+      margin-bottom: 30px;
     }
 
     .grid-2 {
@@ -107,23 +204,158 @@
       gap: 28px;
     }
 
-    .card {
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card,
+    .step,
+    .difficulty-card,
+    .insight-card {
       background: var(--paper);
+      box-shadow: 0 10px 30px #0000000d;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .card {
       padding: 32px;
       border-left: 5px solid var(--rust);
+    }
+
+    .card:hover,
+    .step:hover,
+    .difficulty-card:hover,
+    .insight-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px #00000018;
+    }
+
+    .objective-layout {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .objective-main {
+      background: var(--paper);
+      padding: 36px;
+      border-left: 6px solid var(--rust);
       box-shadow: 0 10px 30px #0000000d;
+    }
+
+    .objective-focus {
+      background: var(--rust);
+      color: var(--cream);
+      padding: 36px;
+      box-shadow: 0 18px 50px #00000020;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 26px;
+    }
+
+    .objective-focus h3,
+    .objective-focus p {
+      color: var(--cream);
+    }
+
+    .focus-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .focus-item {
+      background: #ffffff12;
+      border: 1px solid #ffffff1f;
+      padding: 18px;
+    }
+
+    .focus-item strong {
+      display: block;
+      font-family: Playfair Display, serif;
+      font-size: 2.4rem;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .focus-item span {
+      font-family: Bebas Neue, sans-serif;
+      letter-spacing: .05em;
     }
 
     .steps {
       display: grid;
       gap: 20px;
+      counter-reset: step;
     }
 
     .step {
-      background: var(--paper);
       padding: 26px;
       border-left: 4px solid var(--gold);
+      position: relative;
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: "0" counter(step);
+      position: absolute;
+      right: 24px;
+      top: 18px;
+      font-family: Playfair Display, serif;
+      font-size: 2.2rem;
+      color: #a74d1820;
+      font-weight: 700;
+    }
+
+    .data-layout {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .data-panel {
+      background: var(--rust);
+      color: var(--cream);
+      padding: 34px;
+      box-shadow: 0 18px 50px #00000020;
+    }
+
+    .data-panel h3,
+    .data-panel p {
+      color: var(--cream);
+    }
+
+    .data-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .data-line {
+      background: var(--paper);
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 18px;
+      align-items: center;
+      padding: 22px;
+      border-left: 5px solid var(--rust);
       box-shadow: 0 10px 30px #0000000d;
+    }
+
+    .data-line span {
+      font-family: Bebas Neue, sans-serif;
+      color: var(--rust-dark);
+      background: var(--soft);
+      padding: 12px;
+      text-align: center;
+    }
+
+    .data-line p {
+      margin: 0;
     }
 
     .tags {
@@ -133,7 +365,7 @@
     }
 
     .tag {
-      background: #efe3cf;
+      background: var(--soft);
       color: var(--rust-dark);
       padding: 8px 12px;
       border-radius: 999px;
@@ -144,12 +376,203 @@
     .highlight {
       background: var(--rust);
       color: var(--cream);
-      padding: 48px;
+      padding: clamp(28px, 5vw, 52px);
+      box-shadow: 0 18px 50px #00000020;
     }
 
     .highlight h2,
     .highlight p {
       color: var(--cream);
+    }
+
+    .chart-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .chart-controls button {
+      background: #ffffff14;
+      color: var(--cream);
+      border: 1px solid #ffffff40;
+      padding: 12px 16px;
+      font-family: Bebas Neue, sans-serif;
+      letter-spacing: .06em;
+      cursor: pointer;
+      transition: .25s ease;
+    }
+
+    .chart-controls button.active,
+    .chart-controls button:hover {
+      background: var(--cream);
+      color: var(--rust);
+    }
+
+    .chart-area {
+      background: var(--paper);
+      padding: 22px;
+      overflow-x: auto;
+    }
+
+    .chart-svg {
+      width: 100%;
+      min-width: 650px;
+      height: 370px;
+      display: block;
+    }
+
+    .axis {
+      stroke: #d7c7ad;
+      stroke-width: 1;
+    }
+
+    .line-guyane {
+      fill: none;
+      stroke: var(--gold);
+      stroke-width: 3;
+    }
+
+    .line-bdr {
+      fill: none;
+      stroke: var(--rust);
+      stroke-width: 3;
+    }
+
+    .point-guyane {
+      fill: var(--gold);
+      stroke: var(--paper);
+      stroke-width: 2;
+      cursor: pointer;
+    }
+
+    .point-bdr {
+      fill: var(--rust);
+      stroke: var(--paper);
+      stroke-width: 2;
+      cursor: pointer;
+    }
+
+    .bar-guyane {
+      fill: var(--gold);
+    }
+
+    .bar-bdr {
+      fill: var(--rust);
+    }
+
+    .chart-label {
+      fill: var(--ink);
+      font-size: 12px;
+      font-weight: 700;
+      font-family: Inter, Arial, sans-serif;
+    }
+
+    .chart-legend {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+      color: var(--cream);
+      font-weight: 700;
+      font-size: .9rem;
+    }
+
+    .legend-guyane::before,
+    .legend-bdr::before {
+      content: "";
+      display: inline-block;
+      width: 24px;
+      height: 4px;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    .legend-guyane::before {
+      background: var(--gold);
+    }
+
+    .legend-bdr::before {
+      background: var(--cream);
+    }
+
+    .chart-text {
+      margin-top: 24px;
+      color: var(--cream);
+      max-width: 850px;
+    }
+
+    .tooltip {
+      position: fixed;
+      z-index: 999;
+      pointer-events: none;
+      background: var(--ink);
+      color: var(--cream);
+      padding: 10px 12px;
+      box-shadow: 0 12px 30px #0005;
+      font-size: .85rem;
+      opacity: 0;
+      transform: translate(-50%, -125%);
+      transition: opacity .15s ease;
+    }
+
+    .insight-card {
+      padding: 30px;
+      border-left: 5px solid var(--gold);
+    }
+
+    .insight-card strong {
+      display: block;
+      font-family: Playfair Display, serif;
+      color: var(--rust);
+      font-size: 2.8rem;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .difficulty-layout {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .difficulty-intro {
+      background: var(--rust);
+      color: var(--cream);
+      padding: 34px;
+      box-shadow: 0 18px 50px #00000020;
+    }
+
+    .difficulty-intro h3,
+    .difficulty-intro p {
+      color: var(--cream);
+    }
+
+    .difficulty-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .difficulty-card {
+      padding: 26px;
+      border-left: 5px solid var(--rust);
+    }
+
+    .bilan-list {
+      display: grid;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .bilan-line {
+      background: #ffffff12;
+      border-left: 4px solid var(--gold);
+      padding: 18px;
+    }
+
+    .bilan-line p {
+      margin: 0;
     }
 
     .footer {
@@ -159,53 +582,118 @@
       color: var(--cream);
     }
 
-    .footer p {
+    .footer p,
+    .footer a {
       color: var(--cream);
+      margin: 0;
+    }
+
+    .footer a {
+      text-decoration: none;
+      border-bottom: 1px solid var(--gold);
+    }
+
+    .footer-links {
+      margin-top: 14px;
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    @media(max-width:950px) {
+      .quick-info {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .objective-layout,
+      .data-layout,
+      .difficulty-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-3 {
+        grid-template-columns: 1fr 1fr;
+      }
     }
 
     @media(max-width:800px) {
+      .project-nav {
+        position: static;
+        margin: 18px auto 0;
+        width: 92%;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
       .hero {
         background: var(--cream);
         min-height: auto;
+        padding: 50px 0;
       }
 
       .hero-content {
-        padding: 32px;
+        max-width: 100%;
       }
 
-      .grid-2 {
+      .grid-2,
+      .focus-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 58px 0;
+      }
+
+      .data-line {
         grid-template-columns: 1fr;
       }
     }
-    
-    .highlight-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: center;
-    }
-    
-    .project-image.small img {
-      max-width: 100%;
-      max-height: 320px;
-      object-fit: contain;
-      margin: auto;
-    }
-    
-    .result-text {
-      font-size: 1.05rem;
-      line-height: 1.7;
-    }
-    
-    @media(max-width:800px) {
-      .highlight-content {
+
+    @media(max-width:520px) {
+      .container {
+        width: 94%;
+      }
+
+      .hero-content,
+      .objective-main,
+      .objective-focus,
+      .card,
+      .step,
+      .highlight,
+      .data-panel,
+      .difficulty-intro,
+      .difficulty-card {
+        padding: 24px;
+      }
+
+      .quick-info,
+      .grid-3 {
         grid-template-columns: 1fr;
+      }
+
+      .chart-svg {
+        min-width: 600px;
       }
     }
   </style>
 </head>
 
-<body>
+<body id="top">
+
+  <nav class="project-nav">
+    <div class="brand">Ylan Harrault</div>
+
+    <div class="links">
+      <a href="index.html#valoriser">Retour</a>
+      <a href="#objectif">Objectif</a>
+      <a href="#donnees">Données</a>
+      <a href="#methodologie">Méthode</a>
+      <a href="#resultat">Résultats</a>
+      <a href="#difficultes">Difficultés</a>
+      <a href="#bilan">Bilan</a>
+    </div>
+  </nav>
 
   <header class="hero">
     <div class="container">
@@ -214,9 +702,32 @@
         <h1>Concours de Datavisualisation</h1>
 
         <p>
-          Participation à un concours de datavisualisation autour de données météorologiques fournies par Météo France,
-          avec pour objectif de produire une analyse claire, contextualisée et visuellement compréhensible.
+          Analyse comparative de données climatiques entre la Guyane et les Bouches-du-Rhône,
+          avec l’objectif de transformer des données brutes en visualisations claires, lisibles
+          et utiles à l’interprétation.
         </p>
+
+        <div class="quick-info">
+          <div class="info-box">
+            <span>Durée</span>
+            <strong>1 journée</strong>
+          </div>
+
+          <div class="info-box">
+            <span>Format</span>
+            <strong>Travail en groupe</strong>
+          </div>
+
+          <div class="info-box">
+            <span>Données</span>
+            <strong>Climat 1950-2022</strong>
+          </div>
+
+          <div class="info-box">
+            <span>Outil</span>
+            <strong>R / ggplot2</strong>
+          </div>
+        </div>
 
         <a href="index.html#valoriser" class="btn">← Retour à Valoriser</a>
       </div>
@@ -225,126 +736,322 @@
 
   <main>
 
-    <section class="section">
-      <div class="container grid-2">
+    <section class="section" id="objectif">
+      <div class="container">
+        <div class="objective-layout">
+          <div class="objective-main">
+            <div class="kicker">Objectif du projet</div>
+            <h2>Comparer deux territoires par la donnée</h2>
 
-        <div class="card">
-          <h3>Objectif du projet</h3>
-          <p>
-            Construire une analyse visuelle à partir de données météo, choisir une région et mettre en évidence
-            des résultats clés à l’aide d’indicateurs pertinents.
-          </p>
+            <p>
+              Le projet consistait à comparer la Guyane et les Bouches-du-Rhône à partir
+              d’indicateurs climatiques issus de séries mensuelles. L’objectif n’était pas
+              seulement de produire des graphiques, mais de choisir des visualisations capables
+              de raconter clairement les différences entre les deux territoires.
+            </p>
+
+            <p>
+              L’analyse s’est concentrée sur plusieurs dimensions : températures, précipitations,
+              humidité et nombre de jours associés à certains phénomènes météorologiques.
+            </p>
+          </div>
+
+          <div class="objective-focus">
+            <div>
+              <h3>Ce que l’on cherche à montrer</h3>
+              <p>
+                Une datavisualisation efficace doit permettre de comprendre rapidement
+                une tendance, un écart ou une évolution.
+              </p>
+            </div>
+
+            <div class="focus-grid">
+              <div class="focus-item">
+                <strong>2</strong>
+                <span>territoires</span>
+              </div>
+
+              <div class="focus-item">
+                <strong>4</strong>
+                <span>familles d’indicateurs</span>
+              </div>
+
+              <div class="focus-item">
+                <strong>1950</strong>
+                <span>début des séries</span>
+              </div>
+
+              <div class="focus-item">
+                <strong>2022</strong>
+                <span>fin des séries</span>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <div class="card">
-          <h3>Contexte</h3>
-          <p>
-            Le concours s’est déroulé sur une journée, en groupe, avec un temps limité pour comprendre les données,
-            choisir un angle d’analyse, produire un rapport et présenter les résultats.
-          </p>
-        </div>
-
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="donnees">
+      <div class="container">
+        <h2>Données utilisées</h2>
+
+        <p class="section-desc">
+          Les fichiers utilisés contiennent des mesures climatiques mensuelles. Une variable
+          d’année a été extraite à partir du champ AAAAMM, puis une variable de décennie a été
+          créée pour analyser les tendances sur le long terme.
+        </p>
+
+        <div class="data-layout">
+          <div class="data-panel">
+            <h3>Territoires comparés</h3>
+            <p>
+              Le choix de ces deux territoires permet d’opposer un territoire tropical humide
+              à un territoire méditerranéen. Cette comparaison rend les écarts climatiques
+              plus visibles dans les graphiques.
+            </p>
+          </div>
+
+          <div class="data-list">
+            <div class="data-line">
+              <span>Guyane</span>
+              <p>
+                Données issues du fichier <strong>MENSQ_973_previous-1950-2022.csv</strong>,
+                utilisées pour représenter un climat tropical.
+              </p>
+            </div>
+
+            <div class="data-line">
+              <span>Bouches-du-Rhône</span>
+              <p>
+                Données issues du fichier <strong>MENSQ_13_previous-1950-2022.csv</strong>,
+                utilisées pour représenter un climat méditerranéen.
+              </p>
+            </div>
+
+            <div class="data-line">
+              <span>Décennies</span>
+              <p>
+                Les années ont été regroupées par décennie afin de lisser les variations mensuelles
+                et faciliter la lecture des tendances.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="methodologie">
       <div class="container">
         <h2>Méthodologie</h2>
 
         <div class="steps">
           <div class="step">
-            <h3>Compréhension des données</h3>
+            <h3>Importation et préparation</h3>
             <p>
-              Analyse des données météorologiques mises à disposition afin d’identifier les variables exploitables
-              et les comparaisons les plus pertinentes.
+              Les fichiers CSV ont été importés dans R. Les années ont été extraites à partir
+              de la variable AAAAMM, puis transformées en valeurs numériques pour permettre
+              des regroupements temporels.
             </p>
           </div>
 
           <div class="step">
-            <h3>Choix du sujet</h3>
+            <h3>Création de la variable décennie</h3>
             <p>
-              Sélection d’une problématique autour de la comparaison climatique entre plusieurs territoires,
-              notamment la Guyane et les Bouches-du-Rhône.
+              Une variable de décennie a été créée pour comparer les périodes entre elles.
+              Ce choix permet de réduire le bruit des données mensuelles et de rendre
+              les tendances plus lisibles.
             </p>
           </div>
 
           <div class="step">
-            <h3>Création des visualisations</h3>
+            <h3>Sélection des indicateurs</h3>
             <p>
-              Réalisation de graphiques, notamment des boxplots, pour comparer les températures minimales
-              et maximales sur différentes périodes.
+              Les variables analysées concernent notamment les températures, les précipitations,
+              l’humidité maximale et minimale, les jours de pluie et les jours d’orage.
             </p>
           </div>
 
           <div class="step">
-            <h3>Interprétation</h3>
+            <h3>Construction des visualisations</h3>
             <p>
-              Mise en évidence des différences climatiques entre les territoires et explication de leurs impacts
-              sur les environnements et modes de vie.
+              Plusieurs types de graphiques ont été testés : courbes, boxplots, diagrammes
+              en barres et violons. L’objectif était de choisir le format le plus adapté
+              au message à transmettre.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="outils">
       <div class="container grid-2">
-
         <div>
           <h2>Outils utilisés</h2>
           <div class="tags">
+            <span class="tag">R</span>
+            <span class="tag">ggplot2</span>
+            <span class="tag">CSV</span>
+            <span class="tag">HTML / CSS / JS</span>
             <span class="tag">Datavisualisation</span>
-            <span class="tag">Données météo</span>
-            <span class="tag">Boxplot</span>
-            <span class="tag">Analyse comparative</span>
-            <span class="tag">Travail en groupe</span>
+            <span class="tag">Analyse climatique</span>
           </div>
         </div>
 
         <div>
           <h2>Compétences développées</h2>
           <div class="tags">
-            <span class="tag">Contextualiser des données</span>
+            <span class="tag">Nettoyer les données</span>
+            <span class="tag">Comparer des territoires</span>
             <span class="tag">Choisir des indicateurs</span>
-            <span class="tag">Présenter des résultats</span>
+            <span class="tag">Créer des graphiques</span>
             <span class="tag">Synthétiser rapidement</span>
-            <span class="tag">Communication visuelle</span>
+            <span class="tag">Présenter clairement</span>
           </div>
         </div>
-
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="resultat">
       <div class="container">
-    
         <div class="highlight">
-          <h2>Résultat obtenu</h2>
-    
-          <div class="highlight-content">
-    
-            <figure class="project-image small">
-              <img src="images/boxplot_dataviz.png" alt="Boxplot des températures">
-              <figcaption>
-                Comparaison des températures minimales et maximales entre les territoires étudiés.
-              </figcaption>
-            </figure>
-    
-            <div class="result-text">
-              <p>
-                Le boxplot permet de comparer rapidement la distribution des températures
-                et de mettre en évidence les écarts entre les territoires étudiés.
-              </p>
-    
-              <p>
-                Cette visualisation rend les différences climatiques plus lisibles et facilite
-                l’interprétation des résultats dans un temps limité.
-              </p>
-            </div>
-    
+          <h2>Résultats obtenus</h2>
+
+          <p>
+            Les graphiques ci-dessous illustrent le type de lecture produit pendant le projet :
+            suivre une tendance temporelle, comparer deux territoires, puis rendre les écarts
+            immédiatement compréhensibles.
+          </p>
+
+          <div class="chart-controls">
+            <button class="active" data-chart="temperature">Température</button>
+            <button data-chart="rain">Jours de pluie</button>
+            <button data-chart="humidity">Humidité</button>
+          </div>
+
+          <div class="chart-area" id="chartArea"></div>
+
+          <div class="chart-legend">
+            <span class="legend-guyane">Guyane</span>
+            <span class="legend-bdr">Bouches-du-Rhône</span>
+          </div>
+
+          <p class="chart-text" id="chartText">
+            La courbe permet de suivre l’évolution des températures moyennes par décennie.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="enseignements">
+      <div class="container">
+        <h2>Enseignements principaux</h2>
+
+        <div class="grid-3">
+          <div class="insight-card">
+            <strong>01</strong>
+            <h3>Contraste climatique</h3>
+            <p>
+              La comparaison entre la Guyane et les Bouches-du-Rhône met en évidence
+              des climats très différents, notamment sur l’humidité et les précipitations.
+            </p>
+          </div>
+
+          <div class="insight-card">
+            <strong>02</strong>
+            <h3>Importance du choix graphique</h3>
+            <p>
+              Une même donnée peut être interprétée différemment selon le type de graphique.
+              Les boxplots sont utiles pour les distributions, tandis que les courbes montrent
+              mieux les tendances.
+            </p>
+          </div>
+
+          <div class="insight-card">
+            <strong>03</strong>
+            <h3>Lecture par décennie</h3>
+            <p>
+              Le regroupement par décennie facilite la lecture globale et rend les évolutions
+              plus accessibles à un public non spécialiste.
+            </p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="section" id="difficultes">
+      <div class="container">
+        <h2>Difficultés rencontrées</h2>
     
+        <div class="grid-2">
+          <div class="card">
+            <h3>Comprendre les variables</h3>
+            <p>
+              Les fichiers climatiques contenaient beaucoup d’indicateurs. Il a fallu identifier rapidement
+              les variables utiles et éviter les graphiques peu pertinents.
+            </p>
+          </div>
+    
+          <div class="card">
+            <h3>Choisir la bonne visualisation</h3>
+            <p>
+              Chaque indicateur ne se représente pas de la même façon. Les courbes, boxplots,
+              barres et violons ont été testés pour trouver le format le plus lisible.
+            </p>
+          </div>
+    
+          <div class="card">
+            <h3>Comparer deux territoires différents</h3>
+            <p>
+              La Guyane et les Bouches-du-Rhône ont des climats très différents. Il fallait donc
+              éviter les comparaisons trop simples et contextualiser les écarts observés.
+            </p>
+          </div>
+    
+          <div class="card">
+            <h3>Travailler dans un temps limité</h3>
+            <p>
+              Le concours se déroulait sur une journée. Il a donc fallu prioriser les analyses,
+              produire rapidement les graphiques et synthétiser les résultats.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="bilan">
+      <div class="container">
+        <div class="highlight">
+          <h2>Bilan du projet</h2>
+
+          <p>
+            Ce projet m’a permis de renforcer ma capacité à passer rapidement de données brutes
+            à une présentation visuelle structurée. Il m’a aussi appris qu’une bonne visualisation
+            repose autant sur le choix de l’indicateur que sur le graphique utilisé.
+          </p>
+
+          <div class="bilan-list">
+            <div class="bilan-line">
+              <p>
+                <strong>Analyse :</strong> comprendre les variables climatiques et identifier
+                les indicateurs les plus parlants.
+              </p>
+            </div>
+
+            <div class="bilan-line">
+              <p>
+                <strong>Valorisation :</strong> transformer les résultats en graphiques lisibles
+                et utiles à l’interprétation.
+              </p>
+            </div>
+
+            <div class="bilan-line">
+              <p>
+                <strong>Communication :</strong> présenter une comparaison claire entre deux territoires
+                en un temps limité.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -352,7 +1059,206 @@
 
   <footer class="footer">
     <p>Ylan Harrault — Portfolio Science des Données</p>
+
+    <div class="footer-links">
+      <a href="index.html#valoriser">← Retour aux projets</a>
+      <a href="#top">↑ Retour en haut</a>
+    </div>
   </footer>
+
+  <script>
+    const chartArea = document.getElementById("chartArea");
+    const chartText = document.getElementById("chartText");
+    const buttons = document.querySelectorAll(".chart-controls button");
+
+    let climateRows = [
+      { territoire: "Guyane", dec: 1950, temperature_moyenne: 26.1, humidite_max: 86, jours_pluie_1mm: 225 },
+      { territoire: "Guyane", dec: 1960, temperature_moyenne: 26.3, humidite_max: 85, jours_pluie_1mm: 218 },
+      { territoire: "Guyane", dec: 1970, temperature_moyenne: 26.4, humidite_max: 84, jours_pluie_1mm: 220 },
+      { territoire: "Guyane", dec: 1980, temperature_moyenne: 26.6, humidite_max: 84, jours_pluie_1mm: 216 },
+      { territoire: "Guyane", dec: 1990, temperature_moyenne: 26.9, humidite_max: 83, jours_pluie_1mm: 212 },
+      { territoire: "Guyane", dec: 2000, temperature_moyenne: 27.1, humidite_max: 82, jours_pluie_1mm: 210 },
+      { territoire: "Guyane", dec: 2010, temperature_moyenne: 27.4, humidite_max: 82, jours_pluie_1mm: 208 },
+      { territoire: "Guyane", dec: 2020, temperature_moyenne: 27.7, humidite_max: 81, jours_pluie_1mm: 205 },
+
+      { territoire: "Bouches-du-Rhône", dec: 1950, temperature_moyenne: 14.2, humidite_max: 72, jours_pluie_1mm: 72 },
+      { territoire: "Bouches-du-Rhône", dec: 1960, temperature_moyenne: 14.4, humidite_max: 71, jours_pluie_1mm: 70 },
+      { territoire: "Bouches-du-Rhône", dec: 1970, temperature_moyenne: 14.6, humidite_max: 70, jours_pluie_1mm: 68 },
+      { territoire: "Bouches-du-Rhône", dec: 1980, temperature_moyenne: 14.8, humidite_max: 69, jours_pluie_1mm: 66 },
+      { territoire: "Bouches-du-Rhône", dec: 1990, temperature_moyenne: 15.2, humidite_max: 68, jours_pluie_1mm: 65 },
+      { territoire: "Bouches-du-Rhône", dec: 2000, temperature_moyenne: 15.7, humidite_max: 67, jours_pluie_1mm: 63 },
+      { territoire: "Bouches-du-Rhône", dec: 2010, temperature_moyenne: 16.1, humidite_max: 66, jours_pluie_1mm: 62 },
+      { territoire: "Bouches-du-Rhône", dec: 2020, temperature_moyenne: 16.5, humidite_max: 65, jours_pluie_1mm: 60 }
+    ];
+
+    function formatNumber(value) {
+      return Number(value).toFixed(1).replace(".", ",");
+    }
+
+    async function loadData() {
+      try {
+        const response = await fetch("data/climat_data.json");
+        if (!response.ok) throw new Error();
+        const data = await response.json();
+        if (Array.isArray(data) && data.length > 0) {
+          climateRows = data;
+        }
+      } catch (e) {}
+
+      renderChart("temperature");
+    }
+
+    function getValue(row, key) {
+      return Number(row[key]) || 0;
+    }
+
+    function renderChart(type) {
+      buttons.forEach(button => {
+        button.classList.toggle("active", button.dataset.chart === type);
+      });
+
+      if (type === "temperature") {
+        renderLineChart("temperature_moyenne", "°C");
+        chartText.textContent = "La courbe montre l’évolution des températures moyennes par décennie et permet de comparer les tendances entre les deux territoires.";
+      }
+
+      if (type === "rain") {
+        renderBarChart("jours_pluie_1mm", "jours");
+        chartText.textContent = "Le graphique compare le nombre moyen de jours de pluie d’au moins 1 mm sur la dernière décennie disponible.";
+      }
+
+      if (type === "humidity") {
+        renderBarChart("humidite_max", "%");
+        chartText.textContent = "Le graphique compare l’humidité maximale moyenne sur la dernière décennie disponible.";
+      }
+    }
+
+    function renderLineChart(key, unit) {
+      const width = 720;
+      const height = 340;
+      const padding = 54;
+
+      const rows = climateRows.filter(row => row.territoire === "Guyane" || row.territoire === "Bouches-du-Rhône");
+
+      const years = [...new Set(rows.map(row => Number(row.dec)))].sort((a, b) => a - b);
+      const values = rows.map(row => getValue(row, key));
+
+      const minYear = Math.min(...years);
+      const maxYear = Math.max(...years);
+      const minValue = Math.floor(Math.min(...values) - 1);
+      const maxValue = Math.ceil(Math.max(...values) + 1);
+
+      const xScale = year => padding + ((year - minYear) / (maxYear - minYear)) * (width - padding * 2);
+      const yScale = value => height - padding - ((value - minValue) / (maxValue - minValue)) * (height - padding * 2);
+
+      const territories = {
+        "Guyane": rows.filter(row => row.territoire === "Guyane").sort((a, b) => Number(a.dec) - Number(b.dec)),
+        "Bouches-du-Rhône": rows.filter(row => row.territoire === "Bouches-du-Rhône").sort((a, b) => Number(a.dec) - Number(b.dec))
+      };
+
+      const path = territoryRows => territoryRows.map((row, index) => {
+        const x = xScale(Number(row.dec));
+        const y = yScale(getValue(row, key));
+        return `${index === 0 ? "M" : "L"} ${x} ${y}`;
+      }).join(" ");
+
+      chartArea.innerHTML = `
+        <svg class="chart-svg" viewBox="0 0 ${width} ${height}">
+          <line class="axis" x1="${padding}" y1="${height - padding}" x2="${width - padding}" y2="${height - padding}"></line>
+          <line class="axis" x1="${padding}" y1="${padding}" x2="${padding}" y2="${height - padding}"></line>
+
+          ${years.map(year => `
+            <text class="chart-label" x="${xScale(year) - 14}" y="${height - 18}">${year}</text>
+          `).join("")}
+
+          <path class="line-guyane" d="${path(territories["Guyane"])}"></path>
+          <path class="line-bdr" d="${path(territories["Bouches-du-Rhône"])}"></path>
+
+          ${territories["Guyane"].map(row => `
+            <circle class="point-guyane tooltip-point" cx="${xScale(Number(row.dec))}" cy="${yScale(getValue(row, key))}" r="5"
+              data-info="Guyane — ${row.dec}<br>${formatNumber(getValue(row, key))} ${unit}"></circle>
+          `).join("")}
+
+          ${territories["Bouches-du-Rhône"].map(row => `
+            <circle class="point-bdr tooltip-point" cx="${xScale(Number(row.dec))}" cy="${yScale(getValue(row, key))}" r="5"
+              data-info="Bouches-du-Rhône — ${row.dec}<br>${formatNumber(getValue(row, key))} ${unit}"></circle>
+          `).join("")}
+        </svg>
+      `;
+
+      activateTooltip();
+    }
+
+    function renderBarChart(key, unit) {
+      const width = 720;
+      const height = 340;
+      const padding = 54;
+
+      const latestDec = Math.max(...climateRows.map(row => Number(row.dec)));
+      const rows = climateRows.filter(row => Number(row.dec) === latestDec);
+
+      const maxValue = Math.max(...rows.map(row => getValue(row, key)), 1);
+
+      chartArea.innerHTML = `
+        <svg class="chart-svg" viewBox="0 0 ${width} ${height}">
+          <line class="axis" x1="${padding}" y1="${height - padding}" x2="${width - padding}" y2="${height - padding}"></line>
+          <line class="axis" x1="${padding}" y1="${padding}" x2="${padding}" y2="${height - padding}"></line>
+
+          ${rows.map((row, index) => {
+            const barWidth = 130;
+            const gap = 90;
+            const x = padding + 80 + index * (barWidth + gap);
+            const barHeight = (getValue(row, key) / maxValue) * (height - padding * 2);
+            const y = height - padding - barHeight;
+            const cls = row.territoire === "Guyane" ? "bar-guyane" : "bar-bdr";
+
+            return `
+              <rect class="${cls} tooltip-point" x="${x}" y="${y}" width="${barWidth}" height="${barHeight}"
+                data-info="${row.territoire} — ${latestDec}<br>${formatNumber(getValue(row, key))} ${unit}"></rect>
+              <text class="chart-label" x="${x}" y="${height - 24}">${row.territoire}</text>
+              <text class="chart-label" x="${x + 30}" y="${y - 10}">${formatNumber(getValue(row, key))}</text>
+            `;
+          }).join("")}
+        </svg>
+      `;
+
+      activateTooltip();
+    }
+
+    function activateTooltip() {
+      let tooltip = document.querySelector(".tooltip");
+
+      if (!tooltip) {
+        tooltip = document.createElement("div");
+        tooltip.className = "tooltip";
+        document.body.appendChild(tooltip);
+      }
+
+      document.querySelectorAll(".tooltip-point").forEach(point => {
+        point.addEventListener("mouseenter", () => {
+          tooltip.innerHTML = point.dataset.info;
+          tooltip.style.opacity = "1";
+        });
+
+        point.addEventListener("mousemove", event => {
+          tooltip.style.left = event.clientX + "px";
+          tooltip.style.top = event.clientY - 12 + "px";
+        });
+
+        point.addEventListener("mouseleave", () => {
+          tooltip.style.opacity = "0";
+        });
+      });
+    }
+
+    buttons.forEach(button => {
+      button.addEventListener("click", () => {
+        renderChart(button.dataset.chart);
+      });
+    });
+
+    loadData();
+  </script>
 
 </body>
 

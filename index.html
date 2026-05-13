@@ -45,18 +45,10 @@
       margin: auto;
     }
 
-    .sr-badge {
-      border: 2px solid var(--cream);
-      background: var(--rust);
-      color: var(--cream);
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      font-family: Playfair Display, serif;
-      font-weight: 700;
-      box-shadow: 0 8px 20px #0002;
+    .line {
+      height: 1px;
+      background: var(--gold);
+      flex: 1;
     }
 
     .kicker {
@@ -74,23 +66,10 @@
       line-height: .9;
     }
 
-    .title {
-      font-family: Bebas Neue, sans-serif;
-      font-size: clamp(2.2rem, 5vw, 4.6rem);
-      line-height: 1;
-      letter-spacing: .02em;
-    }
-
     .subtitle {
       font-size: 1.05rem;
       color: var(--muted);
       max-width: 760px;
-    }
-
-    .line {
-      height: 1px;
-      background: var(--gold);
-      flex: 1;
     }
 
     .btn {
@@ -101,7 +80,15 @@
       text-decoration: none;
       padding: .3rem 0;
       margin-right: 2rem;
+      transition: transform .25s ease, color .25s ease;
     }
+
+    .btn:hover {
+      color: var(--rust);
+      transform: translateY(-2px);
+    }
+
+    /* HERO */
 
     .hero {
       min-height: 100vh;
@@ -110,10 +97,10 @@
       background: linear-gradient(90deg, var(--cream) 0 62%, var(--rust) 62% 100%);
       position: relative;
       overflow: hidden;
-      padding-top: 120px; /* <-- AJOUT ICI */
+      padding-top: 120px;
     }
 
-    .hero:after {
+    .hero::after {
       content: "";
       position: absolute;
       inset: auto 0 0 0;
@@ -132,60 +119,30 @@
       z-index: 2;
       flex-wrap: nowrap;
     }
-    
+
     .brand {
       font-family: Playfair Display, serif;
       font-style: italic;
       white-space: nowrap;
     }
-    
+
     .nav .line {
       min-width: 40px;
     }
-    
-    @media(max-width:800px) {
-      .nav {
-        position: absolute;
-        top: 20px;
-        left: 5%;
-        right: 5%;
-        gap: 12px;
-      }
-    
-      .brand {
-        font-size: 0.95rem;
-      }
-    
-      .sr-badge {
-        width: 48px;
-        height: 48px;
-        font-size: 0.9rem;
-        flex-shrink: 0;
-      }
-    
-      .hero-grid {
-        padding-top: 90px;
-      }
-    }
-    
-    @media(max-width:420px) {
-      .brand {
-        font-size: 0.8rem;
-      }
-    
-      .nav {
-        gap: 8px;
-      }
-    
-      .sr-badge {
-        width: 42px;
-        height: 42px;
-      }
-    }
 
-    .brand {
+    .sr-badge {
+      border: 2px solid var(--cream);
+      background: var(--rust);
+      color: var(--cream);
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
       font-family: Playfair Display, serif;
-      font-style: italic;
+      font-weight: 700;
+      box-shadow: 0 8px 20px #0002;
+      flex-shrink: 0;
     }
 
     .hero-grid {
@@ -203,26 +160,34 @@
     }
 
     .portrait {
-      min-height: 430px;
-      border-radius: 48% 48% 6px 6px;
       background: linear-gradient(135deg, #c78a5c, #5a290e);
-      display: grid;
-      place-items: center;
-      color: var(--cream);
-      font-family: Playfair Display, serif;
-      font-size: 3rem;
-      text-align: center;
-      padding: 30px;
+      border-radius: 28px;
+    
+      height: 510px; /* même présence visuelle que la card */
+      width: 100%;
+    
+      padding: 14px;
+    
       box-shadow: 0 24px 70px #0004;
+    
+      overflow: hidden;
+    
+      display: flex;
     }
     
     .portrait img {
       width: 100%;
       height: 100%;
+    
       object-fit: cover;
-      border-radius: 48% 48% 6px 6px;
+      object-position: center 10%;    
+      border-radius: 18px;
       border: 4px solid var(--paper);
+    
+      display: block;
     }
+
+    /* SECTIONS */
 
     .section {
       padding: 92px 0;
@@ -243,6 +208,47 @@
       margin: 0;
     }
 
+    .section-desc {
+      margin-bottom: 30px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 34px;
+    }
+
+    .card {
+      background: var(--paper);
+      padding: 32px;
+      border-radius: 4px;
+      box-shadow: 0 10px 30px #0000000d;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 16px 40px #00000018;
+    }
+    
+    .competence:hover {
+      transform: none;
+    }
+
+    .card h3 {
+      font-family: Bebas Neue, sans-serif;
+      font-size: 2rem;
+      margin: 0 0 14px;
+    }
+
+    .columns {
+      columns: 2;
+      column-gap: 40px;
+    }
+
+    /* SOMMAIRE */
+
     .toc {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -259,6 +265,12 @@
       padding: 16px 0;
       font-family: Bebas Neue, sans-serif;
       font-size: 1.25rem;
+      transition: transform .25s ease, color .25s ease;
+    }
+
+    .toc a:hover {
+      color: var(--rust);
+      transform: translateY(-2px);
     }
 
     .toc span {
@@ -266,45 +278,55 @@
       font-family: Playfair Display, serif;
     }
 
-    .grid-2 {
+    /* PROFIL */
+
+    .profile-board {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 34px;
+      gap: 22px;
     }
 
-    .card {
+    .profile-card {
       background: var(--paper);
       padding: 32px;
-      border-radius: 4px;
+      border-left: 5px solid var(--rust);
       box-shadow: 0 10px 30px #0000000d;
+      transition: transform .25s ease, box-shadow .25s ease;
     }
 
-    .card h3 {
+    .profile-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px #00000018;
+    }
+
+    .profile-card h3 {
       font-family: Bebas Neue, sans-serif;
       font-size: 2rem;
-      margin: 0 0 14px;
+      margin: 0 0 18px;
     }
 
-    .swot {
+    .pill-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
+      gap: 12px;
     }
 
-    .swot .card {
-      min-height: 190px;
-    }
-
-    .tag {
-      display: inline-block;
+    .pill-list li {
+      padding: 12px 16px;
       background: #efe3cf;
-      color: var(--rust-dark);
-      padding: 6px 10px;
-      margin: 4px 4px 4px 0;
       border-radius: 999px;
       font-weight: 700;
-      font-size: .88rem;
     }
+
+    .improvement-list p {
+      margin: 0 0 16px;
+      padding-left: 16px;
+      border-left: 3px solid var(--gold);
+    }
+
+    /* COMPÉTENCES / PROJETS */
 
     .competence {
       border-left: 7px solid var(--rust);
@@ -330,11 +352,29 @@
       border-top: 1px solid #d6c6aa;
     }
 
-    .project h4 {
+    .project h4,
+    .project h3 {
       font-family: Bebas Neue, sans-serif;
       font-size: 1.75rem;
       margin: 0 0 8px;
     }
+
+    .project-link {
+      display: block;
+      color: inherit;
+      text-decoration: none;
+    }
+    
+    .project-link .project {
+      padding: 24px;
+      cursor: pointer;
+      transition: transform .25s ease;
+    }
+    
+    .project-link:hover .project {
+      transform: translateX(9px);
+    }
+    
 
     .meta {
       font-size: .85rem;
@@ -344,10 +384,34 @@
       font-weight: 700;
     }
 
-    .columns {
-      columns: 2;
-      column-gap: 40px;
+    /* CAPACITÉS TRANSVERSALES */
+
+    .transversal-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
     }
+
+    .transversal-item {
+      background: var(--paper);
+      padding: 28px;
+      border-left: 5px solid var(--rust);
+      box-shadow: 0 10px 30px #0000000d;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .transversal-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px #00000018;
+    }
+
+    .transversal-item h3 {
+      font-family: Bebas Neue, sans-serif;
+      font-size: 1.7rem;
+      margin: 0 0 10px;
+    }
+
+    /* FOOTER */
 
     .footer {
       padding: 54px 0;
@@ -362,6 +426,32 @@
       margin: 0 0 10px;
     }
 
+    .footer-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .footer-contact {
+      text-align: left;
+      background: #ffffff12;
+      padding: 26px;
+      border-radius: 8px;
+    }
+
+    .footer-contact h3 {
+      font-family: Bebas Neue, sans-serif;
+      font-size: 2rem;
+      margin: 0 0 12px;
+    }
+
+    .footer-contact a {
+      color: var(--cream);
+      text-decoration: none;
+      border-bottom: 1px solid var(--gold);
+    }
+
     .top-link {
       position: fixed;
       right: 20px;
@@ -373,92 +463,134 @@
       text-decoration: none;
       font-family: Bebas Neue, sans-serif;
       box-shadow: 0 8px 20px #0003;
+      transition: transform .25s ease;
+    }
+
+    .top-link:hover {
+      transform: translateY(-4px);
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:1000px) {
+      .transversal-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media(max-width:800px) {
       .hero {
         background: var(--cream);
-        padding-top: 90px; /* <-- AJOUT */
+        padding-top: 90px;
+      }
+
+      .nav {
+        top: 20px;
+        left: 5%;
+        right: 5%;
+        gap: 12px;
+      }
+
+      .brand {
+        font-size: .95rem;
+      }
+
+      .sr-badge {
+        width: 48px;
+        height: 48px;
+        font-size: .9rem;
       }
 
       .hero-grid,
       .grid-2,
-      .toc {
+      .toc,
+      .profile-board,
+      .footer-content {
         grid-template-columns: 1fr;
       }
 
+      .hero-grid {
+        padding-top: 90px;
+      }
+
+      .hero-card {
+        padding: 28px;
+      }
+
       .portrait {
-        min-height: 250px;
+        min-height: 300px;
       }
 
       .columns {
         columns: 1;
       }
 
-
-      .hero-card {
-        padding: 28px;
-      }
-
       .section {
         padding: 58px 0;
       }
-    }
-    
-    .profile-board {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-    }
-    
-    .profile-card {
-      background: var(--paper);
-      padding: 32px;
-      border-left: 5px solid var(--rust);
-      box-shadow: 0 10px 30px #0000000d;
-    }
-    
-    .profile-card h3 {
-      font-family: Bebas Neue, sans-serif;
-      font-size: 2rem;
-      margin: 0 0 18px;
-    }
-    
-    .profile-card.wide {
-      grid-column: span 1;
-    }
-    
-    .pill-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: grid;
-      gap: 12px;
-    }
-    
-    .pill-list li {
-      padding: 12px 16px;
-      background: #efe3cf;
-      border-radius: 999px;
-      font-weight: 700;
-    }
-    
-    .improvement-list p {
-      margin: 0 0 16px;
-      padding-left: 16px;
-      border-left: 3px solid var(--gold);
-    }
-    
-    @media(max-width:800px) {
-      .profile-board {
+
+      .section-head {
+        gap: 14px;
+      }
+
+      .transversal-grid {
         grid-template-columns: 1fr;
       }
+
+      .footer-content,
+      .footer-contact {
+        text-align: center;
+      }
     }
-    
-    .section-desc {
-      margin-bottom: 30px;
-      color: var(--muted);
-      font-size: 1.05rem;
+
+    @media(max-width:520px) {
+      .hero {
+        min-height: auto;
+        padding: 100px 0 60px;
+      }
+
+      .script {
+        font-size: 3.1rem;
+      }
+
+      .subtitle {
+        font-size: .98rem;
+      }
+
+      .portrait {
+        min-height: 260px;
+        padding: 18px;
+      }
+
+      .toc a {
+        font-size: 1.1rem;
+        gap: 14px;
+      }
+
+      .project-link .project {
+        padding: 18px;
+      }
+
+      .top-link {
+        right: 12px;
+        bottom: 12px;
+        padding: 10px 14px;
+      }
+    }
+
+    @media(max-width:420px) {
+      .brand {
+        font-size: .8rem;
+      }
+
+      .nav {
+        gap: 8px;
+      }
+
+      .sr-badge {
+        width: 42px;
+        height: 42px;
+      }
     }
   </style>
 </head>
@@ -485,7 +617,7 @@
       </div>
 
       <div class="portrait">
-        <img src="photo.jpg" alt="Photo de profil">
+        <img src="images/sa_tete.jpg" alt="Photo de profil">
       </div>
     </div>
   </header>
@@ -507,6 +639,7 @@
           <a href="#analyser"><span>05</span> Analyser</a>
           <a href="#valoriser"><span>06</span> Valoriser</a>
           <a href="#modeliser"><span>07</span> Modéliser</a>
+          <a href="#transversales"><span>08</span> Capacités transversales</a>
         </div>
       </div>
     </section>
@@ -531,10 +664,8 @@
 
         <div class="card">
           <h3>Profil</h3>
-
           <p><strong>Email :</strong> ylan.harrault@gmail.com</p>
           <p><strong>Domaine :</strong> Science des Données, analyse, traitement et visualisation.</p>
-
           <a class="btn" href="#sommaire">Retour au sommaire</a>
         </div>
       </div>
@@ -548,7 +679,6 @@
         </div>
 
         <div class="profile-board">
-
           <div class="profile-card">
             <h3>Forces</h3>
             <ul class="pill-list">
@@ -559,7 +689,7 @@
               <li>Sérieux</li>
             </ul>
           </div>
-        
+
           <div class="profile-card">
             <h3>Faiblesses</h3>
             <div class="improvement-list">
@@ -567,23 +697,22 @@
               <p><strong>Obstiné</strong><br>J’apprends à prendre du recul et à écouter d’autres méthodes.</p>
             </div>
           </div>
-        
-          <div class="profile-card wide">
+
+          <div class="profile-card">
             <h3>Opportunités</h3>
             <p>
               Savoir s’adapter dans une entreprise est une compétence recherchée
               dans une société qui évolue rapidement.
             </p>
           </div>
-        
-          <div class="profile-card wide">
+
+          <div class="profile-card">
             <h3>Menaces</h3>
             <p>
               Rester attentif à l’évolution constante des outils, méthodes et attentes
               du secteur de la data.
             </p>
           </div>
-        
         </div>
       </div>
     </section>
@@ -612,43 +741,50 @@
           <h2>Traiter</h2>
           <div class="line"></div>
         </div>
+
         <p class="section-desc">
           Traiter des données consiste à collecter, nettoyer, transformer, intégrer, réduire et sécuriser des données brutes pour les rendre exploitables dans une analyse fiable.
         </p>
 
         <div class="card competence">
+          <a href="traiter_but1.html" class="project-link">
+            <div class="project">
+              <div class="meta">BUT 1</div>
+              <h4>Traiter des données structurées</h4>
+              <p>
+                Conception d’un reporting à partir de données stockées dans une base relationnelle. Extraction, structuration
+                sous Excel, tableaux croisés dynamiques, formules avancées et comparaison des années 2013 et 2015 pour
+                identifier des tendances de consommation et production.
+              </p>
+            </div>
+          </a>
 
-          <div class="project">
-            <div class="meta">BUT 1</div>
-            <h4>Traiter des données structurées</h4>
+          <a href="traiter_st.html" class="project-link">
+            <div class="project">
+              <div class="meta">BUT 2</div>
+              <h4>Automatiser le traitement de données multidimensionnelles</h4>
+              <p>
+                Développement d’un programme Python automatisant la création d’un modèle polynomial explicatif. Le programme
+                identifie les variables corrélées avec Spearman et sélectionne la meilleure loi polynomiale, notamment dans
+                Databricks.
+              </p>
+            </div>
+          </a>
 
-            <p>
-              Conception d’un reporting à partir de données stockées dans une base relationnelle. Extraction, structuration
-              sous Excel, tableaux croisés dynamiques, formules avancées et comparaison des années 2013 et 2015 pour
-              identifier des tendances de consommation et production.
-            </p>
-            <a href="traiter_but1.html" class="btn">Voir plus</a>
-          </div>
-
-          <div class="project">
-            <div class="meta">BUT 2</div>
-            <h4>Automatiser le traitement de données multidimensionnelles</h4>
-            <p>
-              Développement d’un programme Python automatisant la création d’un modèle polynomial explicatif. Le programme
-              identifie les variables corrélées avec Spearman et sélectionne la meilleure loi polynomiale, notamment dans
-              Databricks.
-            </p>
-            <a href="traiter_st.html" class="btn">Voir plus</a>
-          </div>
-
-          <div class="project">
-            <div class="meta">BUT 3</div>
-            <h4>Intégrer le traitement de données complexes</h4>
-
-            <p>
-              Consolidation des compétences en intégration, automatisation et préparation de données complexes.
-            </p>
-          </div>
+          <a href="but3_traiter.html" class="project-link">
+            <div class="project">
+              <div class="meta">BUT 3</div>
+          
+              <h4>Reconnaissances de formes géométriques par modélisation statistique</h4>
+          
+              <p>
+                Projet de classification d’images utilisant plusieurs approches statistiques
+                et algorithmiques : méthode géométrique simple, régression logistique
+                pénalisée (LASSO, Ridge, ElasticNet) et Random Forest afin de reconnaître
+                automatiquement des triangles, carrés et cercles.
+              </p>
+            </div>
+          </a>
         </div>
       </div>
     </section>
@@ -659,42 +795,48 @@
           <h2>Analyser</h2>
           <div class="line"></div>
         </div>
-         <p class="section-desc">
+
+        <p class="section-desc">
           L’analyse consiste à explorer les données, produire des statistiques descriptives, identifier des relations et
           interpréter les résultats pour transformer des données brutes en informations utiles à la décision.
         </p>
 
         <div class="card competence analyser">
+          <a href="analyser_sport.html" class="project-link">
+            <div class="project">
+              <div class="meta">BUT 1</div>
+              <h4>Analyser les profils sportifs avec ACP, AFC et classification</h4>
+              <p>
+                Analyse des comportements sportifs à partir d’un jeu de données Kaggle. Le projet combine
+                ACP sur les variables quantitatives, AFC sur les profils sociodémographiques et classification
+                hiérarchique afin d’identifier des profils de pratiquants et leurs habitudes d’entraînement.
+              </p>
+            </div>
+          </a>
 
-          <div class="project">
-            <div class="meta">BUT 1</div>
-            <h4>Mettre en œuvre une analyse descriptive</h4>
+          <a href="analyser_temp.html" class="project-link">
+            <div class="project">
+              <div class="meta">BUT 2</div>
+              <h4>Analyser l’évolution temporelle de la pollution</h4>
+              <p>
+                Analyse d’un jeu de données sur la pollution atmosphérique à Pékin. Le projet combine
+                exploration des données, régression linéaire multiple, diagnostic des résidus, ANOVA
+                sur la direction du vent et sélection de variables afin d’expliquer les variations de PM_Dongsi.
+              </p>
+            </div>
+          </a>
 
-            <p>
-              Création de graphiques clairs et esthétiques avec des outils comme R, ggplot et des visualisations interactives
-              afin de rendre les résultats compréhensibles pour un public non spécialiste.
-            </p>
-          </div>
-
-          <div class="project">
-            <div class="meta">BUT 2</div>
-            <h4>Mettre en œuvre une analyse exploratoire</h4>
-
-            <p>
-              Analyse de l’évolution mensuelle des taux de NO₂ sur 18 ans, avec séries temporelles, autocorrélation,
-              décomposition additive, moyenne mobile, régression linéaire et modèle ARIMA.
-            </p>
-            <a href="analyser_temp.html" class="btn">Voir plus</a>
-          </div>
-
-          <div class="project">
-            <div class="meta">BUT 3</div>
-            <h4>Analyse exploratoire de données complexes</h4>
-
-            <p>
-              Approfondissement de l’analyse de données complexes et de l’interprétation critique des résultats.
-            </p>
-          </div>
+          <a href="analyser_datamining.html" class="project-link">
+            <div class="project">
+              <div class="meta">BUT 3</div>
+              <h4>Data Mining — Prédiction des catégories de véhicules</h4>
+              <p>
+                Projet de classification supervisée réalisé à partir du Forza Final Dataset.
+                L’objectif était de prédire la catégorie stock_specs des véhicules à partir de leurs caractéristiques,
+                en comparant plusieurs modèles comme KNN, SVM, Decision Tree, Random Forest et XGBoost.
+              </p>
+            </div>
+          </a>
         </div>
       </div>
     </section>
@@ -705,34 +847,37 @@
           <h2>Valoriser</h2>
           <div class="line"></div>
         </div>
+
         <p class="section-desc">
-           Valoriser signifie mettre en avant les résultats, conclusions et recommandations afin de maximiser l’impact d’un
-            travail et de le rendre utile pour un public cible.
+          Valoriser signifie mettre en avant les résultats, conclusions et recommandations afin de maximiser l’impact d’un
+          travail et de le rendre utile pour un public cible.
         </p>
 
         <div class="card competence valoriser">
+          <a href="valoriser_but1.html" class="project-link">
+            <div class="project">
+              <div class="meta">BUT 1</div>
+            
+              <h4>Analyse des ménages et catégories socioprofessionnelles</h4>
+            
+              <p>
+                Projet d’analyse de données INSEE sur les couples, familles et ménages entre 2014 et 2020.
+                Étude des liens entre structure familiale, catégorie socioprofessionnelle et région à travers
+                des traitements SQL, des analyses statistiques avec R et des visualisations interactives.
+              </p>
+            </div>
+          </a>
 
-          <div class="project">
-            <div class="meta">BUT 1</div>
-            <h4>Contextualiser et présenter les données</h4>
-
-            <p>
-              Projet sur les feux de forêt : structuration des données, création de visualisations avec RStudio, questionnaire,
-              analyse des biais et communication des résultats pour mieux comprendre les facteurs liés aux incendies.
-            </p>
-            <a href="valoriser_feux.html" class="btn">Voir plus</a>
-          </div>
-
-          <div class="project">
-            <div class="meta">Concours</div>
-            <h4>Concours de Datavisualisation</h4>
-
-            <p>
-              Analyse de données météorologiques fournies par Météo France. Le travail de groupe a permis de contextualiser
-              les données et de mettre en évidence des résultats clés à l’aide d’indicateurs pertinents dans un délai imparti.
-            </p>
-            <a href="valoriser_dataviz.html" class="btn">Voir plus</a>
-          </div>
+          <a href="valoriser_dataviz.html" class="project-link">
+            <div class="project">
+              <div class="meta">Concours</div>
+              <h4>Concours de Datavisualisation</h4>
+              <p>
+                Analyse de données météorologiques fournies par Météo France. Le travail de groupe a permis de contextualiser
+                les données et de mettre en évidence des résultats clés à l’aide d’indicateurs pertinents dans un délai imparti.
+              </p>
+            </div>
+          </a>
         </div>
       </div>
     </section>
@@ -743,18 +888,53 @@
           <h2>Modéliser</h2>
           <div class="line"></div>
         </div>
-        
+
         <div class="card competence modeliser">
-          <div class="project">
-            <div class="meta">BUT 2</div>
-            <h3>Développer une solution décisionnelle</h3>
-  
-            <p>
-              Évaluation de méthodes statistiques comme le sondage aléatoire simple, la stratification et le redressement. Le
-              projet a renforcé la manipulation de données complexes, le calcul d’estimations fiables, la comparaison de
-              méthodes et la formulation de recommandations chiffrées.
-            </p>
-            <a href="modeliser_echan.html" class="btn">Voir plus</a>
+          <a href="modeliser_echan.html" class="project-link">
+            <div class="project">
+              <div class="meta">BUT 2</div>
+              <h4>Développer une solution décisionnelle</h4>
+              <p>
+                Évaluation de méthodes statistiques comme le sondage aléatoire simple, la stratification et le redressement. Le
+                projet a renforcé la manipulation de données complexes, le calcul d’estimations fiables, la comparaison de
+                méthodes et la formulation de recommandations chiffrées.
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="transversales">
+      <div class="container">
+        <div class="section-head">
+          <h2>Capacités transversales</h2>
+          <div class="line"></div>
+        </div>
+
+        <p class="section-desc">
+          Au-delà des compétences techniques, mon parcours m’a permis de développer des qualités utiles dans les projets de data, en autonomie comme en équipe.
+        </p>
+
+        <div class="transversal-grid">
+          <div class="transversal-item">
+            <h3>Travail d’équipe</h3>
+            <p>Capacité à collaborer, écouter et contribuer efficacement dans un projet collectif.</p>
+          </div>
+
+          <div class="transversal-item">
+            <h3>Organisation</h3>
+            <p>Gestion du temps, respect des échéances et structuration du travail.</p>
+          </div>
+
+          <div class="transversal-item">
+            <h3>Communication</h3>
+            <p>Présentation claire des résultats et adaptation du discours au public visé.</p>
+          </div>
+
+          <div class="transversal-item">
+            <h3>Adaptabilité</h3>
+            <p>Capacité à apprendre rapidement de nouveaux outils et à s’adapter aux contraintes.</p>
           </div>
         </div>
       </div>
@@ -762,9 +942,20 @@
 
   </main>
 
-  <footer class="footer">
-    <h2>Ylan Harrault</h2>
-    <p>Portfolio — Science des Données</p>
+  <footer class="footer" id="contact">
+    <div class="container footer-content">
+      <div>
+        <h2>Ylan Harrault</h2>
+        <p>Portfolio — Science des Données</p>
+      </div>
+
+      <div class="footer-contact">
+        <h3>Contact</h3>
+        <p><strong>Email :</strong> <a href="mailto:ylan.harrault@gmail.com">ylan.harrault@gmail.com</a></p>
+        <p><strong>Domaine :</strong> Data, analyse, modélisation et visualisation</p>
+        <p><strong>Formation :</strong> BUT Science des Données — EMS</p>
+      </div>
+    </div>
   </footer>
 
   <a href="#sommaire" class="top-link">Sommaire</a>

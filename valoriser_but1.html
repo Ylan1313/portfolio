@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projet BUT 1 - Valoriser</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600;700&display=swap');
+
+    :root {
+      --cream: #f3efe6;
+      --paper: #fbf7ef;
+      --rust: #a74d18;
+      --rust-dark: #74350f;
+      --gold: #c89b55;
+      --ink: #171410;
+      --muted: #6f6258;
+      --soft: #efe3cf;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: Inter, Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    .project-nav {
+      position: fixed;
+      top: 0;
+      left: 4%;
+      right: 4%;
+      z-index: 20;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 14px 20px;
+      background: #fbf7efdd;
+      backdrop-filter: blur(10px);
+      border-left: 4px solid var(--rust);
+      box-shadow: 0 10px 30px #00000018;
+    }
+
+    .brand {
+      font-family: Playfair Display, serif;
+      font-style: italic;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      font-family: Bebas Neue, sans-serif;
+      text-decoration: none;
+      letter-spacing: .05em;
+      color: var(--ink);
+      transition: .25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--rust);
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(90deg, var(--cream) 0 65%, var(--rust) 65% 100%);
+      padding: 120px 0 70px;
+    }
+
+    .hero-content {
+      background: var(--paper);
+      padding: clamp(30px, 5vw, 54px);
+      border-left: 6px solid var(--rust);
+      box-shadow: 0 24px 70px #0002;
+      max-width: min(1000px, 78vw);
+    }
+
+    .kicker {
+      font-family: Bebas Neue, sans-serif;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--rust-dark);
+      font-size: 1.1rem;
+    }
+
+    h1 {
+      font-family: Playfair Display, serif;
+      color: var(--rust);
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      line-height: .95;
+      margin: 14px 0;
+    }
+
+    h2 {
+      font-family: Playfair Display, serif;
+      color: var(--rust);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      margin: 0 0 26px;
+    }
+
+    h3 {
+      font-family: Bebas Neue, sans-serif;
+      font-size: 1.75rem;
+      margin: 0 0 10px;
+    }
+
+    p {
+      color: var(--muted);
+      margin-top: 0;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 24px;
+      border-bottom: 2px solid var(--ink);
+      font-family: Bebas Neue, sans-serif;
+      letter-spacing: .05em;
+      text-decoration: none;
+      color: var(--ink);
+      padding-bottom: 4px;
+      transition: .25s ease;
+    }
+
+    .btn:hover {
+      color: var(--rust);
+      transform: translateX(-4px);
+    }
+
+    .quick-info {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .info-box {
+      background: var(--soft);
+      padding: 15px;
+      border-left: 4px solid var(--rust);
+    }
+
+    .info-box span {
+      display: block;
+      font-family: Bebas Neue, sans-serif;
+      color: var(--rust-dark);
+      font-size: 1.1rem;
+    }
+
+    .section {
+      padding: 82px 0;
+      border-bottom: 1px solid #d7c7ad;
+    }
+
+    .section-desc {
+      max-width: 900px;
+      margin-bottom: 30px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card,
+    .step,
+    .visual-card,
+    .difficulty-card {
+      background: var(--paper);
+      padding: 32px;
+      border-left: 5px solid var(--rust);
+      box-shadow: 0 10px 30px #0000000d;
+      transition: .25s ease;
+    }
+
+    .card:hover,
+    .step:hover,
+    .visual-card:hover,
+    .difficulty-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px #00000018;
+    }
+
+    .focus-layout {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 28px;
+    }
+
+    .focus-main {
+      background: var(--paper);
+      padding: 36px;
+      border-left: 6px solid var(--rust);
+      box-shadow: 0 10px 30px #0000000d;
+    }
+
+    .focus-panel {
+      background: var(--rust);
+      color: var(--cream);
+      padding: 36px;
+      box-shadow: 0 18px 50px #00000020;
+    }
+
+    .focus-panel h3,
+    .focus-panel p {
+      color: var(--cream);
+    }
+
+    .focus-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .focus-stat {
+      background: #ffffff12;
+      border: 1px solid #ffffff20;
+      padding: 18px;
+    }
+
+    .focus-stat strong {
+      display: block;
+      font-family: Playfair Display, serif;
+      font-size: 2.4rem;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .focus-stat span {
+      font-family: Bebas Neue, sans-serif;
+      letter-spacing: .05em;
+    }
+
+    .steps {
+      counter-reset: step;
+      display: grid;
+      gap: 20px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 20px;
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--rust);
+      color: var(--cream);
+      font-family: Playfair Display, serif;
+      font-weight: 700;
+      font-size: 1.4rem;
+    }
+
+    .chart-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 18px 0 8px;
+    }
+
+    .chart-btn {
+      background: var(--soft);
+      color: var(--rust-dark);
+      border: 1px solid #d7c7ad;
+      padding: 10px 14px;
+      font-family: Bebas Neue, sans-serif;
+      letter-spacing: .05em;
+      cursor: pointer;
+      transition: .25s ease;
+    }
+
+    .chart-btn:hover,
+    .chart-btn.active {
+      background: var(--rust);
+      color: var(--cream);
+    }
+
+    .svg-chart {
+      overflow-x: auto;
+      margin-top: 22px;
+      background: #fffaf2;
+    }
+
+    .svg-chart svg {
+      width: 100%;
+      min-width: 900px;
+      height: 500px;
+      display: block;
+    }
+
+    .chart-axis {
+      stroke: #d7c7ad;
+      stroke-width: 1;
+    }
+
+    .chart-grid {
+      stroke: #00000012;
+      stroke-width: 1;
+    }
+
+    .bar {
+      fill: var(--rust);
+      opacity: .88;
+      cursor: pointer;
+    }
+
+    .bar.secondary {
+      fill: var(--gold);
+    }
+
+    .chart-label {
+      fill: var(--ink);
+      font-family: Inter, Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .chart-small-label {
+      fill: var(--muted);
+      font-family: Inter, Arial, sans-serif;
+      font-size: 11px;
+    }
+
+    .chart-tooltip {
+      position: fixed;
+      z-index: 999;
+      pointer-events: none;
+      background: var(--ink);
+      color: var(--cream);
+      padding: 10px 12px;
+      box-shadow: 0 12px 30px #0005;
+      font-size: .85rem;
+      opacity: 0;
+      transform: translate(-50%, -125%);
+      transition: opacity .15s ease;
+    }
+
+    .comparison-layout {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 28px;
+      margin-top: 34px;
+    }
+
+    .best-panel {
+      background: var(--rust);
+      color: var(--cream);
+      padding: 34px;
+      box-shadow: 0 18px 50px #00000020;
+    }
+
+    .best-panel h3,
+    .best-panel p {
+      color: var(--cream);
+    }
+
+    .best-panel strong {
+      display: block;
+      font-family: Playfair Display, serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: 1;
+      margin: 10px 0 16px;
+    }
+
+    .bar-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .bar-item {
+      background: var(--paper);
+      padding: 20px;
+      box-shadow: 0 10px 30px #0000000d;
+      border-left: 5px solid var(--rust);
+      cursor: help;
+    }
+
+    .bar-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .bar-track {
+      height: 18px;
+      background: #e0d2bd;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: var(--rust);
+      border-radius: 999px;
+    }
+
+    .image-placeholders {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .image-box {
+      background: #fffaf2;
+      border: 1px solid #d7c7ad;
+      padding: 18px;
+      min-height: 240px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: var(--muted);
+      font-weight: 700;
+      overflow: hidden;
+    }
+
+    .image-box img {
+      max-width: 100%;
+      max-height: 280px;
+      display: block;
+      object-fit: contain;
+    }
+
+    .image-box.large {
+      grid-column: 1 / -1;
+      min-height: 300px;
+    }
+
+    .difficulty-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      background: var(--soft);
+      color: var(--rust-dark);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: .9rem;
+    }
+
+    .highlight {
+      background: var(--rust);
+      color: var(--cream);
+      padding: clamp(28px, 5vw, 52px);
+      box-shadow: 0 18px 50px #00000020;
+    }
+
+    .highlight h2,
+    .highlight p {
+      color: var(--cream);
+    }
+
+    .footer {
+      padding: 44px 0;
+      text-align: center;
+      background: var(--rust);
+      color: var(--cream);
+    }
+
+    .footer p,
+    .footer a {
+      color: var(--cream);
+      margin: 0;
+    }
+
+    .footer a {
+      text-decoration: none;
+      border-bottom: 1px solid var(--gold);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+    
+    .zoom-panel {
+      position: fixed;
+      right: 28px;
+      top: 130px;
+      width: 380px;
+      height: 210px;
+      background: var(--paper);
+      border-left: 5px solid var(--rust);
+      box-shadow: 0 18px 50px #00000028;
+      padding: 14px;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .15s ease;
+    }
+    
+    .zoom-panel.visible {
+      opacity: 1;
+    }
+    
+    .zoom-panel svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      background: #fffaf2;
+    }
+
+    @media(max-width:1050px) {
+      .focus-layout,
+      .comparison-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .image-placeholders {
+        grid-template-columns: 1fr;
+      }
+
+      .image-box.large {
+        grid-column: auto;
+      }
+    }
+
+    @media(max-width:850px) {
+      .hero {
+        min-height: auto;
+        background: var(--cream);
+        padding: 110px 0 60px;
+      }
+
+      .hero-content {
+        max-width: 100%;
+      }
+
+      .quick-info,
+      .grid-2,
+      .grid-3,
+      .difficulty-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media(max-width:700px) {
+      .project-nav {
+        position: static;
+        margin: 18px auto 0;
+        width: 92%;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero {
+        padding: 50px 0;
+      }
+
+      .step {
+        grid-template-columns: 1fr;
+      }
+
+      .focus-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 58px 0;
+      }
+    }
+
+    @media(max-width:520px) {
+      .container { width: 94%; }
+
+      .hero-content,
+      .focus-main,
+      .focus-panel,
+      .card,
+      .step,
+      .best-panel,
+      .difficulty-card,
+      .visual-card,
+      .highlight {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body id="top">
+
+  <nav class="project-nav">
+    <div class="brand">Ylan Harrault</div>
+
+    <div class="nav-links">
+      <a href="index.html#valoriser">Retour</a>
+      <a href="#objectif">Objectif</a>
+      <a href="#donnees">Données</a>
+      <a href="#methodologie">Méthode</a>
+      <a href="#resultats">Résultats</a>
+      <a href="#visuels">Graphiques</a>
+      <a href="#bilan">Bilan</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="kicker">Projet BUT 1 — Valoriser</div>
+
+        <h1>Analyse des ménages et catégories socioprofessionnelles</h1>
+
+        <p>
+          Analyse de données INSEE sur les couples, familles et ménages entre 2014 et 2020,
+          afin d’étudier les liens entre facteurs familiaux, localisation géographique
+          et catégories socioprofessionnelles.
+        </p>
+
+        <div class="quick-info">
+          <div class="info-box">
+            <span>Données</span>
+            <strong>INSEE</strong>
+          </div>
+
+          <div class="info-box">
+            <span>Période</span>
+            <strong>2014 / 2020</strong>
+          </div>
+
+          <div class="info-box">
+            <span>Thème</span>
+            <strong>Couples, familles, ménages</strong>
+          </div>
+
+          <div class="info-box">
+            <span>Outils</span>
+            <strong>R, SQL, graphiques</strong>
+          </div>
+        </div>
+
+        <a href="index.html#valoriser" class="btn">← Retour à Valoriser</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="section" id="objectif">
+      <div class="container">
+        <div class="focus-layout">
+          <div class="focus-main">
+            <div class="kicker">Objectif du projet</div>
+            <h2>Étudier les liens entre famille et société</h2>
+
+            <p>
+              Le projet avait pour but d’analyser plusieurs jeux de données de l’INSEE portant
+              sur les couples, les familles et les ménages.
+            </p>
+
+            <p>
+              La problématique centrale était de savoir si les facteurs intrafamiliaux
+              comme la taille du ménage, l’âge ou le type de famille entretiennent une relation
+              avec des facteurs extra-familiaux comme la catégorie socioprofessionnelle ou la région.
+            </p>
+          </div>
+
+          <div class="focus-panel">
+            <h3>Cadre de l’étude</h3>
+
+            <p>
+              Les données ont été importées dans une base relationnelle, puis exploitées avec R
+              afin de produire des cartes, graphiques comparatifs et analyses descriptives.
+            </p>
+
+            <div class="focus-stats">
+              <div class="focus-stat">
+                <strong>3</strong>
+                <span>bases INSEE</span>
+              </div>
+
+              <div class="focus-stat">
+                <strong>2</strong>
+                <span>années comparées</span>
+              </div>
+
+              <div class="focus-stat">
+                <strong>24</strong>
+                <span>catégories pro</span>
+              </div>
+
+              <div class="focus-stat">
+                <strong>9</strong>
+                <span>types de ménages</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="donnees">
+      <div class="container">
+        <h2>Données utilisées</h2>
+
+        <p class="section-desc">
+          Le projet repose sur plusieurs fichiers INSEE issus de la catégorie
+          « Couples-Familles-Ménages ». Les données ont été utilisées pour comparer
+          les situations entre 2014 et 2020.
+        </p>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>MEN1</h3>
+            <p>
+              Ménages par taille du ménage et catégorie socioprofessionnelle
+              de la personne de référence.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>MEN6</h3>
+            <p>
+              Population des ménages par type de ménage et âge de la personne
+              de référence.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>FAM9</h3>
+            <p>
+              Enfants des familles selon l’âge et la catégorie socioprofessionnelle
+              de la personne de référence.
+            </p>
+          </div>
+        </div>
+
+        <div class="image-placeholders">
+          <div class="image-box">
+            <img src="images/logo_insee.jpeg" alt="Logo INSEE">
+          </div>
+
+          <div class="image-box">
+            <img src="images/Schema_relatio.png" alt="Schéma relationnel">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="methodologie">
+      <div class="container">
+        <h2>Méthodologie</h2>
+
+        <div class="steps">
+          <div class="step">
+            <div>
+              <h3>Sélection des données</h3>
+              <p>
+                Choix de trois bases INSEE liées aux ménages, familles et couples,
+                pour les années 2014 et 2020.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div>
+              <h3>Modélisation relationnelle</h3>
+              <p>
+                Création d’un schéma relationnel avec clés primaires et étrangères,
+                puis importation des fichiers dans PostgreSQL via phpPgAdmin.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div>
+              <h3>Traitement avec R</h3>
+              <p>
+                Agrégation des données, calcul de proportions, comparaison entre années
+                et création de graphiques explicatifs.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div>
+              <h3>Valorisation visuelle</h3>
+              <p>
+                Réalisation de cartes, barplots, graphiques en secteurs et tableaux
+                pour rendre les résultats plus lisibles.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="resultats">
+      <div class="container">
+        <h2>Résultats principaux</h2>
+
+        <p class="section-desc">
+          L’analyse montre que la localisation géographique, la catégorie socioprofessionnelle,
+          l’âge et la taille du ménage sont liés à la structure familiale.
+        </p>
+
+        <div class="comparison-layout">
+          <div class="best-panel">
+            <h3>Constat principal</h3>
+            <strong>Les facteurs sont liés</strong>
+            <p>
+              La structure familiale n’est pas indépendante du contexte social :
+              région, métier, âge et taille du ménage influencent les situations observées.
+            </p>
+          </div>
+
+          <div class="bar-list">
+            <div class="bar-item" data-tooltip="Nouvelle-Aquitaine, Occitanie et Auvergne-Rhône-Alpes concentrent une part importante des agriculteurs.">
+              <div class="bar-head">
+                <span>Agriculteurs dans 3 régions</span>
+                <span>44,3 %</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill" style="width:44.3%"></div></div>
+            </div>
+
+            <div class="bar-item" data-tooltip="Les cadres d’entreprise sont très concentrés en Île-de-France.">
+              <div class="bar-head">
+                <span>Cadres en Île-de-France</span>
+                <span>42,2 %</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill" style="width:42.2%"></div></div>
+            </div>
+
+            <div class="bar-item" data-tooltip="Les anciens employés et ouvriers diminuent entre 2014 et 2020.">
+              <div class="bar-head">
+                <span>Anciens employés / ouvriers</span>
+                <span>-1,9 %</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill" style="width:19%"></div></div>
+            </div>
+
+            <div class="bar-item" data-tooltip="Les ouvriers qualifiés augmentent légèrement entre 2014 et 2020.">
+              <div class="bar-head">
+                <span>Ouvriers qualifiés</span>
+                <span>+1,8 %</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill" style="width:18%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="visuels">
+      <div class="container">
+        <h2>Graphiques interactifs</h2>
+
+        <p class="section-desc">
+          Les graphiques ci-dessous utilisent le fichier <strong>data/insee_valoriser.json</strong>.
+          Si le fichier n’est pas trouvé, la page utilise des données de secours.
+        </p>
+
+        <div class="visual-card">
+          <h3>Visualisations synthétiques</h3>
+
+          <div class="chart-controls">
+            <button class="chart-btn active" data-chart="regions">Régions</button>
+            <button class="chart-btn" data-chart="evolution">Évolution 2014-2020</button>
+            <button class="chart-btn" data-chart="menages">Types de ménages</button>
+            <button class="chart-btn" data-chart="csp">Catégories socio-pro</button>
+          </div>
+
+          <div id="mainChart" class="svg-chart"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="analyses">
+      <div class="container">
+        <h2>Axes d’analyse</h2>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>Localisation géographique</h3>
+            <p>
+              Les agriculteurs sont davantage présents dans l’ouest et certaines régions rurales,
+              tandis que les cadres sont concentrés dans les grandes zones urbaines.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Taille des ménages</h3>
+            <p>
+              Les ménages d’une personne sont fortement représentés chez certains retraités
+              et personnes inactives, tandis que les familles nombreuses apparaissent davantage
+              chez les ouvriers qualifiés.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Types de ménages</h3>
+            <p>
+              L’âge et le genre influencent les formes de ménages, notamment dans les familles
+              monoparentales et les couples avec ou sans actif ayant un emploi.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="difficultes">
+      <div class="container">
+        <h2>Difficultés rencontrées</h2>
+
+        <div class="difficulty-grid">
+          <div class="difficulty-card">
+            <h3>Compréhension des variables</h3>
+            <p>
+              Les bases INSEE utilisent de nombreux codes comme CS2_24, NPERC, TYPMR ou AGEMEN7.
+              Il a donc fallu construire une légende claire pour interpréter correctement les résultats.
+            </p>
+          </div>
+
+          <div class="difficulty-card">
+            <h3>Importation SQL</h3>
+            <p>
+              Les fichiers ont dû être importés proprement dans PostgreSQL en respectant les séparateurs,
+              les encodages et la structure relationnelle.
+            </p>
+          </div>
+
+          <div class="difficulty-card">
+            <h3>Comparaison 2014 / 2020</h3>
+            <p>
+              Les données de deux années différentes devaient être harmonisées pour permettre
+              des comparaisons fiables.
+            </p>
+          </div>
+
+          <div class="difficulty-card">
+            <h3>Lisibilité des graphiques</h3>
+            <p>
+              Certaines visualisations contenaient beaucoup de catégories. Il fallait donc choisir
+              des graphiques adaptés pour rendre l’analyse compréhensible.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="outils">
+      <div class="container grid-2">
+        <div>
+          <h2>Outils utilisés</h2>
+
+          <div class="tags">
+            <span class="tag">R</span>
+            <span class="tag">RMarkdown</span>
+            <span class="tag">SQL</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">phpPgAdmin</span>
+            <span class="tag">ggplot2</span>
+            <span class="tag">leaflet</span>
+            <span class="tag">dplyr</span>
+          </div>
+        </div>
+
+        <div>
+          <h2>Compétences développées</h2>
+
+          <div class="tags">
+            <span class="tag">Analyser des données publiques</span>
+            <span class="tag">Créer un schéma relationnel</span>
+            <span class="tag">Importer des données SQL</span>
+            <span class="tag">Comparer deux années</span>
+            <span class="tag">Cartographier</span>
+            <span class="tag">Valoriser les résultats</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="bilan">
+      <div class="container">
+        <div class="highlight">
+          <h2>Bilan du projet</h2>
+
+          <p>
+            Ce projet a permis de montrer qu’il existe une relation entre les facteurs
+            intrafamiliaux et extra-familiaux. La région, la catégorie socioprofessionnelle,
+            l’âge et la taille du ménage influencent les structures familiales observées.
+          </p>
+
+          <p>
+            L’analyse met aussi en évidence une certaine stabilité entre 2014 et 2020,
+            malgré quelques évolutions dans certaines catégories socioprofessionnelles.
+          </p>
+
+          <p>
+            Ce travail m’a permis de développer mes compétences en analyse de données,
+            en traitement SQL, en visualisation et en interprétation de données sociales réelles.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>Ylan Harrault — Portfolio Science des Données</p>
+
+    <div class="footer-links">
+      <a href="index.html#valoriser">← Retour aux projets</a>
+      <a href="#top">↑ Retour en haut</a>
+    </div>
+  </footer>
+
+  <script>
+    const chartButtons = document.querySelectorAll(".chart-btn");
+    const chartContainer = document.getElementById("mainChart");
+  
+    const cspLabels = {
+      "10": "Agriculteurs exploitants",
+      "21": "Artisans",
+      "22": "Commerçants",
+      "23": "Chefs d’entreprise",
+      "31": "Professions libérales",
+      "32": "Cadres fonction publique",
+      "36": "Cadres d’entreprise",
+      "41": "Prof. intermédiaires santé / enseignement",
+      "46": "Prof. intermédiaires administratives",
+      "47": "Techniciens",
+      "48": "Contremaîtres",
+      "51": "Employés fonction publique",
+      "54": "Employés administratifs",
+      "55": "Employés de commerce",
+      "56": "Services aux particuliers",
+      "61": "Ouvriers qualifiés",
+      "66": "Ouvriers non qualifiés",
+      "69": "Ouvriers agricoles",
+      "71": "Anciens agriculteurs",
+      "72": "Anciens artisans / commerçants",
+      "73": "Anciens cadres",
+      "76": "Anciens employés / ouvriers",
+      "81": "Chômeurs jamais travaillé",
+      "82": "Inactifs divers"
+    };
+  
+    const menageLabels = {
+      "11": "Homme seul",
+      "12": "Femme seule",
+      "20": "Sans famille",
+      "31": "Père seul avec enfant(s)",
+      "32": "Mère seule avec enfant(s)",
+      "41": "Couple deux actifs",
+      "42": "Couple homme actif",
+      "43": "Couple femme active",
+      "44": "Couple sans actif"
+    };
+  
+    const datasets = {
+      regions: {
+        title: "Agriculteurs et cadres par région",
+        type: "groupedHorizontal",
+        unit: "%",
+        data: [
+          { name: "Corse", values: [0.7, 0.1] },
+          { name: "Centre Val de Loire", values: [5.0, 2.6] },
+          { name: "Normandie", values: [5.4, 3.1] },
+          { name: "Bourgogne Franche-Comté", values: [7.2, 2.3] },
+          { name: "Hauts-de-France", values: [5.3, 5.0] },
+          { name: "Provence-Alpes Côte d’Azur", values: [4.5, 6.6] },
+          { name: "Bretagne", values: [8.5, 3.4] },
+          { name: "Pays de la Loire", values: [9.1, 4.3] },
+          { name: "Grand Est", values: [9.2, 5.3] },
+          { name: "Occitanie", values: [14.8, 6.8] },
+          { name: "Nouvelle Aquitaine", values: [16.1, 5.5] },
+          { name: "Auvergne Rhône-Alpes", values: [13.4, 12.8] },
+          { name: "Île-de-France", values: [0.9, 42.2] }
+        ]
+      },
+  
+      evolution: {
+        title: "Différence des proportions 2014 - 2020",
+        type: "positiveNegative",
+        unit: "%",
+        data: [
+          { name: "10", value: -0.1 }, { name: "21", value: -0.2 }, { name: "22", value: 0 },
+          { name: "23", value: 0 }, { name: "31", value: 0.1 }, { name: "32", value: 0.3 },
+          { name: "36", value: 0 }, { name: "41", value: 1.3 }, { name: "46", value: 0.5 },
+          { name: "47", value: -0.2 }, { name: "48", value: -0.3 }, { name: "51", value: 1.3 },
+          { name: "54", value: 0.9 }, { name: "55", value: 0.6 }, { name: "56", value: 1.2 },
+          { name: "61", value: -1.8 }, { name: "66", value: -0.2 }, { name: "69", value: 0 },
+          { name: "71", value: -0.5 }, { name: "72", value: -0.7 }, { name: "73", value: -0.6 },
+          { name: "76", value: -1.9 }, { name: "81", value: 0.2 }, { name: "82", value: 0.2 }
+        ]
+      },
+  
+      csp: {
+        title: "Catégories socioprofessionnelles en 2014 et 2020",
+        type: "cspSlope",
+        unit: "%",
+        data: [
+          { name: "10", y2014: 0.9, y2020: 0.9 },
+          { name: "21", y2014: 2.4, y2020: 2.2 },
+          { name: "22", y2014: 1.9, y2020: 1.9 },
+          { name: "23", y2014: 0.5, y2020: 0.5 },
+          { name: "31", y2014: 1.4, y2020: 1.5 },
+          { name: "32", y2014: 4.0, y2020: 4.2 },
+          { name: "36", y2014: 7.0, y2020: 7.1 },
+          { name: "41", y2014: 4.9, y2020: 6.1 },
+          { name: "46", y2014: 4.8, y2020: 5.3 },
+          { name: "47", y2014: 3.2, y2020: 3.0 },
+          { name: "48", y2014: 1.7, y2020: 1.4 },
+          { name: "51", y2014: 5.3, y2020: 6.6 },
+          { name: "54", y2014: 2.4, y2020: 3.3 },
+          { name: "55", y2014: 1.9, y2020: 2.5 },
+          { name: "56", y2014: 2.6, y2020: 3.8 },
+          { name: "61", y2014: 10.5, y2020: 8.7 },
+          { name: "66", y2014: 4.9, y2020: 4.7 },
+          { name: "69", y2014: 0.5, y2020: 0.5 },
+          { name: "71", y2014: 1.7, y2020: 1.2 },
+          { name: "72", y2014: 3.0, y2020: 2.3 },
+          { name: "73", y2014: 9.7, y2020: 9.1 },
+          { name: "76", y2014: 18.0, y2020: 16.1 },
+          { name: "81", y2014: 0.4, y2020: 0.5 },
+          { name: "82", y2014: 6.4, y2020: 6.6 }
+        ]
+      },
+  
+      menages: {
+        title: "Types de ménages en 2014 et 2020",
+        type: "groupedVertical",
+        unit: "%",
+        data: [
+          { name: "11", values: [6.9, 7.7] },
+          { name: "12", values: [9.2, 10.0] },
+          { name: "20", values: [3.0, 2.0] },
+          { name: "31", values: [1.9, 2.1] },
+          { name: "32", values: [9.4, 10.0] },
+          { name: "41", values: [36.1, 35.7] },
+          { name: "42", values: [11.4, 10.4] },
+          { name: "43", values: [5.7, 5.6] },
+          { name: "44", values: [16.6, 16.5] }
+        ]
+      }
+    };
+  
+    function formatValue(value) {
+      return Number(value).toFixed(1).replace(".", ",");
+    }
+  
+    function shortLabel(text, max = 32) {
+      return text.length > max ? text.slice(0, max - 1) + "…" : text;
+    }
+  
+    function createTooltip() {
+      let tooltip = document.querySelector(".chart-tooltip");
+      if (!tooltip) {
+        tooltip = document.createElement("div");
+        tooltip.className = "chart-tooltip";
+        document.body.appendChild(tooltip);
+      }
+      return tooltip;
+    }
+  
+    function activateTooltip() {
+      const tooltip = createTooltip();
+    
+      let zoomPanel = document.querySelector(".zoom-panel");
+    
+      if (!zoomPanel) {
+        zoomPanel = document.createElement("div");
+        zoomPanel.className = "zoom-panel";
+        document.body.appendChild(zoomPanel);
+      }
+    
+      document.querySelectorAll("[data-tooltip]").forEach(element => {
+    
+        element.onmouseenter = () => {
+    
+          tooltip.innerHTML = element.dataset.tooltip;
+          tooltip.style.opacity = "1";
+    
+          if (element.dataset.zoom === "true") {
+    
+            const title = element.dataset.zoomTitle;
+            const code = element.dataset.zoomCode;
+    
+            const v2014 = Number(element.dataset.zoom2014);
+            const v2020 = Number(element.dataset.zoom2020);
+            const change = Number(element.dataset.zoomChange);
+    
+            const maxX = 20;
+    
+            const width = 350;
+            const height = 180;
+    
+            const left = 78;
+            const right = 35;
+    
+            const y = 92;
+    
+            const xScale = value =>
+              left + (value / maxX) * (width - left - right);
+    
+            const x2014 = xScale(v2014);
+            const x2020 = xScale(v2020);
+    
+            const lineColor =
+              change >= 0 ? "var(--rust)" : "var(--gold)";
+    
+            zoomPanel.innerHTML = `
+              <svg viewBox="0 0 ${width} ${height}">
+              
+                <text class="chart-label" x="14" y="24">
+                  ${title}
+                </text>
+    
+                <text class="chart-small-label" x="14" y="44">
+                  Code CS2_24 : ${code}
+                </text>
+    
+                ${[0, 5, 10, 15, 20].map(v => `
+                  <line
+                    class="chart-grid"
+                    x1="${xScale(v)}"
+                    y1="62"
+                    x2="${xScale(v)}"
+                    y2="130">
+                  </line>
+    
+                  <text
+                    class="chart-small-label"
+                    x="${xScale(v) - 4}"
+                    y="150">
+                    ${v}
+                  </text>
+                `).join("")}
+    
+                <line
+                  class="chart-axis"
+                  x1="${left}"
+                  y1="${y}"
+                  x2="${width - right}"
+                  y2="${y}">
+                </line>
+    
+                <line
+                  x1="${x2014}"
+                  y1="${y}"
+                  x2="${x2020}"
+                  y2="${y}"
+                  stroke="${lineColor}"
+                  stroke-width="12"
+                  opacity="0.85">
+                </line>
+    
+                <circle
+                  cx="${x2014}"
+                  cy="${y}"
+                  r="9"
+                  fill="var(--gold)">
+                </circle>
+    
+                <circle
+                  cx="${x2020}"
+                  cy="${y}"
+                  r="9"
+                  fill="var(--rust)">
+                </circle>
+    
+                <text
+                  class="chart-small-label"
+                  x="${x2014 - 16}"
+                  y="${y - 18}">
+                  ${v2014.toFixed(1).replace(".", ",")}%
+                </text>
+    
+                <text
+                  class="chart-small-label"
+                  x="${x2020 - 16}"
+                  y="${y + 30}">
+                  ${v2020.toFixed(1).replace(".", ",")}%
+                </text>
+    
+                <circle cx="18" cy="165" r="5" fill="var(--gold)"></circle>
+                <text class="chart-small-label" x="30" y="169">2014</text>
+    
+                <circle cx="90" cy="165" r="5" fill="var(--rust)"></circle>
+                <text class="chart-small-label" x="102" y="169">2020</text>
+    
+              </svg>
+            `;
+    
+            zoomPanel.classList.add("visible");
+          }
+        };
+    
+        element.onmousemove = event => {
+          tooltip.style.left = event.clientX + "px";
+          tooltip.style.top = event.clientY - 12 + "px";
+        };
+    
+        element.onmouseleave = () => {
+          tooltip.style.opacity = "0";
+          zoomPanel.classList.remove("visible");
+        };
+    
+      });
+    }
+  
+    function renderChart(type) {
+      chartButtons.forEach(button => {
+        button.classList.toggle("active", button.dataset.chart === type);
+      });
+  
+      const dataset = datasets[type];
+  
+      if (dataset.type === "groupedHorizontal") renderGroupedHorizontal(dataset);
+      if (dataset.type === "positiveNegative") renderPositiveNegative(dataset);
+      if (dataset.type === "cspSlope") renderCspSlope(dataset);
+      if (dataset.type === "groupedVertical") renderGroupedVertical(dataset);
+    }
+  
+    function renderGroupedHorizontal(dataset) {
+      const width = 980;
+      const height = 650;
+      const padding = { top: 80, right: 80, bottom: 95, left: 230 };
+      const rows = dataset.data;
+      const maxX = 45;
+      const rowStep = (height - padding.top - padding.bottom) / rows.length;
+      const barH = 14;
+  
+      const xScale = value =>
+        padding.left + (value / maxX) * (width - padding.left - padding.right);
+  
+      const svg = `
+        <svg viewBox="0 0 ${width} ${height}">
+          <text class="chart-label" x="${padding.left}" y="38">${dataset.title}</text>
+  
+          ${[0, 10, 20, 30, 40].map(v => `
+            <line class="chart-grid" x1="${xScale(v)}" y1="${padding.top - 20}" x2="${xScale(v)}" y2="${height - padding.bottom}"></line>
+            <text class="chart-small-label" x="${xScale(v) - 4}" y="${height - 50}">${v}</text>
+          `).join("")}
+  
+          ${rows.map((row, i) => {
+            const y = padding.top + i * rowStep;
+            const agri = row.values[0];
+            const cadre = row.values[1];
+  
+            return `
+              <text class="chart-small-label" x="${padding.left - 15}" y="${y + 18}" text-anchor="end">${row.name}</text>
+  
+              <rect x="${padding.left}" y="${y}" width="${xScale(agri) - padding.left}" height="${barH}" fill="var(--gold)" opacity="0.9"
+                data-tooltip="<strong>${row.name}</strong><br>Agriculteurs : ${formatValue(agri)}${dataset.unit}"></rect>
+  
+              <rect x="${padding.left}" y="${y + barH + 4}" width="${xScale(cadre) - padding.left}" height="${barH}" fill="var(--rust)" opacity="0.9"
+                data-tooltip="<strong>${row.name}</strong><br>Cadres : ${formatValue(cadre)}${dataset.unit}"></rect>
+  
+              <text class="chart-small-label" x="${xScale(agri) + 5}" y="${y + 11}">${formatValue(agri)}%</text>
+              <text class="chart-small-label" x="${xScale(cadre) + 5}" y="${y + barH + 15}">${formatValue(cadre)}%</text>
+            `;
+          }).join("")}
+  
+          <g transform="translate(${padding.left}, ${height - 25})">
+            <rect x="0" y="-10" width="18" height="8" fill="var(--gold)"></rect>
+            <text class="chart-small-label" x="25" y="-3">Agriculteurs</text>
+  
+            <rect x="140" y="-10" width="18" height="8" fill="var(--rust)"></rect>
+            <text class="chart-small-label" x="165" y="-3">Cadres</text>
+          </g>
+        </svg>
+      `;
+  
+      chartContainer.innerHTML = svg;
+      activateTooltip();
+    }
+  
+    function renderPositiveNegative(dataset) {
+      const width = 980;
+      const height = 560;
+      const padding = { top: 75, right: 40, bottom: 105, left: 70 };
+      const rows = dataset.data;
+      const minY = -4;
+      const maxY = 4;
+  
+      const xStep = (width - padding.left - padding.right) / rows.length;
+      const yScale = value =>
+        height - padding.bottom - ((value - minY) / (maxY - minY)) * (height - padding.top - padding.bottom);
+      const zeroY = yScale(0);
+  
+      const svg = `
+        <svg viewBox="0 0 ${width} ${height}">
+          <text class="chart-label" x="${padding.left}" y="38">${dataset.title}</text>
+  
+          <line class="chart-axis" x1="${padding.left}" y1="${zeroY}" x2="${width - padding.right}" y2="${zeroY}"></line>
+          <line class="chart-axis" x1="${padding.left}" y1="${padding.top}" x2="${padding.left}" y2="${height - padding.bottom}"></line>
+  
+          ${[-4, -2, 0, 2, 4].map(v => `
+            <line class="chart-grid" x1="${padding.left}" y1="${yScale(v)}" x2="${width - padding.right}" y2="${yScale(v)}"></line>
+            <text class="chart-small-label" x="35" y="${yScale(v) + 4}">${v}</text>
+          `).join("")}
+  
+          ${rows.map((row, i) => {
+            const x = padding.left + i * xStep + xStep * 0.18;
+            const barW = xStep * 0.62;
+            const y = row.value >= 0 ? yScale(row.value) : zeroY;
+            const h = Math.abs(yScale(row.value) - zeroY);
+            const fill = row.value >= 0 ? "var(--rust)" : "var(--gold)";
+            const label = cspLabels[row.name] || row.name;
+  
+            return `
+              <rect x="${x}" y="${y}" width="${barW}" height="${h}" fill="${fill}" opacity="0.9"
+                data-tooltip="<strong>${label}</strong><br>Code : ${row.name}<br>Évolution : ${formatValue(row.value)}${dataset.unit}"></rect>
+  
+              <text class="chart-small-label" x="${x + barW / 2}" y="${row.value >= 0 ? y - 8 : y + h + 16}" text-anchor="middle">
+                ${formatValue(row.value)}
+              </text>
+  
+              <text class="chart-small-label" x="${x + barW / 2}" y="${height - 72}" text-anchor="middle">${row.name}</text>
+            `;
+          }).join("")}
+  
+          <g transform="translate(${padding.left}, ${height - 30})">
+            <rect x="0" y="-10" width="18" height="8" fill="var(--rust)"></rect>
+            <text class="chart-small-label" x="25" y="-3">Hausse</text>
+  
+            <rect x="105" y="-10" width="18" height="8" fill="var(--gold)"></rect>
+            <text class="chart-small-label" x="130" y="-3">Baisse</text>
+          </g>
+        </svg>
+      `;
+  
+      chartContainer.innerHTML = svg;
+      activateTooltip();
+    }
+  
+    function renderCspSlope(dataset) {
+      const width = 1050;
+      const height = 760;
+      const padding = { top: 70, right: 100, bottom: 80, left: 300 };
+      const rows = dataset.data;
+      const maxX = 20;
+      const rowStep = (height - padding.top - padding.bottom) / (rows.length - 1);
+    
+      const xScale = value =>
+        padding.left + (value / maxX) * (width - padding.left - padding.right);
+    
+      const yScale = index => padding.top + index * rowStep;
+    
+      const svg = `
+        <svg viewBox="0 0 ${width} ${height}">
+          <text class="chart-label" x="${padding.left}" y="35">${dataset.title}</text>
+    
+          ${[0, 5, 10, 15, 20].map(v => `
+            <line class="chart-grid" x1="${xScale(v)}" y1="${padding.top - 20}" x2="${xScale(v)}" y2="${height - padding.bottom}"></line>
+            <text class="chart-small-label" x="${xScale(v) - 4}" y="${height - 45}">${v}</text>
+          `).join("")}
+    
+          <line class="chart-axis" x1="${padding.left}" y1="${height - padding.bottom}" x2="${width - padding.right}" y2="${height - padding.bottom}"></line>
+    
+          ${rows.map((row, i) => {
+            const y = yScale(i);
+            const x2014 = xScale(row.y2014);
+            const x2020 = xScale(row.y2020);
+            const label = cspLabels[row.name] || row.name;
+            const change = row.y2020 - row.y2014;
+            const lineColor = change >= 0 ? "var(--rust)" : "var(--gold)";
+    
+            return `
+              <text class="chart-small-label" x="${padding.left - 18}" y="${y + 4}" text-anchor="end">
+                ${shortLabel(label, 35)}
+              </text>
+    
+              <line
+                x1="${x2014}"
+                y1="${y}"
+                x2="${x2020}"
+                y2="${y}"
+                stroke="${lineColor}"
+                stroke-width="10"
+                opacity="0.85"
+                data-tooltip="<strong>${label}</strong><br>Code : ${row.name}<br>2014 : ${formatValue(row.y2014)}${dataset.unit}<br>2020 : ${formatValue(row.y2020)}${dataset.unit}"
+                data-zoom="true"
+                data-zoom-title="${label}"
+                data-zoom-code="${row.name}"
+                data-zoom2014="${row.y2014}"
+                data-zoom2020="${row.y2020}"
+                data-zoom-change="${change}">
+              </line>
+    
+              <circle
+                cx="${x2014}"
+                cy="${y}"
+                r="6"
+                fill="var(--gold)"
+                data-tooltip="<strong>${label}</strong><br>2014 : ${formatValue(row.y2014)}${dataset.unit}<br>2020 : ${formatValue(row.y2020)}${dataset.unit}"
+                data-zoom="true"
+                data-zoom-title="${label}"
+                data-zoom-code="${row.name}"
+                data-zoom2014="${row.y2014}"
+                data-zoom2020="${row.y2020}"
+                data-zoom-change="${change}">
+              </circle>
+    
+              <circle
+                cx="${x2020}"
+                cy="${y}"
+                r="6"
+                fill="var(--rust)"
+                data-tooltip="<strong>${label}</strong><br>2014 : ${formatValue(row.y2014)}${dataset.unit}<br>2020 : ${formatValue(row.y2020)}${dataset.unit}"
+                data-zoom="true"
+                data-zoom-title="${label}"
+                data-zoom-code="${row.name}"
+                data-zoom2014="${row.y2014}"
+                data-zoom2020="${row.y2020}"
+                data-zoom-change="${change}">
+              </circle>
+    
+              <text class="chart-small-label" x="${Math.max(x2014, x2020) + 8}" y="${y + 4}">
+                ${formatValue(row.y2020)}%
+              </text>
+            `;
+          }).join("")}
+    
+          <g transform="translate(${padding.left}, ${height - 20})">
+            <circle cx="0" cy="-8" r="5" fill="var(--gold)"></circle>
+            <text class="chart-small-label" x="12" y="-4">2014</text>
+    
+            <circle cx="80" cy="-8" r="5" fill="var(--rust)"></circle>
+            <text class="chart-small-label" x="92" y="-4">2020</text>
+          </g>
+    
+          <text class="chart-label" x="${padding.left}" y="${height - 8}">Proportion des ménages en %</text>
+        </svg>
+      `;
+    
+      chartContainer.innerHTML = svg;
+      activateTooltip();
+    }
+  
+    function renderGroupedVertical(dataset) {
+      const width = 1050;
+      const height = 620;
+      const padding = { top: 75, right: 50, bottom: 150, left: 80 };
+      const rows = dataset.data;
+      const maxY = 40;
+  
+      const yScale = value =>
+        height - padding.bottom - (value / maxY) * (height - padding.top - padding.bottom);
+  
+      const groupW = (width - padding.left - padding.right) / rows.length;
+      const barW = groupW * 0.25;
+  
+      const svg = `
+        <svg viewBox="0 0 ${width} ${height}">
+          <text class="chart-label" x="${padding.left}" y="40">${dataset.title}</text>
+  
+          <line class="chart-axis" x1="${padding.left}" y1="${height - padding.bottom}" x2="${width - padding.right}" y2="${height - padding.bottom}"></line>
+          <line class="chart-axis" x1="${padding.left}" y1="${padding.top}" x2="${padding.left}" y2="${height - padding.bottom}"></line>
+  
+          ${[0, 10, 20, 30, 40].map(v => `
+            <line class="chart-grid" x1="${padding.left}" y1="${yScale(v)}" x2="${width - padding.right}" y2="${yScale(v)}"></line>
+            <text class="chart-small-label" x="35" y="${yScale(v) + 4}">${v}</text>
+          `).join("")}
+  
+          ${rows.map((row, i) => {
+            const x = padding.left + i * groupW + groupW * 0.22;
+            const v2014 = row.values[0];
+            const v2020 = row.values[1];
+            const label = menageLabels[row.name] || row.name;
+  
+            return `
+              <rect x="${x}" y="${yScale(v2014)}" width="${barW}" height="${height - padding.bottom - yScale(v2014)}" fill="var(--gold)" opacity="0.9"
+                data-tooltip="<strong>${label}</strong><br>Code : ${row.name}<br>2014 : ${formatValue(v2014)}${dataset.unit}"></rect>
+  
+              <rect x="${x + barW + 5}" y="${yScale(v2020)}" width="${barW}" height="${height - padding.bottom - yScale(v2020)}" fill="var(--rust)" opacity="0.9"
+                data-tooltip="<strong>${label}</strong><br>Code : ${row.name}<br>2020 : ${formatValue(v2020)}${dataset.unit}"></rect>
+  
+              <text class="chart-small-label" x="${x + barW}" y="${height - 112}" text-anchor="middle">${row.name}</text>
+              <text class="chart-small-label" x="${x + barW}" y="${height - 92}" text-anchor="middle">${shortLabel(label, 14)}</text>
+            `;
+          }).join("")}
+  
+          <g transform="translate(${padding.left}, ${height - 32})">
+            <rect x="0" y="-10" width="18" height="8" fill="var(--gold)"></rect>
+            <text class="chart-small-label" x="25" y="-3">2014</text>
+  
+            <rect x="85" y="-10" width="18" height="8" fill="var(--rust)"></rect>
+            <text class="chart-small-label" x="110" y="-3">2020</text>
+          </g>
+        </svg>
+      `;
+  
+      chartContainer.innerHTML = svg;
+      activateTooltip();
+    }
+  
+    chartButtons.forEach(button => {
+      button.addEventListener("click", () => renderChart(button.dataset.chart));
+    });
+  
+    renderChart("regions");
+  </script>
+
+</body>
+</html>

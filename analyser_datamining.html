@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projet BUT 3 - Data Mining</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600;700&display=swap');
+
+    :root {
+      --cream: #f3efe6;
+      --paper: #fbf7ef;
+      --rust: #a74d18;
+      --rust-dark: #74350f;
+      --gold: #c89b55;
+      --ink: #171410;
+      --muted: #6f6258;
+      --soft: #efe3cf;
+      --olive: #9cbf55;
+      --brown: #5a290e;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: Inter, Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    .project-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 4%;
+      background: #fbf7efdd;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #d7c7ad;
+      box-shadow: 0 10px 30px #00000010;
+    }
+
+    .brand {
+      font-family: Playfair Display, serif;
+      font-style: italic;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      font-family: Bebas Neue, sans-serif;
+      text-decoration: none;
+      letter-spacing: .05em;
+      transition: transform .25s ease, color .25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--rust);
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(90deg, var(--cream) 0 64%, var(--rust) 64% 100%);
+      padding: 120px 0 70px;
+    }
+
+    .hero-content {
+      background: var(--paper);
+      padding: clamp(30px, 5vw, 54px);
+      border-left: 6px solid var(--rust);
+      box-shadow: 0 24px 70px #0002;
+      max-width: min(1040px, 78vw);
+    }
+
+    .kicker {
+      font-family: Bebas Neue, sans-serif;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--rust-dark);
+      font-size: 1.1rem;
+    }
+
+    h1 {
+      font-family: Playfair Display, serif;
+      color: var(--rust);
+      font-size: clamp(2.4rem, 6vw, 5.2rem);
+      line-height: .95;
+      margin: 14px 0;
+    }
+
+    h2 {
+      font-family: Playfair Display, serif;
+      color: var(--rust);
+      font-size: clamp(2rem, 4vw, 2.9rem);
+      margin: 0 0 26px;
+    }
+
+    h3 {
+      font-family: Bebas Neue, sans-serif;
+      font-size: 1.8rem;
+      margin: 0 0 10px;
+    }
+
+    h4 {
+      font-family: Bebas Neue, sans-serif;
+      color: var(--rust-dark);
+      font-size: 1.35rem;
+      margin: 22px 0 8px;
+    }
+
+    p {
+      color: var(--muted);
+      margin-top: 0;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 24px;
+      border-bottom: 2px solid var(--ink);
+      font-family: Bebas Neue, sans-serif;
+      letter-spacing: .05em;
+      text-decoration: none;
+      color: var(--ink);
+      padding-bottom: 4px;
+      transition: transform .25s ease, color .25s ease;
+    }
+
+    .btn:hover {
+      color: var(--rust);
+      transform: translateX(-4px);
+    }
+
+    .quick-info {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .info-box {
+      background: var(--soft);
+      padding: 15px;
+      border-left: 4px solid var(--rust);
+    }
+
+    .info-box span {
+      display: block;
+      font-family: Bebas Neue, sans-serif;
+      color: var(--rust-dark);
+      font-size: 1.1rem;
+    }
+
+    .info-box strong {
+      font-size: .92rem;
+    }
+
+    .section {
+      padding: 82px 0;
+      border-bottom: 1px solid #d7c7ad;
+    }
+
+    .section-desc {
+      margin-bottom: 30px;
+      max-width: 900px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card,
+    .step,
+    .difficulty-card {
+      background: var(--paper);
+      padding: 32px;
+      border-left: 5px solid var(--rust);
+      box-shadow: 0 10px 30px #0000000d;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .card:hover,
+    .step:hover,
+    .difficulty-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px #00000018;
+    }
+
+    .intro-layout {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .intro-main {
+      background: var(--paper);
+      padding: 36px;
+      border-left: 6px solid var(--rust);
+      box-shadow: 0 10px 30px #0000000d;
+    }
+
+    .project-focus {
+      background: var(--rust);
+      color: var(--cream);
+      padding: 42px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 34px;
+      box-shadow: 0 18px 50px #00000020;
+    }
+    
+    .project-focus h3,
+    .project-focus p {
+      color: var(--cream);
+    }
+    
+    .focus-kicker {
+      display: inline-block;
+      font-family: Bebas Neue, sans-serif;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: 1rem;
+      margin-bottom: 18px;
+    }
+    
+    .focus-top h3 {
+      font-family: Playfair Display, serif;
+      font-size: clamp(1.7rem, 3.5vw, 2.8rem);
+      line-height: 1.05;
+      margin-bottom: 18px;
+    }
+    
+    .focus-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    
+    .focus-stat {
+      background: #ffffff12;
+      padding: 20px;
+      text-align: center;
+      border: 1px solid #ffffff18;
+    }
+    
+    .focus-stat strong {
+      display: block;
+      font-family: Playfair Display, serif;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    
+    .focus-stat span {
+      font-family: Bebas Neue, sans-serif;
+      letter-spacing: .05em;
+      font-size: 1rem;
+    }
+    
+    .focus-bottom {
+      padding-top: 12px;
+      border-top: 1px solid #ffffff25;
+    }
+    
+    @media(max-width:700px) {
+    
+      .project-focus {
+        padding: 28px;
+      }
+    
+      .focus-stats {
+        grid-template-columns: 1fr;
+      }
+    
+    }
+
+    .steps {
+      counter-reset: step;
+      display: grid;
+      gap: 20px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--rust);
+      color: var(--cream);
+      font-family: Playfair Display, serif;
+      font-weight: 700;
+      font-size: 1.4rem;
+    }
+
+    .result-table-wrapper {
+      overflow-x: auto;
+      background: var(--paper);
+      box-shadow: 0 10px 30px #0000000d;
+      border-left: 5px solid var(--rust);
+    }
+
+    .result-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 720px;
+    }
+
+    .result-table th,
+    .result-table td {
+      padding: 16px;
+      text-align: left;
+      border-bottom: 1px solid #d7c7ad;
+    }
+
+    .result-table th {
+      background: var(--rust);
+      color: var(--cream);
+      font-family: Bebas Neue, sans-serif;
+      letter-spacing: .05em;
+      font-size: 1.15rem;
+    }
+
+    .result-table td {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .result-table .best-row {
+      background: var(--soft);
+    }
+
+    .result-table .best-row td:first-child {
+      color: var(--rust);
+      font-weight: 800;
+    }
+
+    .model-dashboard {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 28px;
+      margin-top: 34px;
+      align-items: stretch;
+    }
+
+    .best-model {
+      background: var(--rust);
+      color: var(--cream);
+      padding: 36px;
+      box-shadow: 0 18px 50px #00000020;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .best-model h3,
+    .best-model p {
+      color: var(--cream);
+    }
+
+    .best-model strong {
+      display: block;
+      font-family: Playfair Display, serif;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: .95;
+      margin: 12px 0;
+    }
+
+    .bar-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .bar-item {
+      background: var(--paper);
+      padding: 20px;
+      box-shadow: 0 10px 30px #0000000d;
+      border-left: 5px solid var(--rust);
+    }
+
+    .bar-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .bar-track {
+      height: 18px;
+      background: #e0d2bd;
+      overflow: hidden;
+      border-radius: 999px;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: var(--rust);
+      border-radius: 999px;
+    }
+
+    .model-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .model-row {
+      background: var(--paper);
+      box-shadow: 0 10px 30px #0000000d;
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      border-left: 5px solid var(--rust);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .model-row:hover {
+      transform: translateX(6px);
+      box-shadow: 0 16px 40px #00000018;
+    }
+
+    .model-name {
+      background: var(--soft);
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      font-family: Bebas Neue, sans-serif;
+      font-size: 1.7rem;
+      color: var(--rust-dark);
+    }
+
+    .model-text {
+      padding: 24px;
+    }
+
+    .model-text p {
+      margin-bottom: 0;
+    }
+
+    .corpus-layout {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .corpus-visual {
+      background: var(--paper);
+      padding: 34px;
+      border-left: 5px solid var(--rust);
+      box-shadow: 0 10px 30px #0000000d;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .corpus-visual h3 {
+      align-self: flex-start;
+      margin-bottom: 26px;
+    }
+
+    .donut-chart {
+      width: min(280px, 72vw);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background:
+        conic-gradient(
+          var(--rust) 0 68.2%,
+          var(--gold) 68.2% 100%
+        );
+      display: grid;
+      place-items: center;
+      box-shadow: inset 0 0 0 1px #00000010, 0 18px 45px #00000012;
+      margin: 10px auto 28px;
+    }
+
+    .donut-center {
+      width: 58%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: var(--paper);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      box-shadow: inset 0 0 0 1px #d7c7ad;
+    }
+
+    .donut-center strong {
+      display: block;
+      font-family: Playfair Display, serif;
+      color: var(--rust);
+      font-size: 3.4rem;
+      line-height: 1;
+    }
+
+    .donut-center span {
+      display: block;
+      font-family: Bebas Neue, sans-serif;
+      color: var(--rust-dark);
+      letter-spacing: .04em;
+    }
+
+    .legend {
+      width: 100%;
+      display: grid;
+      gap: 10px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .legend div {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .legend-dot {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .legend-dot.quantitative {
+      background: var(--rust);
+    }
+
+    .legend-dot.qualitative {
+      background: var(--gold);
+    }
+
+    .corpus-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .corpus-line {
+      background: var(--paper);
+      display: grid;
+      grid-template-columns: 125px 1fr;
+      gap: 18px;
+      padding: 24px;
+      border-left: 5px solid var(--rust);
+      box-shadow: 0 10px 30px #0000000d;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .corpus-line:hover {
+      transform: translateX(6px);
+      box-shadow: 0 16px 40px #00000018;
+    }
+
+    .corpus-line > span {
+      font-family: Bebas Neue, sans-serif;
+      color: var(--rust-dark);
+      font-size: 1.25rem;
+      background: var(--soft);
+      display: grid;
+      place-items: center;
+      min-height: 72px;
+      text-align: center;
+    }
+
+    .corpus-line h3 {
+      margin-bottom: 6px;
+    }
+
+    .corpus-line p {
+      margin-bottom: 0;
+    }
+
+    .corpus-line.main {
+      border-left-color: var(--gold);
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .impact-panel {
+      background: var(--paper);
+      padding: 32px;
+      border-left: 5px solid var(--rust);
+      box-shadow: 0 10px 30px #0000000d;
+    }
+
+    .corpus-result {
+      display: grid;
+      grid-template-columns: 1fr .5fr .5fr;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #d7c7ad;
+      align-items: center;
+    }
+
+    .corpus-result strong {
+      color: var(--rust);
+    }
+
+    .corpus-result.best {
+      background: var(--soft);
+      padding-left: 12px;
+      border-left: 4px solid var(--rust);
+    }
+
+    .big-number {
+      background: var(--rust);
+      color: var(--cream);
+      padding: 34px;
+      box-shadow: 0 18px 50px #00000020;
+    }
+
+    .big-number h3,
+    .big-number p {
+      color: var(--cream);
+    }
+
+    .big-number p {
+      margin-top: 28px;
+    }
+
+    .big-number strong {
+      display: block;
+      font-family: Playfair Display, serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      line-height: 1;
+      margin: 10px 0;
+    }
+
+    .difficulty-layout {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .difficulty-intro {
+      background: var(--rust);
+      color: var(--cream);
+      padding: 34px;
+      box-shadow: 0 18px 50px #00000020;
+      position: sticky;
+      top: 90px;
+    }
+
+    .difficulty-intro h3,
+    .difficulty-intro p {
+      color: var(--cream);
+    }
+
+    .difficulty-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .difficulty-card {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .difficulty-number {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--rust);
+      color: var(--cream);
+      display: grid;
+      place-items: center;
+      font-family: Playfair Display, serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      background: var(--soft);
+      color: var(--rust-dark);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: .9rem;
+    }
+
+    .highlight {
+      background: var(--rust);
+      color: var(--cream);
+      padding: clamp(28px, 5vw, 52px);
+      box-shadow: 0 18px 50px #00000020;
+    }
+
+    .highlight h2,
+    .highlight p {
+      color: var(--cream);
+    }
+
+    .footer {
+      padding: 44px 0;
+      text-align: center;
+      background: var(--rust);
+      color: var(--cream);
+    }
+
+    .footer p,
+    .footer a {
+      color: var(--cream);
+    }
+
+    .footer a {
+      text-decoration: none;
+      border-bottom: 1px solid var(--gold);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    
+    .compromise-panel {
+      background: var(--paper);
+      padding: 32px;
+      border-left: 5px solid var(--rust);
+      box-shadow: 0 10px 30px #0000000d;
+    }
+    
+    .reason-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 0;
+      border-bottom: 1px solid #d7c7ad;
+      font-weight: 700;
+    }
+    
+    .reason-line strong {
+      color: var(--rust);
+    }
+    
+    .compromise-panel p {
+      margin-top: 22px;
+    }
+    
+    .split-donut {
+      width: min(280px, 72vw);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background:
+        conic-gradient(
+          var(--rust) 0 80%,
+          var(--gold) 80% 100%
+        );
+      display: grid;
+      place-items: center;
+      box-shadow: inset 0 0 0 1px #00000010, 0 18px 45px #00000012;
+      margin: 20px auto 28px;
+    }
+    
+    .split-donut-center {
+      width: 58%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: var(--paper);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      box-shadow: inset 0 0 0 1px #d7c7ad;
+    }
+    
+    .split-donut-center strong {
+      display: block;
+      font-family: Playfair Display, serif;
+      color: var(--rust);
+      font-size: 2.7rem;
+      line-height: 1;
+    }
+    
+    .split-donut-center span {
+      display: block;
+      font-family: Bebas Neue, sans-serif;
+      color: var(--rust-dark);
+      letter-spacing: .04em;
+    }
+    
+    .split-legend {
+      width: 100%;
+      display: grid;
+      gap: 10px;
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+    
+    .split-legend div {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .split-dot {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+    
+    .split-dot.train {
+      background: var(--rust);
+    }
+    
+    .split-dot.test {
+      background: var(--gold);
+    }
+    
+    @media(max-width:700px) {
+      .split-chart {
+        height: auto;
+        grid-template-columns: 1fr;
+      }
+    
+      .split-train,
+      .split-test {
+        min-height: 130px;
+      }
+    
+      .reason-line {
+        flex-direction: column;
+        gap: 4px;
+      }
+    }
+
+    @media(max-width:1050px) {
+      .grid-3 {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .corpus-layout,
+      .impact-grid,
+      .difficulty-layout,
+      .model-dashboard,
+      .intro-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .difficulty-intro {
+        position: static;
+      }
+    }
+
+    @media(max-width:850px) {
+      .hero {
+        min-height: auto;
+        background: var(--cream);
+        padding: 110px 0 60px;
+      }
+
+      .hero-content {
+        max-width: 100%;
+      }
+
+      .quick-info,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media(max-width:700px) {
+      .project-nav {
+        position: static;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero {
+        padding: 50px 0;
+      }
+
+      .quick-info,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .step,
+      .model-row,
+      .corpus-line,
+      .difficulty-card {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 58px 0;
+      }
+
+      .corpus-result {
+        grid-template-columns: 1fr;
+      }
+
+      .model-name,
+      .corpus-line > span {
+        place-items: start;
+        justify-content: start;
+      }
+    }
+
+    @media(max-width:520px) {
+      .container {
+        width: 94%;
+      }
+
+      .hero-content,
+      .intro-main,
+      .target-panel,
+      .card,
+      .step,
+      .impact-panel,
+      .big-number,
+      .corpus-visual,
+      .corpus-line,
+      .difficulty-intro,
+      .difficulty-card {
+        padding: 24px;
+      }
+
+      .result-table {
+        min-width: 660px;
+      }
+    }
+  </style>
+</head>
+
+<body id="top">
+
+  <nav class="project-nav">
+    <div class="brand">Ylan Harrault</div>
+
+    <div class="nav-links">
+      <a href="index.html#analyser">Retour</a>
+      <a href="#objectif">Objectif</a>
+      <a href="#methodologie">Méthode</a>
+      <a href="#resultats">Résultats</a>
+      <a href="#corpus">Corpus</a>
+      <a href="#difficultes">Difficultés</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="kicker">Projet BUT 3 — Analyser</div>
+
+        <h1>Data Mining : prédiction des catégories de véhicules</h1>
+
+        <p>
+          Projet de classification supervisée réalisé à partir du Forza Final Dataset.
+          L’objectif était de prédire la catégorie stock_specs d’un véhicule à partir
+          de ses caractéristiques techniques et qualitatives.
+        </p>
+
+        <div class="quick-info">
+          <div class="info-box">
+            <span>Dataset</span>
+            <strong>Forza Final Dataset</strong>
+          </div>
+
+          <div class="info-box">
+            <span>Données</span>
+            <strong>525 lignes</strong>
+          </div>
+
+          <div class="info-box">
+            <span>Variables</span>
+            <strong>22 colonnes</strong>
+          </div>
+
+          <div class="info-box">
+            <span>Cible</span>
+            <strong>stock_specs</strong>
+          </div>
+        </div>
+
+        <a href="index.html#analyser" class="btn">← Retour à la compétence Analyser</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="section" id="objectif">
+      <div class="container">
+        <div class="intro-layout">
+          <div class="intro-main">
+            <div class="kicker">Objectif du projet</div>
+            <h2>Classer automatiquement les véhicules</h2>
+
+            <p>
+              Le projet avait pour but de prédire automatiquement la catégorie d’un véhicule :
+              S2, S1, A, B, C ou D. Cette catégorie correspond à la variable cible
+              <strong>stock_specs</strong>.
+            </p>
+
+            <p>
+              La prédiction repose sur des caractéristiques comme la vitesse, l’accélération,
+              la tenue de route, la transmission, le type de véhicule ou encore certains éléments
+              liés à ses performances globales.
+            </p>
+
+            <p>
+              L’enjeu principal était de comparer plusieurs modèles de classification et de comprendre
+              l’impact du choix des variables sur la qualité de prédiction.
+            </p>
+          </div>
+
+          <div class="project-focus">
+
+            <div class="focus-top">
+              <span class="focus-kicker">Projet de classification</span>
+          
+              <h3>Objectif analytique</h3>
+          
+              <p>
+                Le projet vise à comprendre quelles caractéristiques influencent le plus
+                la catégorie d’un véhicule et à construire un modèle capable de généraliser
+                correctement sur de nouvelles données.
+              </p>
+            </div>
+          
+            <div class="focus-stats">
+          
+              <div class="focus-stat">
+                <strong>6</strong>
+                <span>catégories prédites</span>
+              </div>
+          
+              <div class="focus-stat">
+                <strong>6</strong>
+                <span>modèles comparés</span>
+              </div>
+          
+              <div class="focus-stat">
+                <strong>4</strong>
+                <span>corpus étudiés</span>
+              </div>
+          
+            </div>
+          
+            <div class="focus-bottom">
+              <p>
+                L’analyse compare plusieurs approches de data mining afin d’identifier
+                le meilleur compromis entre performance, stabilité et interprétation.
+              </p>
+            </div>
+          
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="methodologie">
+      <div class="container">
+        <h2>Méthodologie</h2>
+
+        <div class="steps">
+          <div class="step">
+            <div>
+              <h3>Prétraitement des données</h3>
+              <p>
+                La variable Stock_Rating a été retirée pour éviter une fuite d’information.
+                Certaines variables numériques comme la vitesse, l’accélération et les g-force
+                ont été converties pour être correctement exploitées.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div>
+              <h3>Encodage des variables catégorielles</h3>
+              <p>
+                Les variables qualitatives ont été transformées afin d’être utilisées par les modèles.
+                Cette étape permet d’intégrer les informations non numériques comme le type de véhicule
+                ou la transmission.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div>
+              <h3>Séparation train / test</h3>
+              <p>
+                Les données ont été séparées en deux parties : 80 % pour l’apprentissage et 20 % pour le test.
+                Cette séparation permet d’évaluer la capacité des modèles à généraliser sur de nouvelles données.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div>
+              <h3>Comparaison des modèles</h3>
+              <p>
+                Six modèles ont été comparés : ZeroR, KNN, SVM, Decision Tree, Random Forest et XGBoost.
+                Les performances ont été évaluées avec l’accuracy, la precision, le recall et le F1-score.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="resultats">
+      <div class="container">
+        <h2>Résultats globaux des modèles</h2>
+
+        <p class="section-desc">
+          Les meilleurs résultats sont obtenus par SVM, Decision Tree et XGBoost.
+          Le Decision Tree se distingue par son F1-score, tandis que SVM obtient le meilleur recall.
+        </p>
+
+        <div class="result-table-wrapper">
+          <table class="result-table">
+            <thead>
+              <tr>
+                <th>Modèle</th>
+                <th>Accuracy</th>
+                <th>Precision</th>
+                <th>Recall</th>
+                <th>F1-score</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>ZeroR</td>
+                <td>21%</td>
+                <td>3%</td>
+                <td>17%</td>
+                <td>6%</td>
+              </tr>
+
+              <tr>
+                <td>KNN</td>
+                <td>46%</td>
+                <td>32%</td>
+                <td>47%</td>
+                <td>35%</td>
+              </tr>
+
+              <tr class="best-row">
+                <td>SVM</td>
+                <td>79%</td>
+                <td>80%</td>
+                <td>82%</td>
+                <td>78%</td>
+              </tr>
+
+              <tr class="best-row">
+                <td>Decision Tree</td>
+                <td>78%</td>
+                <td>83%</td>
+                <td>81%</td>
+                <td>79%</td>
+              </tr>
+
+              <tr>
+                <td>Random Forest</td>
+                <td>75%</td>
+                <td>73%</td>
+                <td>75%</td>
+                <td>72%</td>
+              </tr>
+
+              <tr class="best-row">
+                <td>XGBoost</td>
+                <td>79%</td>
+                <td>75%</td>
+                <td>80%</td>
+                <td>76%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="model-dashboard">
+          <div class="best-model">
+            <h3>Meilleur compromis</h3>
+            <strong>Decision Tree</strong>
+            <p>
+              Modèle retenu comme particulièrement intéressant grâce à son équilibre entre performance,
+              lisibilité et interprétation des décisions de classement.
+            </p>
+          </div>
+        
+          <div class="compromise-panel">
+            <h3>Pourquoi ce choix ?</h3>
+        
+            <div class="reason-line">
+              <span>Performance solide</span>
+              <strong>78% accuracy</strong>
+            </div>
+        
+            <div class="reason-line">
+              <span>Meilleur F1-score</span>
+              <strong>79%</strong>
+            </div>
+        
+            <div class="reason-line">
+              <span>Très bonne précision</span>
+              <strong>83%</strong>
+            </div>
+        
+            <p>
+              Même si le SVM obtient aussi de très bons résultats, le Decision Tree est plus simple
+              à expliquer visuellement. Il permet donc de mieux justifier les décisions du modèle
+              dans un contexte de portfolio.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="modeles">
+      <div class="container">
+        <h2>Lecture des différents modèles</h2>
+
+        <div class="model-list">
+          <div class="model-row">
+            <div class="model-name">SVM</div>
+            <div class="model-text">
+              <p>
+                Très performant globalement, avec une accuracy de 79 % et le meilleur recall.
+                Il identifie bien les catégories, mais son interprétation est moins directe.
+              </p>
+            </div>
+          </div>
+
+          <div class="model-row">
+            <div class="model-name">Decision Tree</div>
+            <div class="model-text">
+              <p>
+                Très bon compromis entre performance et lisibilité. Son F1-score de 79 %
+                permet de le considérer comme l’un des modèles les plus pertinents du projet.
+              </p>
+            </div>
+          </div>
+
+          <div class="model-row">
+            <div class="model-name">XGBoost</div>
+            <div class="model-text">
+              <p>
+                Modèle performant avec 79 % d’accuracy. Il reste cependant plus complexe à expliquer
+                qu’un arbre de décision simple dans le cadre d’un portfolio.
+              </p>
+            </div>
+          </div>
+
+          <div class="model-row">
+            <div class="model-name">Random Forest</div>
+            <div class="model-text">
+              <p>
+                Résultats corrects avec 75 % d’accuracy, mais légèrement inférieurs aux meilleurs modèles.
+                Il reste utile pour comparer avec une approche ensembliste.
+              </p>
+            </div>
+          </div>
+
+          <div class="model-row">
+            <div class="model-name">KNN / ZeroR</div>
+            <div class="model-text">
+              <p>
+                KNN reste limité sur ce jeu de données, tandis que ZeroR sert surtout de modèle de référence.
+                Leurs résultats montrent l’intérêt des modèles plus avancés.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="corpus">
+      <div class="container">
+        <h2>Répartition et construction des corpus</h2>
+
+        <p class="section-desc">
+          Les variables ont été regroupées en plusieurs corpus pour analyser l’impact du choix des données.
+          Cette comparaison permet de voir si le modèle a besoin de toutes les informations ou si certains
+          groupes de variables suffisent.
+        </p>
+
+        <div class="corpus-layout">
+          <div class="corpus-visual">
+            <h3>Répartition train / test</h3>
+          
+            <div class="split-donut">
+              <div class="split-donut-center">
+              </div>
+            </div>
+            
+            <div class="split-legend">
+              <div>
+                <span class="split-dot train"></span>
+                <strong>80%</strong> Train
+              </div>
+            
+              <div>
+                <span class="split-dot test"></span>
+                <strong>20%</strong> Test
+              </div>
+            </div>
+          
+            <p>
+              Le jeu de données a été séparé en deux parties : une partie majoritaire pour entraîner
+              les modèles et une partie test pour évaluer leurs performances sur des données non vues.
+            </p>
+          </div>
+
+          <div class="corpus-list">
+            <div class="corpus-line main">
+              <span>Corpus 1</span>
+              <div>
+                <h3>Global</h3>
+                <p>
+                  Toutes les variables sont utilisées, sauf Stock_Rating, supprimée pour éviter
+                  une fuite d’information.
+                </p>
+              </div>
+            </div>
+
+            <div class="corpus-line">
+              <span>Corpus 2</span>
+              <div>
+                <h3>Performance only</h3>
+                <p>
+                  Corpus centré sur les variables de performance : speed, handling,
+                  acceleration, launch et offroad.
+                </p>
+              </div>
+            </div>
+
+            <div class="corpus-line">
+              <span>Corpus 3</span>
+              <div>
+                <h3>Filtré numérique</h3>
+                <p>
+                  Corpus numérique où certaines variables ont été retirées :
+                  Top_Speed, 0-60_Mph, 0-100_Mph et g-force.
+                </p>
+              </div>
+            </div>
+
+            <div class="corpus-line">
+              <span>Corpus 4</span>
+              <div>
+                <h3>Qualitatif</h3>
+                <p>
+                  Corpus composé uniquement de variables qualitatives comme Model_type,
+                  Drive_Type et groupe_poids.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="impact-corpus">
+      <div class="container">
+        <h2>Impact du choix des corpus</h2>
+
+        <div class="impact-grid">
+          <div class="impact-panel">
+            <h3>Résultats selon les corpus</h3>
+
+            <div class="corpus-result best">
+              <span>Global</span>
+              <strong>78%</strong>
+              <strong>F1 : 79,5%</strong>
+            </div>
+
+            <div class="corpus-result">
+              <span>Performance only</span>
+              <strong>68%</strong>
+              <strong>F1 : 68%</strong>
+            </div>
+
+            <div class="corpus-result">
+              <span>Filtré numérique</span>
+              <strong>70%</strong>
+              <strong>F1 : 70,7%</strong>
+            </div>
+
+            <div class="corpus-result">
+              <span>Qualitatif</span>
+              <strong>52%</strong>
+              <strong>F1 : 55%</strong>
+            </div>
+
+            <p style="margin-top:22px;">
+              Le corpus global donne les meilleurs résultats. Cela montre que la combinaison
+              des variables numériques et qualitatives apporte plus d’information que l’utilisation
+              d’un groupe de variables isolé.
+            </p>
+          </div>
+
+          <div class="big-number">
+            <h3>Meilleur corpus</h3>
+            <strong>79,5%</strong>
+            <p>
+              F1-score obtenu avec le corpus global sur le modèle le plus performant étudié
+              dans cette partie : Decision Tree.
+            </p>
+          </div>
+        </div>
+
+        <div class="bar-list" style="margin-top:34px;">
+          <div class="bar-item">
+            <div class="bar-head">
+              <span>Corpus global</span>
+              <span>79,5%</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width:79.5%"></div>
+            </div>
+          </div>
+
+          <div class="bar-item">
+            <div class="bar-head">
+              <span>Corpus filtré numérique</span>
+              <span>70,7%</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width:70.7%"></div>
+            </div>
+          </div>
+
+          <div class="bar-item">
+            <div class="bar-head">
+              <span>Corpus performance only</span>
+              <span>68%</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width:68%"></div>
+            </div>
+          </div>
+
+          <div class="bar-item">
+            <div class="bar-head">
+              <span>Corpus qualitatif</span>
+              <span>55%</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width:55%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="difficultes">
+      <div class="container">
+        <h2>Difficultés rencontrées</h2>
+    
+        <div class="grid-2">
+          <div class="card">
+            <h3>Identifier la fuite d’information</h3>
+            <p>
+              Certaines variables pouvaient donner trop directement la réponse au modèle.
+              La variable Stock_Rating a donc été supprimée pour obtenir une évaluation plus réaliste.
+            </p>
+          </div>
+    
+          <div class="card">
+            <h3>Construire les corpus</h3>
+            <p>
+              Il fallait choisir quels groupes de variables comparer. Cette étape a demandé
+              de réfléchir au sens des variables et à leur rôle dans la prédiction.
+            </p>
+          </div>
+    
+          <div class="card">
+            <h3>Comparer plusieurs métriques</h3>
+            <p>
+              Un modèle ne peut pas être jugé uniquement avec l’accuracy. La precision,
+              le recall et le F1-score ont permis d’avoir une vision plus complète.
+            </p>
+          </div>
+    
+          <div class="card">
+            <h3>Interpréter les résultats</h3>
+            <p>
+              Certains modèles sont performants mais plus difficiles à expliquer.
+              Le Decision Tree était intéressant car il proposait un bon compromis
+              entre performance et lisibilité.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="competences">
+      <div class="container grid-2">
+        <div>
+          <h2>Outils et notions</h2>
+
+          <div class="tag-list">
+            <span class="tag">Data Mining</span>
+            <span class="tag">Classification</span>
+            <span class="tag">SVM</span>
+            <span class="tag">Decision Tree</span>
+            <span class="tag">Random Forest</span>
+            <span class="tag">XGBoost</span>
+            <span class="tag">KNN</span>
+            <span class="tag">Matrice de confusion</span>
+          </div>
+        </div>
+
+        <div>
+          <h2>Compétences développées</h2>
+
+          <div class="tag-list">
+            <span class="tag">Prétraitement</span>
+            <span class="tag">Encodage</span>
+            <span class="tag">Sélection de variables</span>
+            <span class="tag">Évaluation de modèles</span>
+            <span class="tag">Analyse comparative</span>
+            <span class="tag">Interprétation</span>
+            <span class="tag">Communication visuelle</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="bilan">
+      <div class="container">
+        <div class="highlight">
+          <h2>Bilan du projet</h2>
+
+          <p>
+            Ce projet m’a permis de comprendre l’importance du prétraitement et du choix
+            des variables dans une tâche de classification. Les résultats montrent que
+            les meilleurs modèles ne sont pas seulement ceux qui obtiennent le meilleur score,
+            mais aussi ceux dont les résultats peuvent être interprétés correctement.
+          </p>
+
+          <p>
+            Le SVM, le Decision Tree et XGBoost obtiennent les meilleurs résultats globaux.
+            Cependant, le Decision Tree ressort comme un modèle particulièrement intéressant
+            grâce à son équilibre entre performance, adaptabilité aux données restreintes
+            et lisibilité du classement.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <h3>Contactez-moi</h3>
+
+      <p>
+        <a href="mailto:ylan.harrault@gmail.com">ylan.harrault@gmail.com</a>
+      </p>
+
+      <div class="footer-links">
+        <a href="index.html#analyser">← Retour aux projets</a>
+        <a href="#top">↑ Retour en haut</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projet BUT 3 - Traiter</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600;700&display=swap');
+
+    :root {
+      --cream: #f3efe6;
+      --paper: #fbf7ef;
+      --rust: #a74d18;
+      --rust-dark: #74350f;
+      --gold: #c89b55;
+      --ink: #171410;
+      --muted: #6f6258;
+      --soft: #efe3cf;
+      --green: #9cbf55;
+      --red: #b51e1e;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: Inter, Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    .project-nav {
+      position: fixed;
+      top: 0;
+      left: 4%;
+      right: 4%;
+      z-index: 20;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 14px 20px;
+      background: #fbf7efdd;
+      backdrop-filter: blur(10px);
+      border-left: 4px solid var(--rust);
+      box-shadow: 0 10px 30px #00000018;
+    }
+
+    .brand {
+      font-family: Playfair Display, serif;
+      font-style: italic;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      font-family: Bebas Neue, sans-serif;
+      text-decoration: none;
+      letter-spacing: .05em;
+      transition: .25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--rust);
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(90deg, var(--cream) 0 65%, var(--rust) 65% 100%);
+      padding: 120px 0 70px;
+    }
+
+    .hero-content {
+      background: var(--paper);
+      padding: clamp(30px, 5vw, 54px);
+      border-left: 6px solid var(--rust);
+      box-shadow: 0 24px 70px #0002;
+      max-width: min(1000px, 78vw);
+    }
+
+    .kicker {
+      font-family: Bebas Neue, sans-serif;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--rust-dark);
+      font-size: 1.1rem;
+    }
+
+    h1 {
+      font-family: Playfair Display, serif;
+      color: var(--rust);
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      line-height: .95;
+      margin: 14px 0;
+    }
+
+    h2 {
+      font-family: Playfair Display, serif;
+      color: var(--rust);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      margin: 0 0 26px;
+    }
+
+    h3 {
+      font-family: Bebas Neue, sans-serif;
+      font-size: 1.75rem;
+      margin: 0 0 10px;
+    }
+
+    p {
+      color: var(--muted);
+      margin-top: 0;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 24px;
+      border-bottom: 2px solid var(--ink);
+      font-family: Bebas Neue, sans-serif;
+      letter-spacing: .05em;
+      text-decoration: none;
+      padding-bottom: 4px;
+      transition: .25s ease;
+    }
+
+    .btn:hover {
+      color: var(--rust);
+      transform: translateX(-4px);
+    }
+
+    .quick-info {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .info-box {
+      background: var(--soft);
+      padding: 15px;
+      border-left: 4px solid var(--rust);
+    }
+
+    .info-box span {
+      display: block;
+      font-family: Bebas Neue, sans-serif;
+      color: var(--rust-dark);
+      font-size: 1.1rem;
+    }
+
+    .section {
+      padding: 82px 0;
+      border-bottom: 1px solid #d7c7ad;
+    }
+
+    .section-desc {
+      max-width: 900px;
+      margin-bottom: 30px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card,
+    .step,
+    .visual-card,
+    .difficulty-card,
+    .method-card {
+      background: var(--paper);
+      padding: 32px;
+      border-left: 5px solid var(--rust);
+      box-shadow: 0 10px 30px #0000000d;
+      transition: .25s ease;
+    }
+
+    .card:hover,
+    .step:hover,
+    .visual-card:hover,
+    .difficulty-card:hover,
+    .method-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px #00000018;
+    }
+
+    .focus-layout {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 28px;
+    }
+
+    .focus-main {
+      background: var(--paper);
+      padding: 36px;
+      border-left: 6px solid var(--rust);
+      box-shadow: 0 10px 30px #0000000d;
+    }
+
+    .focus-panel {
+      background: var(--rust);
+      color: var(--cream);
+      padding: 36px;
+      box-shadow: 0 18px 50px #00000020;
+    }
+
+    .focus-panel h3,
+    .focus-panel p {
+      color: var(--cream);
+    }
+
+    .focus-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .focus-stat {
+      background: #ffffff12;
+      border: 1px solid #ffffff20;
+      padding: 18px;
+    }
+
+    .focus-stat strong {
+      display: block;
+      font-family: Playfair Display, serif;
+      font-size: 2.4rem;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .focus-stat span {
+      font-family: Bebas Neue, sans-serif;
+      letter-spacing: .05em;
+    }
+
+    .steps {
+      counter-reset: step;
+      display: grid;
+      gap: 20px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 20px;
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--rust);
+      color: var(--cream);
+      font-family: Playfair Display, serif;
+      font-weight: 700;
+      font-size: 1.4rem;
+    }
+
+    .methods-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .method-card span {
+      display: inline-block;
+      background: var(--soft);
+      color: var(--rust-dark);
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: .85rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .result-table-wrapper {
+      overflow-x: auto;
+      background: var(--paper);
+      box-shadow: 0 10px 30px #0000000d;
+      border-left: 5px solid var(--rust);
+    }
+
+    .result-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+    }
+
+    .result-table th,
+    .result-table td {
+      padding: 16px;
+      text-align: left;
+      border-bottom: 1px solid #d7c7ad;
+    }
+
+    .result-table th {
+      background: var(--rust);
+      color: var(--cream);
+      font-family: Bebas Neue, sans-serif;
+      letter-spacing: .05em;
+      font-size: 1.15rem;
+    }
+
+    .result-table td {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .best-row {
+      background: var(--soft);
+    }
+
+    .comparison-layout {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 28px;
+      align-items: stretch;
+      margin-top: 34px;
+    }
+
+    .best-panel {
+      background: var(--rust);
+      color: var(--cream);
+      padding: 34px;
+      box-shadow: 0 18px 50px #00000020;
+    }
+
+    .best-panel h3,
+    .best-panel p {
+      color: var(--cream);
+    }
+
+    .best-panel strong {
+      display: block;
+      font-family: Playfair Display, serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: 1;
+      margin: 10px 0 16px;
+    }
+
+    .bar-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .bar-item {
+      background: var(--paper);
+      padding: 20px;
+      box-shadow: 0 10px 30px #0000000d;
+      border-left: 5px solid var(--rust);
+      cursor: help;
+    }
+
+    .bar-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .bar-track {
+      height: 18px;
+      background: #e0d2bd;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: var(--rust);
+      border-radius: 999px;
+    }
+
+    .chart-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 18px 0 8px;
+    }
+
+    .chart-btn {
+      background: var(--soft);
+      color: var(--rust-dark);
+      border: 1px solid #d7c7ad;
+      padding: 10px 14px;
+      font-family: Bebas Neue, sans-serif;
+      letter-spacing: .05em;
+      cursor: pointer;
+      transition: .25s ease;
+    }
+
+    .chart-btn:hover,
+    .chart-btn.active {
+      background: var(--rust);
+      color: var(--cream);
+    }
+
+    .svg-chart {
+      overflow-x: auto;
+      margin-top: 22px;
+    }
+
+    .svg-chart svg {
+      width: 100%;
+      min-width: 920px;
+      height: 500px;
+      display: block;
+      background: #fffaf2;
+    }
+
+    .chart-axis {
+      stroke: #d7c7ad;
+      stroke-width: 1;
+    }
+
+    .chart-grid {
+      stroke: #00000012;
+      stroke-width: 1;
+    }
+
+    .bar {
+      fill: var(--rust);
+      opacity: .85;
+      cursor: pointer;
+    }
+
+    .bar.secondary {
+      fill: var(--gold);
+    }
+
+    .shape-box {
+      fill: var(--soft);
+      stroke: var(--rust);
+      stroke-width: 3;
+    }
+
+    .line-detect {
+      stroke: var(--red);
+      stroke-width: 4;
+    }
+
+    .pixel {
+      fill: var(--rust);
+      opacity: .8;
+    }
+
+    .pixel.soft {
+      fill: var(--gold);
+      opacity: .65;
+    }
+
+    .chart-label {
+      fill: var(--ink);
+      font-family: Inter, Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .chart-small-label {
+      fill: var(--muted);
+      font-family: Inter, Arial, sans-serif;
+      font-size: 11px;
+    }
+
+    .tooltip {
+      position: fixed;
+      z-index: 999;
+      pointer-events: none;
+      background: var(--ink);
+      color: var(--cream);
+      padding: 10px 12px;
+      box-shadow: 0 12px 30px #0005;
+      font-size: .85rem;
+      opacity: 0;
+      transform: translate(-50%, -125%);
+      transition: opacity .15s ease;
+    }
+
+    .difficulty-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      background: var(--soft);
+      color: var(--rust-dark);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: .9rem;
+    }
+
+    .highlight {
+      background: var(--rust);
+      color: var(--cream);
+      padding: clamp(28px, 5vw, 52px);
+      box-shadow: 0 18px 50px #00000020;
+    }
+
+    .highlight h2,
+    .highlight p {
+      color: var(--cream);
+    }
+
+    .footer {
+      padding: 44px 0;
+      text-align: center;
+      background: var(--rust);
+      color: var(--cream);
+    }
+
+    .footer p,
+    .footer a {
+      color: var(--cream);
+      margin: 0;
+    }
+
+    .footer a {
+      text-decoration: none;
+      border-bottom: 1px solid var(--gold);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    @media(max-width:1050px) {
+      .methods-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .focus-layout,
+      .comparison-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media(max-width:850px) {
+      .hero {
+        min-height: auto;
+        background: var(--cream);
+        padding: 110px 0 60px;
+      }
+
+      .hero-content {
+        max-width: 100%;
+      }
+
+      .quick-info,
+      .grid-2,
+      .grid-3,
+      .difficulty-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media(max-width:700px) {
+      .project-nav {
+        position: static;
+        margin: 18px auto 0;
+        width: 92%;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero {
+        padding: 50px 0;
+      }
+
+      .step,
+      .focus-stats,
+      .methods-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 58px 0;
+      }
+    }
+  </style>
+</head>
+
+<body id="top">
+
+  <nav class="project-nav">
+    <div class="brand">Ylan Harrault</div>
+
+    <div class="nav-links">
+      <a href="index.html#traiter">Retour</a>
+      <a href="#objectif">Objectif</a>
+      <a href="#methodologie">Méthode</a>
+      <a href="#resultats">Résultats</a>
+      <a href="#visuels">Graphiques</a>
+      <a href="#limites">Limites</a>
+      <a href="#bilan">Bilan</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="kicker">Projet BUT 3 — Traiter</div>
+
+        <h1>Reconnaissances d’images de formes géométriques</h1>
+
+        <p>
+          Projet de classification supervisée visant à reconnaître automatiquement des cercles,
+          triangles et carrés à partir d’images transformées en matrices de pixels.
+        </p>
+
+        <div class="quick-info">
+          <div class="info-box">
+            <span>Classes</span>
+            <strong>Cercle, triangle, carré</strong>
+          </div>
+
+          <div class="info-box">
+            <span>Images</span>
+            <strong>600 au total</strong>
+          </div>
+
+          <div class="info-box">
+            <span>Format</span>
+            <strong>56 × 56 pixels</strong>
+          </div>
+
+          <div class="info-box">
+            <span>Objectif</span>
+            <strong>Classification d’images</strong>
+          </div>
+        </div>
+
+        <a href="index.html#traiter" class="btn">← Retour à Traiter</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="section" id="objectif">
+      <div class="container">
+        <div class="focus-layout">
+          <div class="focus-main">
+            <div class="kicker">Objectif du projet</div>
+            <h2>Reconnaître automatiquement une forme</h2>
+
+            <p>
+              L’objectif est de construire des méthodes capables d’identifier la forme présente
+              dans une image : triangle, carré ou cercle.
+            </p>
+
+            <p>
+              Le projet compare une approche géométrique simple, fondée sur les contours, avec
+              des méthodes statistiques appliquées aux pixels : LASSO, Ridge, ElasticNet et Random Forest.
+            </p>
+          </div>
+
+          <div class="focus-panel">
+            <h3>Données utilisées</h3>
+
+            <p>
+              Chaque classe contient 200 images. Les images initiales sont en RGB, puis transformées
+              en noir et blanc afin de supprimer l’information de couleur et de se concentrer sur la forme.
+            </p>
+
+            <div class="focus-stats">
+              <div class="focus-stat">
+                <strong>200</strong>
+                <span>images par classe</span>
+              </div>
+
+              <div class="focus-stat">
+                <strong>9408</strong>
+                <span>variables RGB initiales</span>
+              </div>
+
+              <div class="focus-stat">
+                <strong>3136</strong>
+                <span>pixels après binarisation</span>
+              </div>
+
+              <div class="focus-stat">
+                <strong>50</strong>
+                <span>répétitions</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="methodologie">
+      <div class="container">
+        <h2>Méthodologie</h2>
+
+        <div class="steps">
+          <div class="step">
+            <div>
+              <h3>Prétraitement des images</h3>
+              <p>
+                Les images RGB ont été converties en noir et blanc. Les pixels non blancs sont
+                transformés en noir afin de supprimer l’information de couleur, non pertinente pour
+                différencier les formes.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div>
+              <h3>Réduction de dimension</h3>
+              <p>
+                La transformation binaire réduit la représentation de 56 × 56 × 3 variables
+                à une matrice de 56 × 56 pixels, soit 3136 variables par image.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div>
+              <h3>Séparation train / test</h3>
+              <p>
+                Les données sont divisées en 450 images d’apprentissage et 150 images de test.
+                Cette séparation est répétée 50 fois afin d’obtenir des performances moyennes.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div>
+              <h3>Comparaison des modèles</h3>
+              <p>
+                Une méthode géométrique simple est comparée à des modèles statistiques :
+                régression logistique pénalisée LASSO, Ridge, ElasticNet et Random Forest.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="methodes">
+      <div class="container">
+        <h2>Méthodes étudiées</h2>
+
+        <div class="methods-grid">
+          <div class="method-card">
+            <span>Méthode 1</span>
+            <h3>Règle géométrique</h3>
+            <p>
+              Classification à partir du nombre de longues lignes horizontales détectées sur le contour.
+            </p>
+          </div>
+
+          <div class="method-card">
+            <span>Méthode 2</span>
+            <h3>LASSO</h3>
+            <p>
+              Régression logistique multinomiale pénalisée pour sélectionner les pixels discriminants.
+            </p>
+          </div>
+
+          <div class="method-card">
+            <span>Méthode 3</span>
+            <h3>Ridge / ElasticNet</h3>
+            <p>
+              Méthodes de régularisation adaptées aux données avec beaucoup plus de variables que d’images.
+            </p>
+          </div>
+
+          <div class="method-card">
+            <span>Méthode 4</span>
+            <h3>Random Forest</h3>
+            <p>
+              Ensemble d’arbres de décision capable d’exploiter des motifs non linéaires dans les pixels.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="resultats">
+      <div class="container">
+        <h2>Résultats des méthodes</h2>
+
+        <p class="section-desc">
+          Toutes les méthodes obtiennent une accuracy supérieure à 99 %. Le Random Forest est le plus
+          performant, mais la méthode simple offre le meilleur compromis entre rapidité et précision.
+        </p>
+
+        <div class="result-table-wrapper">
+          <table class="result-table">
+            <thead>
+              <tr>
+                <th>Méthode</th>
+                <th>Accuracy moyenne</th>
+                <th>Temps indicatif</th>
+                <th>Interprétation</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr class="best-row">
+                <td>Méthode simple</td>
+                <td>99,87 %</td>
+                <td>13,5 s</td>
+                <td>Très rapide et très efficace dans un cadre contrôlé.</td>
+              </tr>
+
+              <tr>
+                <td>LASSO</td>
+                <td>99,24 %</td>
+                <td>Modéré</td>
+                <td>Sélectionne surtout les pixels situés sur les contours.</td>
+              </tr>
+
+              <tr>
+                <td>Ridge</td>
+                <td>99,24 %</td>
+                <td>Modéré</td>
+                <td>Bonne performance, mais moins interprétable que le LASSO.</td>
+              </tr>
+
+              <tr>
+                <td>ElasticNet</td>
+                <td>99,61 %</td>
+                <td>Modéré</td>
+                <td>Légèrement meilleur que LASSO et Ridge.</td>
+              </tr>
+
+              <tr>
+                <td>Random Forest</td>
+                <td>99,99 %</td>
+                <td>140 s</td>
+                <td>Meilleure accuracy, mais temps de calcul nettement plus élevé.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="comparison-layout">
+          <div class="best-panel">
+            <h3>Meilleur compromis</h3>
+            <strong>Méthode simple</strong>
+            <p>
+              Elle est presque aussi précise que le Random Forest, mais elle est beaucoup plus rapide.
+              Elle est donc particulièrement adaptée lorsque les images sont propres, centrées et peu transformées.
+            </p>
+          </div>
+
+          <div class="bar-list">
+            <div class="bar-item" data-tooltip="Meilleure accuracy globale, mais temps d’exécution élevé.">
+              <div class="bar-head">
+                <span>Random Forest</span>
+                <span>99,99%</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill" style="width:99.99%"></div></div>
+            </div>
+
+            <div class="bar-item" data-tooltip="Très rapide et presque au niveau du Random Forest.">
+              <div class="bar-head">
+                <span>Méthode simple</span>
+                <span>99,87%</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill" style="width:99.87%"></div></div>
+            </div>
+
+            <div class="bar-item" data-tooltip="Meilleure régularisation parmi LASSO, Ridge et ElasticNet.">
+              <div class="bar-head">
+                <span>ElasticNet</span>
+                <span>99,61%</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill" style="width:99.61%"></div></div>
+            </div>
+
+            <div class="bar-item" data-tooltip="Bonne performance et interprétation par sélection de pixels.">
+              <div class="bar-head">
+                <span>LASSO / Ridge</span>
+                <span>99,24%</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill" style="width:99.24%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="visuels">
+      <div class="container">
+        <h2>Graphiques interactifs</h2>
+
+        <p class="section-desc">
+          Ces visualisations résument les éléments clés du projet : performances des modèles,
+          temps d’exécution, principe de la méthode simple et importance des pixels.
+        </p>
+
+        <div class="visual-card">
+          <h3>Visualisation des résultats</h3>
+
+          <div class="chart-controls">
+            <button class="chart-btn" data-chart="accuracy">Accuracy</button>
+            <button class="chart-btn" data-chart="time">Temps d’exécution</button>
+            <button class="chart-btn active" data-chart="geometry">Règle géométrique</button>
+            <button class="chart-btn" data-chart="pixels">Pixels importants</button>
+          </div>
+
+          <div id="mainChart" class="svg-chart"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="limites">
+      <div class="container">
+        <h2>Limites et tests externes</h2>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>Image externe bien orientée</h3>
+            <p>
+              Sur un triangle provenant d’Internet et redimensionné en 56 × 56 pixels,
+              la méthode simple et le Random Forest reconnaissent correctement la forme.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Triangle incliné</h3>
+            <p>
+              Sur un triangle légèrement de travers, la méthode simple peut échouer et le classer
+              comme cercle, tandis que le Random Forest reste capable de reconnaître le triangle.
+            </p>
+          </div>
+        </div>
+
+        <div class="difficulty-grid" style="margin-top:28px;">
+          <div class="difficulty-card">
+            <h3>Rotation des formes</h3>
+            <p>
+              La méthode simple dépend fortement de la présence de lignes horizontales.
+              Une rotation peut donc faire disparaître l’information utilisée par la règle.
+            </p>
+          </div>
+
+          <div class="difficulty-card">
+            <h3>Position dans l’image</h3>
+            <p>
+              Si une forme est collée aux bords, certaines parties du contour peuvent être mal détectées,
+              ce qui peut entraîner une mauvaise classification.
+            </p>
+          </div>
+
+          <div class="difficulty-card">
+            <h3>Robustesse</h3>
+            <p>
+              Les modèles statistiques comme Random Forest sont plus robustes aux variations,
+              mais demandent davantage de temps de calcul.
+            </p>
+          </div>
+
+          <div class="difficulty-card">
+            <h3>Interprétation</h3>
+            <p>
+              Le LASSO et le Random Forest montrent que les pixels les plus importants se situent
+              principalement sur les contours des formes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pistes">
+      <div class="container">
+        <h2>Piste d’amélioration</h2>
+
+        <div class="highlight">
+          <h2>Utiliser le centre de gravité</h2>
+
+          <p>
+            Une autre méthode simple pourrait mesurer les distances entre le centre de gravité
+            de la forme et les points du contour.
+          </p>
+
+          <p>
+            Pour un cercle, ces distances seraient presque constantes. Pour un carré, elles varieraient
+            entre les côtés et les coins. Pour un triangle, les distances seraient encore plus dispersées,
+            car les sommets sont plus éloignés du centre.
+          </p>
+
+          <p>
+            Cette approche pourrait être plus robuste que la détection de lignes horizontales,
+            notamment en cas de légère rotation.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="outils">
+      <div class="container grid-2">
+        <div>
+          <h2>Outils et méthodes</h2>
+
+          <div class="tags">
+            <span class="tag">R</span>
+            <span class="tag">imager</span>
+            <span class="tag">glmnet</span>
+            <span class="tag">LASSO</span>
+            <span class="tag">Ridge</span>
+            <span class="tag">ElasticNet</span>
+            <span class="tag">Random Forest</span>
+            <span class="tag">Classification d’images</span>
+          </div>
+        </div>
+
+        <div>
+          <h2>Compétences développées</h2>
+
+          <div class="tags">
+            <span class="tag">Prétraitement d’images</span>
+            <span class="tag">Binarisation</span>
+            <span class="tag">Extraction de contours</span>
+            <span class="tag">Modélisation statistique</span>
+            <span class="tag">Comparaison de modèles</span>
+            <span class="tag">Interprétation de pixels</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="bilan">
+      <div class="container">
+        <div class="highlight">
+          <h2>Bilan du projet</h2>
+
+          <p>
+            Ce projet montre qu’une méthode simple et intuitive peut atteindre une excellente
+            performance lorsque les données sont propres et bien structurées.
+          </p>
+
+          <p>
+            La méthode géométrique basée sur les lignes horizontales est rapide et très efficace,
+            mais elle reste sensible aux rotations, aux translations et aux formes imparfaites.
+          </p>
+
+          <p>
+            Les méthodes statistiques, notamment Random Forest, sont plus robustes et plus générales,
+            mais elles nécessitent davantage de temps de calcul. Le choix du modèle dépend donc du
+            compromis recherché entre rapidité, précision et robustesse.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>Ylan Harrault — Portfolio Science des Données</p>
+
+    <div class="footer-links">
+      <a href="index.html#traiter">← Retour aux projets</a>
+      <a href="#top">↑ Retour en haut</a>
+    </div>
+  </footer>
+
+  <script>
+    const chartButtons = document.querySelectorAll(".chart-btn");
+
+    const accuracyData = [
+      { name: "Simple", value: 99.87 },
+      { name: "LASSO", value: 99.24 },
+      { name: "Ridge", value: 99.24 },
+      { name: "ElasticNet", value: 99.61 },
+      { name: "Random Forest", value: 99.99 }
+    ];
+
+    const timeData = [
+      { name: "Simple", value: 13.5 },
+      { name: "Random Forest", value: 140 }
+    ];
+
+    function createTooltip() {
+      let tooltip = document.querySelector(".tooltip");
+
+      if (!tooltip) {
+        tooltip = document.createElement("div");
+        tooltip.className = "tooltip";
+        document.body.appendChild(tooltip);
+      }
+
+      return tooltip;
+    }
+
+    function activateTooltip() {
+      const tooltip = createTooltip();
+
+      document.querySelectorAll("[data-tooltip]").forEach(element => {
+        element.onmouseenter = () => {
+          tooltip.innerHTML = element.dataset.tooltip;
+          tooltip.style.opacity = "1";
+        };
+
+        element.onmousemove = event => {
+          tooltip.style.left = event.clientX + "px";
+          tooltip.style.top = event.clientY - 12 + "px";
+        };
+
+        element.onmouseleave = () => {
+          tooltip.style.opacity = "0";
+        };
+      });
+    }
+
+    function renderChart(type) {
+      chartButtons.forEach(button => {
+        button.classList.toggle("active", button.dataset.chart === type);
+      });
+
+      if (type === "accuracy") renderBarChart(accuracyData, "Accuracy moyenne des méthodes", "%");
+      if (type === "time") renderBarChart(timeData, "Temps d’exécution indicatif", "s");
+      if (type === "geometry") renderGeometryChart();
+      if (type === "pixels") renderPixelChart();
+    }
+
+    function renderBarChart(rows, title, unit) {
+      const width = 920;
+      const height = 500;
+      const padding = 78;
+      const maxValue = unit === "%" ? 100 : Math.max(...rows.map(row => row.value)) + 20;
+
+      const yScale = value => height - padding - (value / maxValue) * (height - padding * 2);
+      const barWidth = 100;
+      const gap = 50;
+
+      const ticks = unit === "%" ? [0, 25, 50, 75, 100] : [0, 40, 80, 120, 160];
+
+      const svg = `
+        <svg viewBox="0 0 ${width} ${height}">
+          <line class="chart-axis" x1="${padding}" y1="${height - padding}" x2="${width - padding}" y2="${height - padding}"></line>
+          <line class="chart-axis" x1="${padding}" y1="${padding}" x2="${padding}" y2="${height - padding}"></line>
+
+          ${ticks.map(value => `
+            <line class="chart-grid" x1="${padding}" y1="${yScale(value)}" x2="${width - padding}" y2="${yScale(value)}"></line>
+            <text class="chart-small-label" x="28" y="${yScale(value) + 4}">${value}${unit}</text>
+          `).join("")}
+
+          ${rows.map((row, index) => {
+            const x = padding + 70 + index * (barWidth + gap);
+            const y = yScale(row.value);
+            const h = height - padding - y;
+            const cls = index === 0 ? "bar" : "bar secondary";
+
+            return `
+              <rect class="${cls}" x="${x}" y="${y}" width="${barWidth}" height="${h}"
+                data-tooltip="<strong>${row.name}</strong><br>Valeur : ${row.value}${unit}"></rect>
+              <text class="chart-label" x="${x + 12}" y="${height - 38}">${row.name}</text>
+              <text class="chart-small-label" x="${x + 22}" y="${y - 10}">${row.value}${unit}</text>
+            `;
+          }).join("")}
+
+          <text class="chart-label" x="${padding}" y="${padding - 28}">${title}</text>
+        </svg>
+      `;
+
+      document.getElementById("mainChart").innerHTML = svg;
+      activateTooltip();
+    }
+
+    function renderGeometryChart() {
+      const svg = `
+        <svg viewBox="0 0 920 500">
+          <text class="chart-label" x="78" y="50">Principe de la méthode simple : compter les longues lignes horizontales</text>
+
+          <g transform="translate(120,120)">
+            <rect class="shape-box" x="0" y="0" width="160" height="160"></rect>
+            <polygon points="80,15 20,145 140,145" fill="var(--rust)" opacity=".85"></polygon>
+            <line class="line-detect" x1="25" y1="145" x2="135" y2="145"></line>
+            <text class="chart-label" x="36" y="205">Triangle</text>
+            <text class="chart-small-label" x="18" y="228">1 ligne longue</text>
+          </g>
+
+          <g transform="translate(380,120)">
+            <rect class="shape-box" x="0" y="0" width="160" height="160"></rect>
+            <rect x="35" y="35" width="90" height="90" fill="var(--rust)" opacity=".85"></rect>
+            <line class="line-detect" x1="35" y1="35" x2="125" y2="35"></line>
+            <line class="line-detect" x1="35" y1="125" x2="125" y2="125"></line>
+            <text class="chart-label" x="50" y="205">Carré</text>
+            <text class="chart-small-label" x="21" y="228">2 lignes longues</text>
+          </g>
+
+          <g transform="translate(640,120)">
+            <rect class="shape-box" x="0" y="0" width="160" height="160"></rect>
+            <circle cx="80" cy="80" r="55" fill="var(--rust)" opacity=".85"></circle>
+            <text class="chart-label" x="48" y="205">Cercle</text>
+            <text class="chart-small-label" x="15" y="228">aucune ligne longue</text>
+          </g>
+
+          <text class="chart-small-label" x="78" y="420">
+            Cette règle fonctionne très bien si les formes sont propres, centrées et non inclinées.
+          </text>
+        </svg>
+      `;
+
+      document.getElementById("mainChart").innerHTML = svg;
+    }
+
+
+    function renderPixelChart() {
+      const width = 920;
+      const height = 500;
+      const startX = 245;
+      const startY = 85;
+      const gridSize = 300;
+      const cell = gridSize / 56;
+    
+      const importantPixels = [
+        [8, 8], [9, 9], [10, 10], [11, 11], [12, 12], [13, 13], [14, 14],
+        [28, 7], [28, 8], [28, 9], [28, 10], [28, 11],
+        [42, 10], [41, 11], [40, 12], [39, 13], [38, 14],
+        [10, 42], [11, 42], [12, 42], [13, 42], [14, 42],
+        [20, 42], [21, 42], [22, 42], [23, 42], [24, 42],
+        [35, 42], [36, 42], [37, 42], [38, 42], [39, 42],
+        [10, 28], [11, 27], [12, 26], [13, 25],
+        [43, 28], [42, 27], [41, 26], [40, 25]
+      ];
+    
+      const pixels = importantPixels.map(([x, y], index) => `
+        <rect
+          class="${index % 3 === 0 ? "pixel soft" : "pixel"}"
+          x="${startX + x * cell}"
+          y="${startY + y * cell}"
+          width="${cell}"
+          height="${cell}"
+          data-tooltip="Pixel important : zone de contour"
+        ></rect>
+      `).join("");
+    
+      const svg = `
+        <svg viewBox="0 0 ${width} ${height}">
+          <text class="chart-label" x="78" y="50">
+            Pixels sélectionnés par les modèles
+          </text>
+    
+          <text class="chart-small-label" x="78" y="78">
+            Les pixels importants se situent surtout sur les contours, car ce sont eux qui différencient les formes.
+          </text>
+    
+          <rect
+            x="${startX}"
+            y="${startY}"
+            width="${gridSize}"
+            height="${gridSize}"
+            fill="#f7efe2"
+            stroke="#d7c7ad"
+          ></rect>
+    
+          ${pixels}
+    
+          <g transform="translate(610,140)">
+            <rect x="0" y="0" width="18" height="18" fill="var(--rust)" opacity=".8"></rect>
+            <text class="chart-small-label" x="30" y="14">Pixels très importants</text>
+    
+            <rect x="0" y="34" width="18" height="18" fill="var(--gold)" opacity=".65"></rect>
+            <text class="chart-small-label" x="30" y="48">Pixels importants</text>
+          </g>
+    
+          <text class="chart-small-label" x="78" y="430">
+            Les zones centrales sont peu sélectionnées, car elles apportent peu d’information discriminante.
+          </text>
+        </svg>
+      `;
+    
+      document.getElementById("mainChart").innerHTML = svg;
+      activateTooltip();
+    }
+
+
+    chartButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        renderChart(button.dataset.chart);
+      });
+    });
+
+    renderChart("geometry");
+  </script>
+
+</body>
+
+</html>

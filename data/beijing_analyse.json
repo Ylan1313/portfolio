@@ -1,0 +1,3325 @@
+{
+  "meta": {
+    "dataset": "Beijing.csv",
+    "sample_start": 7000,
+    "sample_end": 9000,
+    "sample_size": 2001,
+    "cleaned_size": 1982,
+    "mse": 12.2123,
+    "anova_p_value": 5.2472e-15
+  },
+  "time": [
+    {
+      "index": 1,
+      "PM_Dongsi": 163,
+      "PM_Dongsihuan": 147,
+      "PM_Nongzhanguan": 163,
+      "PM_US_Post": 180,
+      "DEWP": -5,
+      "HUMI": 59,
+      "TEMP": 2
+    },
+    {
+      "index": 10,
+      "PM_Dongsi": 173,
+      "PM_Dongsihuan": 152,
+      "PM_Nongzhanguan": 170,
+      "PM_US_Post": 189,
+      "DEWP": -6,
+      "HUMI": 55,
+      "TEMP": 2
+    },
+    {
+      "index": 19,
+      "PM_Dongsi": 116,
+      "PM_Dongsihuan": 95,
+      "PM_Nongzhanguan": 108,
+      "PM_US_Post": 109,
+      "DEWP": -1,
+      "HUMI": 69,
+      "TEMP": 4
+    },
+    {
+      "index": 28,
+      "PM_Dongsi": 151,
+      "PM_Dongsihuan": 129,
+      "PM_Nongzhanguan": 151,
+      "PM_US_Post": 163,
+      "DEWP": -1,
+      "HUMI": 80,
+      "TEMP": 2
+    },
+    {
+      "index": 37,
+      "PM_Dongsi": 14,
+      "PM_Dongsihuan": 12,
+      "PM_Nongzhanguan": 20,
+      "PM_US_Post": 15,
+      "DEWP": -19,
+      "HUMI": 11,
+      "TEMP": 10
+    },
+    {
+      "index": 46,
+      "PM_Dongsi": 15,
+      "PM_Dongsihuan": 14,
+      "PM_Nongzhanguan": 13,
+      "PM_US_Post": 7,
+      "DEWP": -34,
+      "HUMI": 4,
+      "TEMP": 3
+    },
+    {
+      "index": 55,
+      "PM_Dongsi": 6,
+      "PM_Dongsihuan": 4,
+      "PM_Nongzhanguan": 12,
+      "PM_US_Post": 7,
+      "DEWP": -31,
+      "HUMI": 8,
+      "TEMP": -2
+    },
+    {
+      "index": 64,
+      "PM_Dongsi": 6,
+      "PM_Dongsihuan": 4,
+      "PM_Nongzhanguan": 8,
+      "PM_US_Post": 6,
+      "DEWP": -39,
+      "HUMI": 2,
+      "TEMP": 2
+    },
+    {
+      "index": 74,
+      "PM_Dongsi": 3,
+      "PM_Dongsihuan": 3,
+      "PM_Nongzhanguan": 6,
+      "PM_US_Post": 6,
+      "DEWP": -31,
+      "HUMI": 10,
+      "TEMP": -4
+    },
+    {
+      "index": 83,
+      "PM_Dongsi": 6,
+      "PM_Dongsihuan": 6,
+      "PM_Nongzhanguan": 7,
+      "PM_US_Post": 12,
+      "DEWP": -32,
+      "HUMI": 7,
+      "TEMP": -2
+    },
+    {
+      "index": 92,
+      "PM_Dongsi": 88,
+      "PM_Dongsihuan": 53,
+      "PM_Nongzhanguan": 59,
+      "PM_US_Post": 71,
+      "DEWP": -27,
+      "HUMI": 14,
+      "TEMP": -4
+    },
+    {
+      "index": 101,
+      "PM_Dongsi": 86,
+      "PM_Dongsihuan": 73,
+      "PM_Nongzhanguan": 74,
+      "PM_US_Post": 115,
+      "DEWP": -24,
+      "HUMI": 24,
+      "TEMP": -7
+    },
+    {
+      "index": 110,
+      "PM_Dongsi": 89,
+      "PM_Dongsihuan": 71,
+      "PM_Nongzhanguan": 78,
+      "PM_US_Post": 96,
+      "DEWP": -16,
+      "HUMI": 26,
+      "TEMP": 1
+    },
+    {
+      "index": 119,
+      "PM_Dongsi": 109,
+      "PM_Dongsihuan": 95,
+      "PM_Nongzhanguan": 109,
+      "PM_US_Post": 125,
+      "DEWP": -11,
+      "HUMI": 58,
+      "TEMP": -4
+    },
+    {
+      "index": 128,
+      "PM_Dongsi": 127,
+      "PM_Dongsihuan": 137,
+      "PM_Nongzhanguan": 134,
+      "PM_US_Post": 155,
+      "DEWP": -13,
+      "HUMI": 62,
+      "TEMP": -7
+    },
+    {
+      "index": 137,
+      "PM_Dongsi": 91,
+      "PM_Dongsihuan": 92,
+      "PM_Nongzhanguan": 89,
+      "PM_US_Post": 108,
+      "DEWP": -15,
+      "HUMI": 29,
+      "TEMP": 1
+    },
+    {
+      "index": 147,
+      "PM_Dongsi": 75,
+      "PM_Dongsihuan": 96,
+      "PM_Nongzhanguan": 96,
+      "PM_US_Post": 105,
+      "DEWP": -7,
+      "HUMI": 68,
+      "TEMP": -2
+    },
+    {
+      "index": 156,
+      "PM_Dongsi": 96,
+      "PM_Dongsihuan": 81,
+      "PM_Nongzhanguan": 86,
+      "PM_US_Post": 94,
+      "DEWP": -7,
+      "HUMI": 79,
+      "TEMP": -4
+    },
+    {
+      "index": 165,
+      "PM_Dongsi": 91,
+      "PM_Dongsihuan": 86,
+      "PM_Nongzhanguan": 88,
+      "PM_US_Post": 106,
+      "DEWP": -7,
+      "HUMI": 73,
+      "TEMP": -3
+    },
+    {
+      "index": 174,
+      "PM_Dongsi": 120,
+      "PM_Dongsihuan": 82,
+      "PM_Nongzhanguan": 96,
+      "PM_US_Post": 132,
+      "DEWP": -7,
+      "HUMI": 79,
+      "TEMP": -4
+    },
+    {
+      "index": 183,
+      "PM_Dongsi": 19,
+      "PM_Dongsihuan": 3,
+      "PM_Nongzhanguan": 4,
+      "PM_US_Post": 9,
+      "DEWP": -16,
+      "HUMI": 26,
+      "TEMP": 1
+    },
+    {
+      "index": 192,
+      "PM_Dongsi": 7,
+      "PM_Dongsihuan": 6,
+      "PM_Nongzhanguan": 6,
+      "PM_US_Post": 9,
+      "DEWP": -22,
+      "HUMI": 31,
+      "TEMP": -8
+    },
+    {
+      "index": 201,
+      "PM_Dongsi": 7,
+      "PM_Dongsihuan": 8,
+      "PM_Nongzhanguan": 11,
+      "PM_US_Post": 14,
+      "DEWP": -22,
+      "HUMI": 23,
+      "TEMP": -4
+    },
+    {
+      "index": 211,
+      "PM_Dongsi": 16,
+      "PM_Dongsihuan": 17,
+      "PM_Nongzhanguan": 10,
+      "PM_US_Post": 24,
+      "DEWP": -19,
+      "HUMI": 32,
+      "TEMP": -5
+    },
+    {
+      "index": 220,
+      "PM_Dongsi": 9,
+      "PM_Dongsihuan": 13,
+      "PM_Nongzhanguan": 8,
+      "PM_US_Post": 7,
+      "DEWP": -21,
+      "HUMI": 40,
+      "TEMP": -10
+    },
+    {
+      "index": 229,
+      "PM_Dongsi": 23,
+      "PM_Dongsihuan": 18,
+      "PM_Nongzhanguan": 25,
+      "PM_US_Post": 24,
+      "DEWP": -21,
+      "HUMI": 20,
+      "TEMP": -1
+    },
+    {
+      "index": 238,
+      "PM_Dongsi": 77,
+      "PM_Dongsihuan": 56,
+      "PM_Nongzhanguan": 58,
+      "PM_US_Post": 76,
+      "DEWP": -16,
+      "HUMI": 61,
+      "TEMP": -10
+    },
+    {
+      "index": 247,
+      "PM_Dongsi": 62,
+      "PM_Dongsihuan": 59,
+      "PM_Nongzhanguan": 57,
+      "PM_US_Post": 64,
+      "DEWP": -15,
+      "HUMI": 57,
+      "TEMP": -8
+    },
+    {
+      "index": 256,
+      "PM_Dongsi": 183,
+      "PM_Dongsihuan": 162,
+      "PM_Nongzhanguan": 165,
+      "PM_US_Post": 184,
+      "DEWP": -12,
+      "HUMI": 57,
+      "TEMP": -5
+    },
+    {
+      "index": 265,
+      "PM_Dongsi": 122,
+      "PM_Dongsihuan": 108,
+      "PM_Nongzhanguan": 109,
+      "PM_US_Post": 136,
+      "DEWP": -16,
+      "HUMI": 56,
+      "TEMP": -9
+    },
+    {
+      "index": 274,
+      "PM_Dongsi": 95,
+      "PM_Dongsihuan": 86,
+      "PM_Nongzhanguan": 90,
+      "PM_US_Post": 95,
+      "DEWP": -20,
+      "HUMI": 16,
+      "TEMP": 3
+    },
+    {
+      "index": 284,
+      "PM_Dongsi": 179,
+      "PM_Dongsihuan": 160,
+      "PM_Nongzhanguan": 172,
+      "PM_US_Post": 193,
+      "DEWP": -10,
+      "HUMI": 62,
+      "TEMP": -4
+    },
+    {
+      "index": 293,
+      "PM_Dongsi": 197,
+      "PM_Dongsihuan": 168,
+      "PM_Nongzhanguan": 187,
+      "PM_US_Post": 214,
+      "DEWP": -11,
+      "HUMI": 50,
+      "TEMP": -2
+    },
+    {
+      "index": 302,
+      "PM_Dongsi": 250,
+      "PM_Dongsihuan": 201,
+      "PM_Nongzhanguan": 208,
+      "PM_US_Post": 250,
+      "DEWP": -10,
+      "HUMI": 58,
+      "TEMP": -3
+    },
+    {
+      "index": 311,
+      "PM_Dongsi": 232,
+      "PM_Dongsihuan": 226,
+      "PM_Nongzhanguan": 228,
+      "PM_US_Post": 250,
+      "DEWP": -11,
+      "HUMI": 78,
+      "TEMP": -8
+    },
+    {
+      "index": 320,
+      "PM_Dongsi": 258,
+      "PM_Dongsihuan": 240,
+      "PM_Nongzhanguan": 246,
+      "PM_US_Post": 272,
+      "DEWP": -8,
+      "HUMI": 47,
+      "TEMP": 2
+    },
+    {
+      "index": 329,
+      "PM_Dongsi": 560,
+      "PM_Dongsihuan": 599,
+      "PM_Nongzhanguan": 781,
+      "PM_US_Post": 649,
+      "DEWP": -8,
+      "HUMI": 79,
+      "TEMP": -5
+    },
+    {
+      "index": 338,
+      "PM_Dongsi": 325,
+      "PM_Dongsihuan": 297,
+      "PM_Nongzhanguan": 309,
+      "PM_US_Post": 277,
+      "DEWP": -7,
+      "HUMI": 73,
+      "TEMP": -3
+    },
+    {
+      "index": 348,
+      "PM_Dongsi": 449,
+      "PM_Dongsihuan": 361,
+      "PM_Nongzhanguan": 401,
+      "PM_US_Post": 336,
+      "DEWP": -7,
+      "HUMI": 63,
+      "TEMP": -1
+    },
+    {
+      "index": 357,
+      "PM_Dongsi": 409,
+      "PM_Dongsihuan": 359,
+      "PM_Nongzhanguan": 391,
+      "PM_US_Post": 362,
+      "DEWP": -9,
+      "HUMI": 73,
+      "TEMP": -5
+    },
+    {
+      "index": 366,
+      "PM_Dongsi": 170,
+      "PM_Dongsihuan": 150,
+      "PM_Nongzhanguan": 164,
+      "PM_US_Post": 161,
+      "DEWP": -15,
+      "HUMI": 19,
+      "TEMP": 7
+    },
+    {
+      "index": 375,
+      "PM_Dongsi": 187,
+      "PM_Dongsihuan": 196,
+      "PM_Nongzhanguan": 196,
+      "PM_US_Post": 216,
+      "DEWP": -7,
+      "HUMI": 55,
+      "TEMP": 1
+    },
+    {
+      "index": 384,
+      "PM_Dongsi": 55,
+      "PM_Dongsihuan": 77,
+      "PM_Nongzhanguan": 68,
+      "PM_US_Post": 67,
+      "DEWP": -10,
+      "HUMI": 54,
+      "TEMP": -2
+    },
+    {
+      "index": 393,
+      "PM_Dongsi": 68,
+      "PM_Dongsihuan": 68,
+      "PM_Nongzhanguan": 72,
+      "PM_US_Post": 71,
+      "DEWP": -19,
+      "HUMI": 16,
+      "TEMP": 4
+    },
+    {
+      "index": 402,
+      "PM_Dongsi": 41,
+      "PM_Dongsihuan": 68,
+      "PM_Nongzhanguan": 54,
+      "PM_US_Post": 46,
+      "DEWP": -12,
+      "HUMI": 53,
+      "TEMP": -4
+    },
+    {
+      "index": 411,
+      "PM_Dongsi": 80,
+      "PM_Dongsihuan": 56,
+      "PM_Nongzhanguan": 68,
+      "PM_US_Post": 63,
+      "DEWP": -12,
+      "HUMI": 37,
+      "TEMP": 1
+    },
+    {
+      "index": 421,
+      "PM_Dongsi": 78,
+      "PM_Dongsihuan": 94,
+      "PM_Nongzhanguan": 93,
+      "PM_US_Post": 118,
+      "DEWP": -11,
+      "HUMI": 50,
+      "TEMP": -2
+    },
+    {
+      "index": 430,
+      "PM_Dongsi": 49,
+      "PM_Dongsihuan": 108,
+      "PM_Nongzhanguan": 104,
+      "PM_US_Post": 103,
+      "DEWP": -10,
+      "HUMI": 79,
+      "TEMP": -7
+    },
+    {
+      "index": 439,
+      "PM_Dongsi": 24,
+      "PM_Dongsihuan": 26,
+      "PM_Nongzhanguan": 22,
+      "PM_US_Post": 15,
+      "DEWP": -18,
+      "HUMI": 17,
+      "TEMP": 5
+    },
+    {
+      "index": 448,
+      "PM_Dongsi": 150,
+      "PM_Dongsihuan": 132,
+      "PM_Nongzhanguan": 120,
+      "PM_US_Post": 160,
+      "DEWP": -7,
+      "HUMI": 79,
+      "TEMP": -4
+    },
+    {
+      "index": 457,
+      "PM_Dongsi": 187,
+      "PM_Dongsihuan": 194,
+      "PM_Nongzhanguan": 176,
+      "PM_US_Post": 233,
+      "DEWP": -7,
+      "HUMI": 59,
+      "TEMP": 0
+    },
+    {
+      "index": 466,
+      "PM_Dongsi": 323,
+      "PM_Dongsihuan": 333,
+      "PM_Nongzhanguan": 342,
+      "PM_US_Post": 424,
+      "DEWP": -6,
+      "HUMI": 79,
+      "TEMP": -3
+    },
+    {
+      "index": 475,
+      "PM_Dongsi": 218,
+      "PM_Dongsihuan": 258,
+      "PM_Nongzhanguan": 282,
+      "PM_US_Post": 324,
+      "DEWP": -6,
+      "HUMI": 85,
+      "TEMP": -4
+    },
+    {
+      "index": 485,
+      "PM_Dongsi": 255,
+      "PM_Dongsihuan": 263,
+      "PM_Nongzhanguan": 248,
+      "PM_US_Post": 346,
+      "DEWP": -6,
+      "HUMI": 59,
+      "TEMP": 1
+    },
+    {
+      "index": 494,
+      "PM_Dongsi": 241,
+      "PM_Dongsihuan": 212,
+      "PM_Nongzhanguan": 243,
+      "PM_US_Post": 295,
+      "DEWP": -6,
+      "HUMI": 63,
+      "TEMP": 0
+    },
+    {
+      "index": 503,
+      "PM_Dongsi": 267,
+      "PM_Dongsihuan": 270,
+      "PM_Nongzhanguan": 261,
+      "PM_US_Post": 360,
+      "DEWP": -4,
+      "HUMI": 48,
+      "TEMP": 6
+    },
+    {
+      "index": 512,
+      "PM_Dongsi": 210,
+      "PM_Dongsihuan": 208,
+      "PM_Nongzhanguan": 216,
+      "PM_US_Post": 287,
+      "DEWP": -4,
+      "HUMI": 64,
+      "TEMP": 2
+    },
+    {
+      "index": 521,
+      "PM_Dongsi": 193,
+      "PM_Dongsihuan": 183,
+      "PM_Nongzhanguan": 166,
+      "PM_US_Post": 252,
+      "DEWP": -6,
+      "HUMI": 59,
+      "TEMP": 1
+    },
+    {
+      "index": 530,
+      "PM_Dongsi": 236,
+      "PM_Dongsihuan": 248,
+      "PM_Nongzhanguan": 267,
+      "PM_US_Post": 358,
+      "DEWP": -6,
+      "HUMI": 55,
+      "TEMP": 2
+    },
+    {
+      "index": 539,
+      "PM_Dongsi": 228,
+      "PM_Dongsihuan": 226,
+      "PM_Nongzhanguan": 226,
+      "PM_US_Post": 341,
+      "DEWP": -5,
+      "HUMI": 59,
+      "TEMP": 2
+    },
+    {
+      "index": 548,
+      "PM_Dongsi": 356,
+      "PM_Dongsihuan": 274,
+      "PM_Nongzhanguan": 342,
+      "PM_US_Post": 358,
+      "DEWP": -5,
+      "HUMI": 42,
+      "TEMP": 7
+    },
+    {
+      "index": 558,
+      "PM_Dongsi": 348,
+      "PM_Dongsihuan": 326,
+      "PM_Nongzhanguan": 383,
+      "PM_US_Post": 371,
+      "DEWP": -4,
+      "HUMI": 74,
+      "TEMP": 0
+    },
+    {
+      "index": 567,
+      "PM_Dongsi": 241,
+      "PM_Dongsihuan": 202,
+      "PM_Nongzhanguan": 253,
+      "PM_US_Post": 188,
+      "DEWP": 0,
+      "HUMI": 53,
+      "TEMP": 9
+    },
+    {
+      "index": 576,
+      "PM_Dongsi": 14,
+      "PM_Dongsihuan": 14,
+      "PM_Nongzhanguan": 18,
+      "PM_US_Post": 17,
+      "DEWP": -15,
+      "HUMI": 25,
+      "TEMP": 3
+    },
+    {
+      "index": 585,
+      "PM_Dongsi": 20,
+      "PM_Dongsihuan": 5,
+      "PM_Nongzhanguan": 20,
+      "PM_US_Post": 12,
+      "DEWP": -19,
+      "HUMI": 12,
+      "TEMP": 8
+    },
+    {
+      "index": 594,
+      "PM_Dongsi": 38,
+      "PM_Dongsihuan": 30,
+      "PM_Nongzhanguan": 34,
+      "PM_US_Post": 34,
+      "DEWP": -12,
+      "HUMI": 46,
+      "TEMP": -2
+    },
+    {
+      "index": 603,
+      "PM_Dongsi": 79,
+      "PM_Dongsihuan": 66,
+      "PM_Nongzhanguan": 61,
+      "PM_US_Post": 81,
+      "DEWP": -6,
+      "HUMI": 63,
+      "TEMP": 0
+    },
+    {
+      "index": 612,
+      "PM_Dongsi": 89,
+      "PM_Dongsihuan": 92,
+      "PM_Nongzhanguan": 101,
+      "PM_US_Post": 116,
+      "DEWP": -10,
+      "HUMI": 30,
+      "TEMP": 6
+    },
+    {
+      "index": 622,
+      "PM_Dongsi": 121,
+      "PM_Dongsihuan": 172,
+      "PM_Nongzhanguan": 177,
+      "PM_US_Post": 181,
+      "DEWP": -7,
+      "HUMI": 73,
+      "TEMP": -3
+    },
+    {
+      "index": 631,
+      "PM_Dongsi": 8,
+      "PM_Dongsihuan": 6,
+      "PM_Nongzhanguan": 3,
+      "PM_US_Post": 12,
+      "DEWP": -23,
+      "HUMI": 7,
+      "TEMP": 10
+    },
+    {
+      "index": 640,
+      "PM_Dongsi": 106,
+      "PM_Dongsihuan": 87,
+      "PM_Nongzhanguan": 98,
+      "PM_US_Post": 112,
+      "DEWP": -17,
+      "HUMI": 15,
+      "TEMP": 8
+    },
+    {
+      "index": 649,
+      "PM_Dongsi": 91,
+      "PM_Dongsihuan": 111,
+      "PM_Nongzhanguan": 122,
+      "PM_US_Post": 134,
+      "DEWP": -7,
+      "HUMI": 63,
+      "TEMP": -1
+    },
+    {
+      "index": 658,
+      "PM_Dongsi": 116,
+      "PM_Dongsihuan": 119,
+      "PM_Nongzhanguan": 136,
+      "PM_US_Post": 144,
+      "DEWP": -13,
+      "HUMI": 17,
+      "TEMP": 11
+    },
+    {
+      "index": 667,
+      "PM_Dongsi": 181,
+      "PM_Dongsihuan": 162,
+      "PM_Nongzhanguan": 153,
+      "PM_US_Post": 193,
+      "DEWP": -5,
+      "HUMI": 64,
+      "TEMP": 1
+    },
+    {
+      "index": 676,
+      "PM_Dongsi": 254,
+      "PM_Dongsihuan": 222,
+      "PM_Nongzhanguan": 258,
+      "PM_US_Post": 260,
+      "DEWP": -5,
+      "HUMI": 59,
+      "TEMP": 2
+    },
+    {
+      "index": 685,
+      "PM_Dongsi": 233,
+      "PM_Dongsihuan": 194,
+      "PM_Nongzhanguan": 222,
+      "PM_US_Post": 241,
+      "DEWP": -6,
+      "HUMI": 51,
+      "TEMP": 3
+    },
+    {
+      "index": 695,
+      "PM_Dongsi": 5,
+      "PM_Dongsihuan": 4,
+      "PM_Nongzhanguan": 5,
+      "PM_US_Post": 4,
+      "DEWP": -8,
+      "HUMI": 58,
+      "TEMP": -1
+    },
+    {
+      "index": 704,
+      "PM_Dongsi": 3,
+      "PM_Dongsihuan": 3,
+      "PM_Nongzhanguan": 8,
+      "PM_US_Post": 8,
+      "DEWP": -29,
+      "HUMI": 4,
+      "TEMP": 10
+    },
+    {
+      "index": 713,
+      "PM_Dongsi": 11,
+      "PM_Dongsihuan": 13,
+      "PM_Nongzhanguan": 3,
+      "PM_US_Post": 9,
+      "DEWP": -21,
+      "HUMI": 25,
+      "TEMP": -4
+    },
+    {
+      "index": 722,
+      "PM_Dongsi": 22,
+      "PM_Dongsihuan": 15,
+      "PM_Nongzhanguan": 15,
+      "PM_US_Post": 18,
+      "DEWP": -23,
+      "HUMI": 11,
+      "TEMP": 4
+    },
+    {
+      "index": 731,
+      "PM_Dongsi": 50,
+      "PM_Dongsihuan": 44,
+      "PM_Nongzhanguan": 48,
+      "PM_US_Post": 48,
+      "DEWP": -21,
+      "HUMI": 12,
+      "TEMP": 6
+    },
+    {
+      "index": 740,
+      "PM_Dongsi": 8,
+      "PM_Dongsihuan": 11,
+      "PM_Nongzhanguan": 5,
+      "PM_US_Post": 9,
+      "DEWP": -24,
+      "HUMI": 14,
+      "TEMP": 0
+    },
+    {
+      "index": 749,
+      "PM_Dongsi": 12,
+      "PM_Dongsihuan": 3,
+      "PM_Nongzhanguan": 6,
+      "PM_US_Post": 12,
+      "DEWP": -30,
+      "HUMI": 5,
+      "TEMP": 6
+    },
+    {
+      "index": 758,
+      "PM_Dongsi": 55,
+      "PM_Dongsihuan": 41,
+      "PM_Nongzhanguan": 43,
+      "PM_US_Post": 53,
+      "DEWP": -25,
+      "HUMI": 11,
+      "TEMP": 2
+    },
+    {
+      "index": 768,
+      "PM_Dongsi": 67,
+      "PM_Dongsihuan": 81,
+      "PM_Nongzhanguan": 79,
+      "PM_US_Post": 92,
+      "DEWP": -10,
+      "HUMI": 46,
+      "TEMP": 0
+    },
+    {
+      "index": 777,
+      "PM_Dongsi": 51,
+      "PM_Dongsihuan": 39,
+      "PM_Nongzhanguan": 47,
+      "PM_US_Post": 51,
+      "DEWP": -23,
+      "HUMI": 11,
+      "TEMP": 5
+    },
+    {
+      "index": 786,
+      "PM_Dongsi": 117,
+      "PM_Dongsihuan": 106,
+      "PM_Nongzhanguan": 112,
+      "PM_US_Post": 141,
+      "DEWP": -6,
+      "HUMI": 63,
+      "TEMP": 0
+    },
+    {
+      "index": 795,
+      "PM_Dongsi": 187,
+      "PM_Dongsihuan": 169,
+      "PM_Nongzhanguan": 181,
+      "PM_US_Post": 202,
+      "DEWP": -8,
+      "HUMI": 29,
+      "TEMP": 9
+    },
+    {
+      "index": 804,
+      "PM_Dongsi": 54,
+      "PM_Dongsihuan": 193,
+      "PM_Nongzhanguan": 135,
+      "PM_US_Post": 134,
+      "DEWP": -6,
+      "HUMI": 63,
+      "TEMP": 0
+    },
+    {
+      "index": 813,
+      "PM_Dongsi": 69,
+      "PM_Dongsihuan": 109,
+      "PM_Nongzhanguan": 108,
+      "PM_US_Post": 100,
+      "DEWP": -7,
+      "HUMI": 59,
+      "TEMP": 0
+    },
+    {
+      "index": 822,
+      "PM_Dongsi": 91,
+      "PM_Dongsihuan": 95,
+      "PM_Nongzhanguan": 104,
+      "PM_US_Post": 124,
+      "DEWP": -13,
+      "HUMI": 19,
+      "TEMP": 9
+    },
+    {
+      "index": 832,
+      "PM_Dongsi": 35,
+      "PM_Dongsihuan": 48,
+      "PM_Nongzhanguan": 45,
+      "PM_US_Post": 54,
+      "DEWP": -8,
+      "HUMI": 58,
+      "TEMP": -1
+    },
+    {
+      "index": 841,
+      "PM_Dongsi": 80,
+      "PM_Dongsihuan": 55,
+      "PM_Nongzhanguan": 97,
+      "PM_US_Post": 102,
+      "DEWP": -8,
+      "HUMI": 35,
+      "TEMP": 6
+    },
+    {
+      "index": 850,
+      "PM_Dongsi": 158,
+      "PM_Dongsihuan": 214,
+      "PM_Nongzhanguan": 173,
+      "PM_US_Post": 195,
+      "DEWP": -6,
+      "HUMI": 55,
+      "TEMP": 2
+    },
+    {
+      "index": 859,
+      "PM_Dongsi": 197,
+      "PM_Dongsihuan": 254,
+      "PM_Nongzhanguan": 229,
+      "PM_US_Post": 234,
+      "DEWP": -5,
+      "HUMI": 74,
+      "TEMP": -1
+    },
+    {
+      "index": 868,
+      "PM_Dongsi": 177,
+      "PM_Dongsihuan": 188,
+      "PM_Nongzhanguan": 196,
+      "PM_US_Post": 202,
+      "DEWP": -6,
+      "HUMI": 26,
+      "TEMP": 13
+    },
+    {
+      "index": 877,
+      "PM_Dongsi": 7,
+      "PM_Dongsihuan": 4,
+      "PM_Nongzhanguan": 11,
+      "PM_US_Post": 13,
+      "DEWP": -11,
+      "HUMI": 26,
+      "TEMP": 7
+    },
+    {
+      "index": 886,
+      "PM_Dongsi": 10,
+      "PM_Dongsihuan": 9,
+      "PM_Nongzhanguan": 13,
+      "PM_US_Post": 11,
+      "DEWP": -24,
+      "HUMI": 8,
+      "TEMP": 8
+    },
+    {
+      "index": 895,
+      "PM_Dongsi": 36,
+      "PM_Dongsihuan": 40,
+      "PM_Nongzhanguan": 32,
+      "PM_US_Post": 35,
+      "DEWP": -23,
+      "HUMI": 10,
+      "TEMP": 6
+    },
+    {
+      "index": 905,
+      "PM_Dongsi": 12,
+      "PM_Dongsihuan": 18,
+      "PM_Nongzhanguan": 16,
+      "PM_US_Post": 21,
+      "DEWP": -19,
+      "HUMI": 24,
+      "TEMP": -1
+    },
+    {
+      "index": 914,
+      "PM_Dongsi": 19,
+      "PM_Dongsihuan": 19,
+      "PM_Nongzhanguan": 21,
+      "PM_US_Post": 20,
+      "DEWP": -23,
+      "HUMI": 6,
+      "TEMP": 12
+    },
+    {
+      "index": 923,
+      "PM_Dongsi": 23,
+      "PM_Dongsihuan": 21,
+      "PM_Nongzhanguan": 17,
+      "PM_US_Post": 19,
+      "DEWP": -25,
+      "HUMI": 6,
+      "TEMP": 10
+    },
+    {
+      "index": 932,
+      "PM_Dongsi": 12,
+      "PM_Dongsihuan": 20,
+      "PM_Nongzhanguan": 15,
+      "PM_US_Post": 16,
+      "DEWP": -23,
+      "HUMI": 7,
+      "TEMP": 11
+    },
+    {
+      "index": 941,
+      "PM_Dongsi": 29,
+      "PM_Dongsihuan": 26,
+      "PM_Nongzhanguan": 30,
+      "PM_US_Post": 32,
+      "DEWP": -20,
+      "HUMI": 7,
+      "TEMP": 15
+    },
+    {
+      "index": 950,
+      "PM_Dongsi": 80,
+      "PM_Dongsihuan": 79,
+      "PM_Nongzhanguan": 73,
+      "PM_US_Post": 85,
+      "DEWP": -12,
+      "HUMI": 32,
+      "TEMP": 3
+    },
+    {
+      "index": 959,
+      "PM_Dongsi": 98,
+      "PM_Dongsihuan": 110,
+      "PM_Nongzhanguan": 102,
+      "PM_US_Post": 110,
+      "DEWP": -12,
+      "HUMI": 14,
+      "TEMP": 15
+    },
+    {
+      "index": 969,
+      "PM_Dongsi": 180,
+      "PM_Dongsihuan": 175,
+      "PM_Nongzhanguan": 188,
+      "PM_US_Post": 183,
+      "DEWP": -6,
+      "HUMI": 24,
+      "TEMP": 14
+    },
+    {
+      "index": 978,
+      "PM_Dongsi": 71,
+      "PM_Dongsihuan": 83,
+      "PM_Nongzhanguan": 82,
+      "PM_US_Post": 83,
+      "DEWP": -11,
+      "HUMI": 26,
+      "TEMP": 7
+    },
+    {
+      "index": 987,
+      "PM_Dongsi": 119,
+      "PM_Dongsihuan": 116,
+      "PM_Nongzhanguan": 115,
+      "PM_US_Post": 121,
+      "DEWP": -8,
+      "HUMI": 17,
+      "TEMP": 17
+    },
+    {
+      "index": 996,
+      "PM_Dongsi": 112,
+      "PM_Dongsihuan": 134,
+      "PM_Nongzhanguan": 134,
+      "PM_US_Post": 144,
+      "DEWP": -4,
+      "HUMI": 48,
+      "TEMP": 6
+    },
+    {
+      "index": 1005,
+      "PM_Dongsi": 156,
+      "PM_Dongsihuan": 122,
+      "PM_Nongzhanguan": 112,
+      "PM_US_Post": 124,
+      "DEWP": -5,
+      "HUMI": 30,
+      "TEMP": 12
+    },
+    {
+      "index": 1014,
+      "PM_Dongsi": 22,
+      "PM_Dongsihuan": 16,
+      "PM_Nongzhanguan": 18,
+      "PM_US_Post": 21,
+      "DEWP": -11,
+      "HUMI": 12,
+      "TEMP": 18
+    },
+    {
+      "index": 1023,
+      "PM_Dongsi": 14,
+      "PM_Dongsihuan": 21,
+      "PM_Nongzhanguan": 10,
+      "PM_US_Post": 13,
+      "DEWP": -12,
+      "HUMI": 18,
+      "TEMP": 11
+    },
+    {
+      "index": 1032,
+      "PM_Dongsi": 72,
+      "PM_Dongsihuan": 73,
+      "PM_Nongzhanguan": 69,
+      "PM_US_Post": 76,
+      "DEWP": -7,
+      "HUMI": 21,
+      "TEMP": 15
+    },
+    {
+      "index": 1042,
+      "PM_Dongsi": 30,
+      "PM_Dongsihuan": 29,
+      "PM_Nongzhanguan": 31,
+      "PM_US_Post": 34,
+      "DEWP": -12,
+      "HUMI": 24,
+      "TEMP": 7
+    },
+    {
+      "index": 1051,
+      "PM_Dongsi": 50,
+      "PM_Dongsihuan": 93,
+      "PM_Nongzhanguan": 54,
+      "PM_US_Post": 94,
+      "DEWP": -7,
+      "HUMI": 36,
+      "TEMP": 7
+    },
+    {
+      "index": 1060,
+      "PM_Dongsi": 41,
+      "PM_Dongsihuan": 44,
+      "PM_Nongzhanguan": 39,
+      "PM_US_Post": 48,
+      "DEWP": -4,
+      "HUMI": 32,
+      "TEMP": 12
+    },
+    {
+      "index": 1069,
+      "PM_Dongsi": 9,
+      "PM_Dongsihuan": 5,
+      "PM_Nongzhanguan": 8,
+      "PM_US_Post": 6,
+      "DEWP": -17,
+      "HUMI": 16,
+      "TEMP": 7
+    },
+    {
+      "index": 1078,
+      "PM_Dongsi": 6,
+      "PM_Dongsihuan": 12,
+      "PM_Nongzhanguan": 13,
+      "PM_US_Post": 17,
+      "DEWP": -17,
+      "HUMI": 9,
+      "TEMP": 15
+    },
+    {
+      "index": 1087,
+      "PM_Dongsi": 27,
+      "PM_Dongsihuan": 10,
+      "PM_Nongzhanguan": 14,
+      "PM_US_Post": 11,
+      "DEWP": -14,
+      "HUMI": 14,
+      "TEMP": 12
+    },
+    {
+      "index": 1096,
+      "PM_Dongsi": 16,
+      "PM_Dongsihuan": 21,
+      "PM_Nongzhanguan": 13,
+      "PM_US_Post": 16,
+      "DEWP": -15,
+      "HUMI": 23,
+      "TEMP": 4
+    },
+    {
+      "index": 1106,
+      "PM_Dongsi": 22,
+      "PM_Dongsihuan": 23,
+      "PM_Nongzhanguan": 28,
+      "PM_US_Post": 28,
+      "DEWP": -18,
+      "HUMI": 5,
+      "TEMP": 22
+    },
+    {
+      "index": 1115,
+      "PM_Dongsi": 78,
+      "PM_Dongsihuan": 65,
+      "PM_Nongzhanguan": 67,
+      "PM_US_Post": 72,
+      "DEWP": -10,
+      "HUMI": 24,
+      "TEMP": 9
+    },
+    {
+      "index": 1124,
+      "PM_Dongsi": 73,
+      "PM_Dongsihuan": 66,
+      "PM_Nongzhanguan": 72,
+      "PM_US_Post": 72,
+      "DEWP": -17,
+      "HUMI": 7,
+      "TEMP": 18
+    },
+    {
+      "index": 1133,
+      "PM_Dongsi": 30,
+      "PM_Dongsihuan": 30,
+      "PM_Nongzhanguan": 28,
+      "PM_US_Post": 31,
+      "DEWP": -16,
+      "HUMI": 9,
+      "TEMP": 17
+    },
+    {
+      "index": 1142,
+      "PM_Dongsi": 113,
+      "PM_Dongsihuan": 126,
+      "PM_Nongzhanguan": 120,
+      "PM_US_Post": 147,
+      "DEWP": -7,
+      "HUMI": 36,
+      "TEMP": 7
+    },
+    {
+      "index": 1151,
+      "PM_Dongsi": 116,
+      "PM_Dongsihuan": 141,
+      "PM_Nongzhanguan": 121,
+      "PM_US_Post": 141,
+      "DEWP": -8,
+      "HUMI": 15,
+      "TEMP": 19
+    },
+    {
+      "index": 1160,
+      "PM_Dongsi": 232,
+      "PM_Dongsihuan": 230,
+      "PM_Nongzhanguan": 254,
+      "PM_US_Post": 249,
+      "DEWP": -1,
+      "HUMI": 40,
+      "TEMP": 12
+    },
+    {
+      "index": 1169,
+      "PM_Dongsi": 208,
+      "PM_Dongsihuan": 242,
+      "PM_Nongzhanguan": 262,
+      "PM_US_Post": 260,
+      "DEWP": 0,
+      "HUMI": 70,
+      "TEMP": 5
+    },
+    {
+      "index": 1179,
+      "PM_Dongsi": 186,
+      "PM_Dongsihuan": 162,
+      "PM_Nongzhanguan": 135,
+      "PM_US_Post": 184,
+      "DEWP": -1,
+      "HUMI": 24,
+      "TEMP": 20
+    },
+    {
+      "index": 1188,
+      "PM_Dongsi": 286,
+      "PM_Dongsihuan": 291,
+      "PM_Nongzhanguan": 289,
+      "PM_US_Post": 320,
+      "DEWP": 1,
+      "HUMI": 61,
+      "TEMP": 8
+    },
+    {
+      "index": 1197,
+      "PM_Dongsi": 192,
+      "PM_Dongsihuan": 224,
+      "PM_Nongzhanguan": 190,
+      "PM_US_Post": 223,
+      "DEWP": 1,
+      "HUMI": 28,
+      "TEMP": 20
+    },
+    {
+      "index": 1206,
+      "PM_Dongsi": 143,
+      "PM_Dongsihuan": 140,
+      "PM_Nongzhanguan": 106,
+      "PM_US_Post": 157,
+      "DEWP": 5,
+      "HUMI": 54,
+      "TEMP": 14
+    },
+    {
+      "index": 1215,
+      "PM_Dongsi": 273,
+      "PM_Dongsihuan": 259,
+      "PM_Nongzhanguan": 283,
+      "PM_US_Post": 300,
+      "DEWP": 5,
+      "HUMI": 75,
+      "TEMP": 9
+    },
+    {
+      "index": 1224,
+      "PM_Dongsi": 263,
+      "PM_Dongsihuan": 252,
+      "PM_Nongzhanguan": 278,
+      "PM_US_Post": 246,
+      "DEWP": 6,
+      "HUMI": 33,
+      "TEMP": 23
+    },
+    {
+      "index": 1233,
+      "PM_Dongsi": 420,
+      "PM_Dongsihuan": 401,
+      "PM_Nongzhanguan": 378,
+      "PM_US_Post": 436,
+      "DEWP": 7,
+      "HUMI": 71,
+      "TEMP": 12
+    },
+    {
+      "index": 1243,
+      "PM_Dongsi": 372,
+      "PM_Dongsihuan": 301,
+      "PM_Nongzhanguan": 160,
+      "PM_US_Post": 306,
+      "DEWP": 5,
+      "HUMI": 51,
+      "TEMP": 15
+    },
+    {
+      "index": 1252,
+      "PM_Dongsi": 121,
+      "PM_Dongsihuan": 115,
+      "PM_Nongzhanguan": 107,
+      "PM_US_Post": 123,
+      "DEWP": 3,
+      "HUMI": 50,
+      "TEMP": 13
+    },
+    {
+      "index": 1261,
+      "PM_Dongsi": 76,
+      "PM_Dongsihuan": 109,
+      "PM_Nongzhanguan": 83,
+      "PM_US_Post": 83,
+      "DEWP": 6,
+      "HUMI": 42,
+      "TEMP": 19
+    },
+    {
+      "index": 1270,
+      "PM_Dongsi": 196,
+      "PM_Dongsihuan": 200,
+      "PM_Nongzhanguan": 204,
+      "PM_US_Post": 217,
+      "DEWP": 7,
+      "HUMI": 58,
+      "TEMP": 15
+    },
+    {
+      "index": 1279,
+      "PM_Dongsi": 21,
+      "PM_Dongsihuan": 31,
+      "PM_Nongzhanguan": 27,
+      "PM_US_Post": 32,
+      "DEWP": 2,
+      "HUMI": 53,
+      "TEMP": 11
+    },
+    {
+      "index": 1288,
+      "PM_Dongsi": 24,
+      "PM_Dongsihuan": 23,
+      "PM_Nongzhanguan": 23,
+      "PM_US_Post": 23,
+      "DEWP": -3,
+      "HUMI": 17,
+      "TEMP": 23
+    },
+    {
+      "index": 1297,
+      "PM_Dongsi": 63,
+      "PM_Dongsihuan": 60,
+      "PM_Nongzhanguan": 61,
+      "PM_US_Post": 58,
+      "DEWP": 2,
+      "HUMI": 47,
+      "TEMP": 13
+    },
+    {
+      "index": 1306,
+      "PM_Dongsi": 33,
+      "PM_Dongsihuan": 31,
+      "PM_Nongzhanguan": 27,
+      "PM_US_Post": 30,
+      "DEWP": -4,
+      "HUMI": 22,
+      "TEMP": 18
+    },
+    {
+      "index": 1316,
+      "PM_Dongsi": 27,
+      "PM_Dongsihuan": 42,
+      "PM_Nongzhanguan": 30,
+      "PM_US_Post": 24,
+      "DEWP": -10,
+      "HUMI": 10,
+      "TEMP": 23
+    },
+    {
+      "index": 1325,
+      "PM_Dongsi": 143,
+      "PM_Dongsihuan": 123,
+      "PM_Nongzhanguan": 131,
+      "PM_US_Post": 116,
+      "DEWP": -1,
+      "HUMI": 33,
+      "TEMP": 15
+    },
+    {
+      "index": 1334,
+      "PM_Dongsi": 276,
+      "PM_Dongsihuan": 271,
+      "PM_Nongzhanguan": 275,
+      "PM_US_Post": 235,
+      "DEWP": 5,
+      "HUMI": 37,
+      "TEMP": 20
+    },
+    {
+      "index": 1343,
+      "PM_Dongsi": 136,
+      "PM_Dongsihuan": 165,
+      "PM_Nongzhanguan": 116,
+      "PM_US_Post": 175,
+      "DEWP": 7,
+      "HUMI": 62,
+      "TEMP": 14
+    },
+    {
+      "index": 1352,
+      "PM_Dongsi": 172,
+      "PM_Dongsihuan": 223,
+      "PM_Nongzhanguan": 183,
+      "PM_US_Post": 216,
+      "DEWP": 9,
+      "HUMI": 87,
+      "TEMP": 11
+    },
+    {
+      "index": 1361,
+      "PM_Dongsi": 48,
+      "PM_Dongsihuan": 43,
+      "PM_Nongzhanguan": 31,
+      "PM_US_Post": 48,
+      "DEWP": -6,
+      "HUMI": 13,
+      "TEMP": 24
+    },
+    {
+      "index": 1370,
+      "PM_Dongsi": 116,
+      "PM_Dongsihuan": 108,
+      "PM_Nongzhanguan": 122,
+      "PM_US_Post": 119,
+      "DEWP": 4,
+      "HUMI": 54,
+      "TEMP": 13
+    },
+    {
+      "index": 1379,
+      "PM_Dongsi": 91,
+      "PM_Dongsihuan": 85,
+      "PM_Nongzhanguan": 90,
+      "PM_US_Post": 76,
+      "DEWP": -2,
+      "HUMI": 18,
+      "TEMP": 23
+    },
+    {
+      "index": 1389,
+      "PM_Dongsi": 59,
+      "PM_Dongsihuan": 63,
+      "PM_Nongzhanguan": 64,
+      "PM_US_Post": 70,
+      "DEWP": 1,
+      "HUMI": 41,
+      "TEMP": 14
+    },
+    {
+      "index": 1398,
+      "PM_Dongsi": 4,
+      "PM_Dongsihuan": 9,
+      "PM_Nongzhanguan": 7,
+      "PM_US_Post": 9,
+      "DEWP": -16,
+      "HUMI": 13,
+      "TEMP": 11
+    },
+    {
+      "index": 1407,
+      "PM_Dongsi": 12,
+      "PM_Dongsihuan": 11,
+      "PM_Nongzhanguan": 9,
+      "PM_US_Post": 7,
+      "DEWP": -29,
+      "HUMI": 2,
+      "TEMP": 17
+    },
+    {
+      "index": 1416,
+      "PM_Dongsi": 26,
+      "PM_Dongsihuan": 24,
+      "PM_Nongzhanguan": 28,
+      "PM_US_Post": 28,
+      "DEWP": -9,
+      "HUMI": 28,
+      "TEMP": 8
+    },
+    {
+      "index": 1425,
+      "PM_Dongsi": 60,
+      "PM_Dongsihuan": 53,
+      "PM_Nongzhanguan": 60,
+      "PM_US_Post": 55,
+      "DEWP": -7,
+      "HUMI": 24,
+      "TEMP": 13
+    },
+    {
+      "index": 1434,
+      "PM_Dongsi": 17,
+      "PM_Dongsihuan": 31,
+      "PM_Nongzhanguan": 19,
+      "PM_US_Post": 20,
+      "DEWP": -18,
+      "HUMI": 7,
+      "TEMP": 18
+    },
+    {
+      "index": 1443,
+      "PM_Dongsi": 34,
+      "PM_Dongsihuan": 65,
+      "PM_Nongzhanguan": 38,
+      "PM_US_Post": 37,
+      "DEWP": -5,
+      "HUMI": 42,
+      "TEMP": 7
+    },
+    {
+      "index": 1453,
+      "PM_Dongsi": 15,
+      "PM_Dongsihuan": 10,
+      "PM_Nongzhanguan": 13,
+      "PM_US_Post": 14,
+      "DEWP": -18,
+      "HUMI": 7,
+      "TEMP": 18
+    },
+    {
+      "index": 1462,
+      "PM_Dongsi": 57,
+      "PM_Dongsihuan": 52,
+      "PM_Nongzhanguan": 59,
+      "PM_US_Post": 57,
+      "DEWP": -5,
+      "HUMI": 32,
+      "TEMP": 11
+    },
+    {
+      "index": 1471,
+      "PM_Dongsi": 81,
+      "PM_Dongsihuan": 92,
+      "PM_Nongzhanguan": 97,
+      "PM_US_Post": 84,
+      "DEWP": -7,
+      "HUMI": 27,
+      "TEMP": 11
+    },
+    {
+      "index": 1480,
+      "PM_Dongsi": 60,
+      "PM_Dongsihuan": 54,
+      "PM_Nongzhanguan": 58,
+      "PM_US_Post": 59,
+      "DEWP": -8,
+      "HUMI": 13,
+      "TEMP": 21
+    },
+    {
+      "index": 1489,
+      "PM_Dongsi": 78,
+      "PM_Dongsihuan": 72,
+      "PM_Nongzhanguan": 77,
+      "PM_US_Post": 80,
+      "DEWP": -2,
+      "HUMI": 49,
+      "TEMP": 8
+    },
+    {
+      "index": 1498,
+      "PM_Dongsi": 112,
+      "PM_Dongsihuan": 113,
+      "PM_Nongzhanguan": 114,
+      "PM_US_Post": 97,
+      "DEWP": -3,
+      "HUMI": 16,
+      "TEMP": 24
+    },
+    {
+      "index": 1507,
+      "PM_Dongsi": 160,
+      "PM_Dongsihuan": 183,
+      "PM_Nongzhanguan": 155,
+      "PM_US_Post": 166,
+      "DEWP": 2,
+      "HUMI": 38,
+      "TEMP": 16
+    },
+    {
+      "index": 1516,
+      "PM_Dongsi": 209,
+      "PM_Dongsihuan": 202,
+      "PM_Nongzhanguan": 218,
+      "PM_US_Post": 196,
+      "DEWP": 4,
+      "HUMI": 44,
+      "TEMP": 16
+    },
+    {
+      "index": 1526,
+      "PM_Dongsi": 147,
+      "PM_Dongsihuan": 134,
+      "PM_Nongzhanguan": 133,
+      "PM_US_Post": 138,
+      "DEWP": 3,
+      "HUMI": 34,
+      "TEMP": 19
+    },
+    {
+      "index": 1535,
+      "PM_Dongsi": 29,
+      "PM_Dongsihuan": 57,
+      "PM_Nongzhanguan": 42,
+      "PM_US_Post": 62,
+      "DEWP": -6,
+      "HUMI": 9,
+      "TEMP": 30
+    },
+    {
+      "index": 1544,
+      "PM_Dongsi": 126,
+      "PM_Dongsihuan": 133,
+      "PM_Nongzhanguan": 135,
+      "PM_US_Post": 165,
+      "DEWP": -5,
+      "HUMI": 19,
+      "TEMP": 19
+    },
+    {
+      "index": 1553,
+      "PM_Dongsi": 78,
+      "PM_Dongsihuan": 113,
+      "PM_Nongzhanguan": 86,
+      "PM_US_Post": 88,
+      "DEWP": 0,
+      "HUMI": 35,
+      "TEMP": 15
+    },
+    {
+      "index": 1562,
+      "PM_Dongsi": 62,
+      "PM_Dongsihuan": 85,
+      "PM_Nongzhanguan": 67,
+      "PM_US_Post": 72,
+      "DEWP": -2,
+      "HUMI": 30,
+      "TEMP": 15
+    },
+    {
+      "index": 1571,
+      "PM_Dongsi": 34,
+      "PM_Dongsihuan": 62,
+      "PM_Nongzhanguan": 47,
+      "PM_US_Post": 46,
+      "DEWP": -1,
+      "HUMI": 37,
+      "TEMP": 13
+    },
+    {
+      "index": 1580,
+      "PM_Dongsi": 66,
+      "PM_Dongsihuan": 74,
+      "PM_Nongzhanguan": 61,
+      "PM_US_Post": 68,
+      "DEWP": -5,
+      "HUMI": 24,
+      "TEMP": 15
+    },
+    {
+      "index": 1590,
+      "PM_Dongsi": 142,
+      "PM_Dongsihuan": 129,
+      "PM_Nongzhanguan": 127,
+      "PM_US_Post": 190,
+      "DEWP": -1,
+      "HUMI": 40,
+      "TEMP": 12
+    },
+    {
+      "index": 1599,
+      "PM_Dongsi": 127,
+      "PM_Dongsihuan": 134,
+      "PM_Nongzhanguan": 117,
+      "PM_US_Post": 109,
+      "DEWP": -5,
+      "HUMI": 16,
+      "TEMP": 21
+    },
+    {
+      "index": 1608,
+      "PM_Dongsi": 157,
+      "PM_Dongsihuan": 150,
+      "PM_Nongzhanguan": 126,
+      "PM_US_Post": 144,
+      "DEWP": 2,
+      "HUMI": 57,
+      "TEMP": 10
+    },
+    {
+      "index": 1617,
+      "PM_Dongsi": 204,
+      "PM_Dongsihuan": 441,
+      "PM_Nongzhanguan": 187,
+      "PM_US_Post": 167,
+      "DEWP": 3,
+      "HUMI": 30,
+      "TEMP": 21
+    },
+    {
+      "index": 1626,
+      "PM_Dongsi": 225,
+      "PM_Dongsihuan": 234,
+      "PM_Nongzhanguan": 219,
+      "PM_US_Post": 254,
+      "DEWP": 7,
+      "HUMI": 55,
+      "TEMP": 16
+    },
+    {
+      "index": 1635,
+      "PM_Dongsi": 266,
+      "PM_Dongsihuan": 236,
+      "PM_Nongzhanguan": 233,
+      "PM_US_Post": 270,
+      "DEWP": 7,
+      "HUMI": 62,
+      "TEMP": 14
+    },
+    {
+      "index": 1644,
+      "PM_Dongsi": 248,
+      "PM_Dongsihuan": 230,
+      "PM_Nongzhanguan": 198,
+      "PM_US_Post": 252,
+      "DEWP": 10,
+      "HUMI": 41,
+      "TEMP": 24
+    },
+    {
+      "index": 1653,
+      "PM_Dongsi": 54,
+      "PM_Dongsihuan": 67,
+      "PM_Nongzhanguan": 54,
+      "PM_US_Post": 69,
+      "DEWP": 8,
+      "HUMI": 62,
+      "TEMP": 15
+    },
+    {
+      "index": 1663,
+      "PM_Dongsi": 25,
+      "PM_Dongsihuan": 28,
+      "PM_Nongzhanguan": 30,
+      "PM_US_Post": 38,
+      "DEWP": -3,
+      "HUMI": 19,
+      "TEMP": 21
+    },
+    {
+      "index": 1672,
+      "PM_Dongsi": 30,
+      "PM_Dongsihuan": 32,
+      "PM_Nongzhanguan": 28,
+      "PM_US_Post": 51,
+      "DEWP": 0,
+      "HUMI": 38,
+      "TEMP": 14
+    },
+    {
+      "index": 1681,
+      "PM_Dongsi": 44,
+      "PM_Dongsihuan": 49,
+      "PM_Nongzhanguan": 50,
+      "PM_US_Post": 80,
+      "DEWP": -8,
+      "HUMI": 13,
+      "TEMP": 21
+    },
+    {
+      "index": 1690,
+      "PM_Dongsi": 96,
+      "PM_Dongsihuan": 103,
+      "PM_Nongzhanguan": 84,
+      "PM_US_Post": 134,
+      "DEWP": -2,
+      "HUMI": 30,
+      "TEMP": 15
+    },
+    {
+      "index": 1699,
+      "PM_Dongsi": 87,
+      "PM_Dongsihuan": 83,
+      "PM_Nongzhanguan": 90,
+      "PM_US_Post": 110,
+      "DEWP": 7,
+      "HUMI": 76,
+      "TEMP": 11
+    },
+    {
+      "index": 1708,
+      "PM_Dongsi": 92,
+      "PM_Dongsihuan": 99,
+      "PM_Nongzhanguan": 112,
+      "PM_US_Post": 117,
+      "DEWP": 9,
+      "HUMI": 59,
+      "TEMP": 17
+    },
+    {
+      "index": 1717,
+      "PM_Dongsi": 118,
+      "PM_Dongsihuan": 133,
+      "PM_Nongzhanguan": 120,
+      "PM_US_Post": 151,
+      "DEWP": 11,
+      "HUMI": 82,
+      "TEMP": 14
+    },
+    {
+      "index": 1727,
+      "PM_Dongsi": 168,
+      "PM_Dongsihuan": 173,
+      "PM_Nongzhanguan": 179,
+      "PM_US_Post": 170,
+      "DEWP": 11,
+      "HUMI": 56,
+      "TEMP": 20
+    },
+    {
+      "index": 1736,
+      "PM_Dongsi": 77,
+      "PM_Dongsihuan": 64,
+      "PM_Nongzhanguan": 76,
+      "PM_US_Post": 83,
+      "DEWP": 5,
+      "HUMI": 51,
+      "TEMP": 15
+    },
+    {
+      "index": 1745,
+      "PM_Dongsi": 66,
+      "PM_Dongsihuan": 57,
+      "PM_Nongzhanguan": 57,
+      "PM_US_Post": 59,
+      "DEWP": 6,
+      "HUMI": 66,
+      "TEMP": 12
+    },
+    {
+      "index": 1754,
+      "PM_Dongsi": 47,
+      "PM_Dongsihuan": 45,
+      "PM_Nongzhanguan": 43,
+      "PM_US_Post": 46,
+      "DEWP": 3,
+      "HUMI": 47,
+      "TEMP": 14
+    },
+    {
+      "index": 1763,
+      "PM_Dongsi": 85,
+      "PM_Dongsihuan": 102,
+      "PM_Nongzhanguan": 79,
+      "PM_US_Post": 95,
+      "DEWP": 5,
+      "HUMI": 75,
+      "TEMP": 9
+    },
+    {
+      "index": 1772,
+      "PM_Dongsi": 54,
+      "PM_Dongsihuan": 74,
+      "PM_Nongzhanguan": 75,
+      "PM_US_Post": 64,
+      "DEWP": 5,
+      "HUMI": 58,
+      "TEMP": 13
+    },
+    {
+      "index": 1781,
+      "PM_Dongsi": 65,
+      "PM_Dongsihuan": 51,
+      "PM_Nongzhanguan": 56,
+      "PM_US_Post": 59,
+      "DEWP": 2,
+      "HUMI": 32,
+      "TEMP": 19
+    },
+    {
+      "index": 1790,
+      "PM_Dongsi": 153,
+      "PM_Dongsihuan": 46,
+      "PM_Nongzhanguan": 9,
+      "PM_US_Post": 25,
+      "DEWP": -2,
+      "HUMI": 16,
+      "TEMP": 25
+    },
+    {
+      "index": 1800,
+      "PM_Dongsi": 96,
+      "PM_Dongsihuan": 97,
+      "PM_Nongzhanguan": 101,
+      "PM_US_Post": 90,
+      "DEWP": 4,
+      "HUMI": 57,
+      "TEMP": 12
+    },
+    {
+      "index": 1809,
+      "PM_Dongsi": 69,
+      "PM_Dongsihuan": 95,
+      "PM_Nongzhanguan": 26,
+      "PM_US_Post": 42,
+      "DEWP": 1,
+      "HUMI": 26,
+      "TEMP": 21
+    },
+    {
+      "index": 1818,
+      "PM_Dongsi": 80,
+      "PM_Dongsihuan": 66,
+      "PM_Nongzhanguan": 64,
+      "PM_US_Post": 73,
+      "DEWP": 4,
+      "HUMI": 27,
+      "TEMP": 24
+    },
+    {
+      "index": 1827,
+      "PM_Dongsi": 92,
+      "PM_Dongsihuan": 102,
+      "PM_Nongzhanguan": 97,
+      "PM_US_Post": 99,
+      "DEWP": 10,
+      "HUMI": 67,
+      "TEMP": 16
+    },
+    {
+      "index": 1836,
+      "PM_Dongsi": 187,
+      "PM_Dongsihuan": 172,
+      "PM_Nongzhanguan": 160,
+      "PM_US_Post": 168,
+      "DEWP": 13,
+      "HUMI": 53,
+      "TEMP": 23
+    },
+    {
+      "index": 1845,
+      "PM_Dongsi": 45,
+      "PM_Dongsihuan": 60,
+      "PM_Nongzhanguan": 63,
+      "PM_US_Post": 80,
+      "DEWP": 9,
+      "HUMI": 93,
+      "TEMP": 10
+    },
+    {
+      "index": 1854,
+      "PM_Dongsi": 39,
+      "PM_Dongsihuan": 38,
+      "PM_Nongzhanguan": 46,
+      "PM_US_Post": 72,
+      "DEWP": 0,
+      "HUMI": 21,
+      "TEMP": 23
+    },
+    {
+      "index": 1864,
+      "PM_Dongsi": 40,
+      "PM_Dongsihuan": 54,
+      "PM_Nongzhanguan": 45,
+      "PM_US_Post": 48,
+      "DEWP": 9,
+      "HUMI": 63,
+      "TEMP": 16
+    },
+    {
+      "index": 1873,
+      "PM_Dongsi": 72,
+      "PM_Dongsihuan": 97,
+      "PM_Nongzhanguan": 97,
+      "PM_US_Post": 106,
+      "DEWP": 9,
+      "HUMI": 59,
+      "TEMP": 17
+    },
+    {
+      "index": 1882,
+      "PM_Dongsi": 71,
+      "PM_Dongsihuan": 61,
+      "PM_Nongzhanguan": 73,
+      "PM_US_Post": 72,
+      "DEWP": 3,
+      "HUMI": 32,
+      "TEMP": 20
+    },
+    {
+      "index": 1891,
+      "PM_Dongsi": 67,
+      "PM_Dongsihuan": 78,
+      "PM_Nongzhanguan": 81,
+      "PM_US_Post": 83,
+      "DEWP": 5,
+      "HUMI": 66,
+      "TEMP": 11
+    },
+    {
+      "index": 1900,
+      "PM_Dongsi": 63,
+      "PM_Dongsihuan": 49,
+      "PM_Nongzhanguan": 77,
+      "PM_US_Post": 98,
+      "DEWP": 4,
+      "HUMI": 22,
+      "TEMP": 27
+    },
+    {
+      "index": 1909,
+      "PM_Dongsi": 92,
+      "PM_Dongsihuan": 87,
+      "PM_Nongzhanguan": 90,
+      "PM_US_Post": 97,
+      "DEWP": 9,
+      "HUMI": 71,
+      "TEMP": 14
+    },
+    {
+      "index": 1918,
+      "PM_Dongsi": 88,
+      "PM_Dongsihuan": 91,
+      "PM_Nongzhanguan": 94,
+      "PM_US_Post": 86,
+      "DEWP": 9,
+      "HUMI": 32,
+      "TEMP": 27
+    },
+    {
+      "index": 1927,
+      "PM_Dongsi": 76,
+      "PM_Dongsihuan": 74,
+      "PM_Nongzhanguan": 78,
+      "PM_US_Post": 87,
+      "DEWP": 10,
+      "HUMI": 46,
+      "TEMP": 22
+    },
+    {
+      "index": 1937,
+      "PM_Dongsi": 165,
+      "PM_Dongsihuan": 136,
+      "PM_Nongzhanguan": 160,
+      "PM_US_Post": 162,
+      "DEWP": 14,
+      "HUMI": 68,
+      "TEMP": 20
+    },
+    {
+      "index": 1946,
+      "PM_Dongsi": 89,
+      "PM_Dongsihuan": 79,
+      "PM_Nongzhanguan": 92,
+      "PM_US_Post": 130,
+      "DEWP": 6,
+      "HUMI": 31,
+      "TEMP": 24
+    },
+    {
+      "index": 1955,
+      "PM_Dongsi": 19,
+      "PM_Dongsihuan": 23,
+      "PM_Nongzhanguan": 25,
+      "PM_US_Post": 28,
+      "DEWP": 0,
+      "HUMI": 38,
+      "TEMP": 14
+    },
+    {
+      "index": 1964,
+      "PM_Dongsi": 15,
+      "PM_Dongsihuan": 15,
+      "PM_Nongzhanguan": 17,
+      "PM_US_Post": 50,
+      "DEWP": -8,
+      "HUMI": 14,
+      "TEMP": 20
+    },
+    {
+      "index": 1973,
+      "PM_Dongsi": 14,
+      "PM_Dongsihuan": 23,
+      "PM_Nongzhanguan": 12,
+      "PM_US_Post": 27,
+      "DEWP": 2,
+      "HUMI": 41,
+      "TEMP": 15
+    },
+    {
+      "index": 1982,
+      "PM_Dongsi": 21,
+      "PM_Dongsihuan": 67,
+      "PM_Nongzhanguan": 47,
+      "PM_US_Post": 64,
+      "DEWP": 4,
+      "HUMI": 81,
+      "TEMP": 7
+    },
+    {
+      "index": 1991,
+      "PM_Dongsi": 20,
+      "PM_Dongsihuan": 20,
+      "PM_Nongzhanguan": 30,
+      "PM_US_Post": 59,
+      "DEWP": 2,
+      "HUMI": 25,
+      "TEMP": 23
+    },
+    {
+      "index": 2001,
+      "PM_Dongsi": 26,
+      "PM_Dongsihuan": 23,
+      "PM_Nongzhanguan": 29,
+      "PM_US_Post": 39,
+      "DEWP": -5,
+      "HUMI": 30,
+      "TEMP": 12
+    }
+  ],
+  "prediction": [
+    {
+      "index": 9001,
+      "observe": 32,
+      "prediction": 24.916,
+      "ic_inf": 20.8989,
+      "ic_sup": 28.933,
+      "ip_inf": -12.7852,
+      "ip_sup": 62.6171
+    },
+    {
+      "index": 9002,
+      "observe": 24,
+      "prediction": 21.6302,
+      "ic_inf": 17.3737,
+      "ic_sup": 25.8867,
+      "ip_inf": -16.0972,
+      "ip_sup": 59.3576
+    },
+    {
+      "index": 9003,
+      "observe": 22,
+      "prediction": 24.7855,
+      "ic_inf": 20.2824,
+      "ic_sup": 29.2886,
+      "ip_inf": -12.9705,
+      "ip_sup": 62.5415
+    },
+    {
+      "index": 9004,
+      "observe": 32,
+      "prediction": 28.8358,
+      "ic_inf": 24.0686,
+      "ic_sup": 33.6031,
+      "ip_inf": -8.9526,
+      "ip_sup": 66.6242
+    },
+    {
+      "index": 9005,
+      "observe": 29,
+      "prediction": 30.3649,
+      "ic_inf": 25.3344,
+      "ic_sup": 35.3954,
+      "ip_inf": -7.4576,
+      "ip_sup": 68.1874
+    },
+    {
+      "index": 9006,
+      "observe": 25,
+      "prediction": 28.9286,
+      "ic_inf": 23.7699,
+      "ic_sup": 34.0872,
+      "ip_inf": -8.9112,
+      "ip_sup": 66.7684
+    },
+    {
+      "index": 9007,
+      "observe": 30,
+      "prediction": 29.7483,
+      "ic_inf": 24.4495,
+      "ic_sup": 35.0472,
+      "ip_inf": -8.1108,
+      "ip_sup": 67.6075
+    },
+    {
+      "index": 9008,
+      "observe": 23,
+      "prediction": 26.7445,
+      "ic_inf": 21.2449,
+      "ic_sup": 32.2441,
+      "ip_inf": -11.1432,
+      "ip_sup": 64.6323
+    },
+    {
+      "index": 9009,
+      "observe": 24,
+      "prediction": 19.9273,
+      "ic_inf": 13.8023,
+      "ic_sup": 26.0522,
+      "ip_inf": -18.0563,
+      "ip_sup": 57.9108
+    },
+    {
+      "index": 9010,
+      "observe": 17,
+      "prediction": 16.2356,
+      "ic_inf": 9.7457,
+      "ic_sup": 22.7255,
+      "ip_inf": -21.8085,
+      "ip_sup": 54.2797
+    }
+  ],
+  "residuals": [
+    {
+      "fitted": 157.0668,
+      "residual": 5.9332
+    },
+    {
+      "fitted": 153.2912,
+      "residual": 14.7088
+    },
+    {
+      "fitted": 139.81,
+      "residual": -52.81
+    },
+    {
+      "fitted": 121.389,
+      "residual": 5.611
+    },
+    {
+      "fitted": 143.5894,
+      "residual": 10.4106
+    },
+    {
+      "fitted": 17.0969,
+      "residual": 1.9031
+    },
+    {
+      "fitted": 8.5576,
+      "residual": 5.4424
+    },
+    {
+      "fitted": 3.0066,
+      "residual": 1.9934
+    },
+    {
+      "fitted": 5.5615,
+      "residual": 0.4385
+    },
+    {
+      "fitted": 5.2375,
+      "residual": -2.2375
+    },
+    {
+      "fitted": 6.5634,
+      "residual": 4.4366
+    },
+    {
+      "fitted": 9.1478,
+      "residual": -2.1478
+    },
+    {
+      "fitted": 78.0742,
+      "residual": 2.9258
+    },
+    {
+      "fitted": 117.7884,
+      "residual": 6.2116
+    },
+    {
+      "fitted": 86.5669,
+      "residual": 5.4331
+    },
+    {
+      "fitted": 115.9168,
+      "residual": -0.9168
+    },
+    {
+      "fitted": 130.6488,
+      "residual": -3.6488
+    },
+    {
+      "fitted": 106.2456,
+      "residual": -6.2456
+    },
+    {
+      "fitted": 75.0064,
+      "residual": 9.9936
+    },
+    {
+      "fitted": 87.7948,
+      "residual": 4.2052
+    },
+    {
+      "fitted": 77.2132,
+      "residual": 6.7868
+    },
+    {
+      "fitted": 77.8111,
+      "residual": 3.1889
+    },
+    {
+      "fitted": 116.076,
+      "residual": 4.924
+    },
+    {
+      "fitted": 5.0103,
+      "residual": 13.9897
+    },
+    {
+      "fitted": 5.4235,
+      "residual": 2.5765
+    },
+    {
+      "fitted": 8.4335,
+      "residual": 4.5665
+    },
+    {
+      "fitted": 13.8,
+      "residual": -3.8
+    },
+    {
+      "fitted": 2.1161,
+      "residual": 8.8839
+    },
+    {
+      "fitted": 13.1489,
+      "residual": 7.8511
+    },
+    {
+      "fitted": 32.8369,
+      "residual": -5.8369
+    },
+    {
+      "fitted": 66.4219,
+      "residual": 13.5781
+    },
+    {
+      "fitted": 52.8521,
+      "residual": 9.1479
+    },
+    {
+      "fitted": 168.1379,
+      "residual": 16.8621
+    },
+    {
+      "fitted": 126.3384,
+      "residual": 13.6616
+    },
+    {
+      "fitted": 53.7817,
+      "residual": -11.7817
+    },
+    {
+      "fitted": 135.3123,
+      "residual": 0.6877
+    },
+    {
+      "fitted": 142.9097,
+      "residual": 5.0903
+    },
+    {
+      "fitted": 173.9537,
+      "residual": -3.9537
+    },
+    {
+      "fitted": 210.402,
+      "residual": 16.598
+    },
+    {
+      "fitted": 219.7318,
+      "residual": 12.2682
+    },
+    {
+      "fitted": 230.0017,
+      "residual": 11.9983
+    },
+    {
+      "fitted": 501.3229,
+      "residual": -11.3229
+    },
+    {
+      "fitted": 307.072,
+      "residual": 14.928
+    },
+    {
+      "fitted": 371.1552,
+      "residual": 77.8448
+    },
+    {
+      "fitted": 386.512,
+      "residual": 45.488
+    },
+    {
+      "fitted": 222.0679,
+      "residual": -23.0679
+    },
+    {
+      "fitted": 263.1182,
+      "residual": 28.8818
+    },
+    {
+      "fitted": 108.2793,
+      "residual": 3.7207
+    },
+    {
+      "fitted": 83.2675,
+      "residual": 0.7325
+    },
+    {
+      "fitted": 75.742,
+      "residual": 5.258
+    },
+    {
+      "fitted": 52.0582,
+      "residual": -2.0582
+    },
+    {
+      "fitted": 62.6008,
+      "residual": 17.3992
+    },
+    {
+      "fitted": 89.5231,
+      "residual": -5.5231
+    },
+    {
+      "fitted": 90.2215,
+      "residual": -11.2215
+    },
+    {
+      "fitted": 23.6292,
+      "residual": -5.6292
+    },
+    {
+      "fitted": 116.557,
+      "residual": 11.443
+    },
+    {
+      "fitted": 133.4124,
+      "residual": 3.5876
+    },
+    {
+      "fitted": 293.9803,
+      "residual": -17.9803
+    },
+    {
+      "fitted": 323.9494,
+      "residual": -12.9494
+    },
+    {
+      "fitted": 271.3728,
+      "residual": -53.3728
+    },
+    {
+      "fitted": 247.8269,
+      "residual": -1.8269
+    },
+    {
+      "fitted": 303.7474,
+      "residual": -9.7474
+    },
+    {
+      "fitted": 231.5839,
+      "residual": 30.4161
+    },
+    {
+      "fitted": 235.8151,
+      "residual": 6.1849
+    },
+    {
+      "fitted": 183.1004,
+      "residual": -3.1004
+    },
+    {
+      "fitted": 196.4095,
+      "residual": -0.4095
+    },
+    {
+      "fitted": 268.8298,
+      "residual": -32.8298
+    },
+    {
+      "fitted": 238.9149,
+      "residual": -10.9149
+    },
+    {
+      "fitted": 255.6468,
+      "residual": -3.6468
+    },
+    {
+      "fitted": 409.4485,
+      "residual": -10.4485
+    },
+    {
+      "fitted": 469.1874,
+      "residual": -13.1874
+    },
+    {
+      "fitted": 21.4089,
+      "residual": 3.5911
+    },
+    {
+      "fitted": 8.6168,
+      "residual": 3.3832
+    },
+    {
+      "fitted": 10.1823,
+      "residual": 7.8177
+    },
+    {
+      "fitted": 104.9344,
+      "residual": -58.9344
+    },
+    {
+      "fitted": 59.6505,
+      "residual": 19.3495
+    },
+    {
+      "fitted": 95.0046,
+      "residual": -23.0046
+    },
+    {
+      "fitted": 185.3292,
+      "residual": -26.3292
+    },
+    {
+      "fitted": 28.1957,
+      "residual": -1.1957
+    },
+    {
+      "fitted": 26.9579,
+      "residual": 9.0421
+    },
+    {
+      "fitted": 131.8193,
+      "residual": 2.1807
+    },
+    {
+      "fitted": 128.6281,
+      "residual": 6.3719
+    },
+    {
+      "fitted": 135.5353,
+      "residual": -22.5353
+    },
+    {
+      "fitted": 154.8336,
+      "residual": 26.1664
+    },
+    {
+      "fitted": 248.4879,
+      "residual": -8.4879
+    },
+    {
+      "fitted": 205.0319,
+      "residual": 6.9681
+    },
+    {
+      "fitted": 198.6462,
+      "residual": 12.3538
+    },
+    {
+      "fitted": 5.8657,
+      "residual": 6.1343
+    },
+    {
+      "fitted": 12.3463,
+      "residual": -1.3463
+    },
+    {
+      "fitted": 11.9903,
+      "residual": 0.0097
+    },
+    {
+      "fitted": 26.4516,
+      "residual": -8.4516
+    },
+    {
+      "fitted": 44.3735,
+      "residual": 2.6265
+    },
+    {
+      "fitted": 7.6612,
+      "residual": 0.3388
+    },
+    {
+      "fitted": 7.7355,
+      "residual": 3.2645
+    },
+    {
+      "fitted": 22.6501,
+      "residual": -2.6501
+    },
+    {
+      "fitted": 73.9973,
+      "residual": -2.9973
+    },
+    {
+      "fitted": 45.5515,
+      "residual": -2.5515
+    },
+    {
+      "fitted": 59.9906,
+      "residual": 9.0094
+    },
+    {
+      "fitted": 109.6717,
+      "residual": 7.3283
+    },
+    {
+      "fitted": 180.0766,
+      "residual": -19.0766
+    },
+    {
+      "fitted": 139.4787,
+      "residual": -85.4787
+    },
+    {
+      "fitted": 94.7748,
+      "residual": -4.7748
+    },
+    {
+      "fitted": 117.9405,
+      "residual": -2.9405
+    },
+    {
+      "fitted": 40.3668,
+      "residual": 21.6332
+    },
+    {
+      "fitted": 63.4655,
+      "residual": 1.5345
+    },
+    {
+      "fitted": 106.7474,
+      "residual": -18.7474
+    },
+    {
+      "fitted": 222.853,
+      "residual": -41.853
+    },
+    {
+      "fitted": 223.4729,
+      "residual": -3.4729
+    },
+    {
+      "fitted": 166.3484,
+      "residual": -13.3484
+    },
+    {
+      "fitted": 10.8371,
+      "residual": -3.8371
+    },
+    {
+      "fitted": 13.1948,
+      "residual": -1.1948
+    },
+    {
+      "fitted": 17.9822,
+      "residual": -8.9822
+    },
+    {
+      "fitted": 19.8443,
+      "residual": 1.1557
+    },
+    {
+      "fitted": 16.2679,
+      "residual": -1.2679
+    },
+    {
+      "fitted": 29.2259,
+      "residual": -6.2259
+    },
+    {
+      "fitted": 16.4304,
+      "residual": -2.4304
+    },
+    {
+      "fitted": 17.0905,
+      "residual": -5.0905
+    },
+    {
+      "fitted": 23.0371,
+      "residual": 3.9629
+    },
+    {
+      "fitted": 68.486,
+      "residual": -2.486
+    },
+    {
+      "fitted": 100.5854,
+      "residual": -14.5854
+    },
+    {
+      "fitted": 115.1871,
+      "residual": -3.1871
+    },
+    {
+      "fitted": 147.9576,
+      "residual": 0.0424
+    },
+    {
+      "fitted": 75.5026,
+      "residual": -11.5026
+    },
+    {
+      "fitted": 129.587,
+      "residual": 1.413
+    },
+    {
+      "fitted": 132.9345,
+      "residual": -20.9345
+    },
+    {
+      "fitted": 175.8851,
+      "residual": 16.1149
+    },
+    {
+      "fitted": 24.7042,
+      "residual": 1.2958
+    },
+    {
+      "fitted": 21.5536,
+      "residual": -0.5536
+    },
+    {
+      "fitted": 16.5056,
+      "residual": -0.5056
+    },
+    {
+      "fitted": 59.1043,
+      "residual": -5.1043
+    },
+    {
+      "fitted": 46.5103,
+      "residual": -7.5103
+    },
+    {
+      "fitted": 68.5599,
+      "residual": -27.5599
+    },
+    {
+      "fitted": 42.1184,
+      "residual": -1.1184
+    },
+    {
+      "fitted": 8.8568,
+      "residual": -4.8568
+    },
+    {
+      "fitted": 13.0638,
+      "residual": -3.0638
+    },
+    {
+      "fitted": 15.1027,
+      "residual": -7.1027
+    },
+    {
+      "fitted": 6.2806,
+      "residual": -3.2806
+    },
+    {
+      "fitted": 21.7924,
+      "residual": -1.7924
+    },
+    {
+      "fitted": 30.7521,
+      "residual": 2.2479
+    },
+    {
+      "fitted": 68.4828,
+      "residual": 9.5172
+    },
+    {
+      "fitted": 63.0545,
+      "residual": -0.0545
+    },
+    {
+      "fitted": 11.1809,
+      "residual": 3.8191
+    },
+    {
+      "fitted": 104.6176,
+      "residual": -18.6176
+    },
+    {
+      "fitted": 172.6826,
+      "residual": -12.6826
+    },
+    {
+      "fitted": 156.9599,
+      "residual": 20.0401
+    },
+    {
+      "fitted": 220.3325,
+      "residual": 26.6675
+    },
+    {
+      "fitted": 247.1737,
+      "residual": 33.8263
+    },
+    {
+      "fitted": 149.9788,
+      "residual": 36.0212
+    },
+    {
+      "fitted": 283.3386,
+      "residual": 15.6614
+    },
+    {
+      "fitted": 211.7231,
+      "residual": -29.7231
+    },
+    {
+      "fitted": 141.0791,
+      "residual": -15.0791
+    },
+    {
+      "fitted": 193.7252,
+      "residual": 22.2748
+    },
+    {
+      "fitted": 354.3381,
+      "residual": -13.3381
+    },
+    {
+      "fitted": 309.5603,
+      "residual": 41.4397
+    },
+    {
+      "fitted": 376.6192,
+      "residual": 25.3808
+    },
+    {
+      "fitted": 121.5763,
+      "residual": 39.4237
+    },
+    {
+      "fitted": 109.537,
+      "residual": 11.463
+    },
+    {
+      "fitted": 105.3561,
+      "residual": 3.6439
+    },
+    {
+      "fitted": 142.404,
+      "residual": 4.596
+    },
+    {
+      "fitted": 17.504,
+      "residual": 7.496
+    },
+    {
+      "fitted": 21.8794,
+      "residual": -3.8794
+    },
+    {
+      "fitted": 30.0181,
+      "residual": 0.9819
+    },
+    {
+      "fitted": 56.2436,
+      "residual": 9.7564
+    },
+    {
+      "fitted": 32.5349,
+      "residual": -17.5349
+    },
+    {
+      "fitted": 23.6718,
+      "residual": -2.6718
+    },
+    {
+      "fitted": 164.885,
+      "residual": -7.885
+    },
+    {
+      "fitted": 235.1502,
+      "residual": -29.1502
+    },
+    {
+      "fitted": 70.6801,
+      "residual": -6.6801
+    },
+    {
+      "fitted": 145.693,
+      "residual": 30.307
+    },
+    {
+      "fitted": 142.3232,
+      "residual": 28.6768
+    },
+    {
+      "fitted": 72.597,
+      "residual": -7.597
+    },
+    {
+      "fitted": 121.0725,
+      "residual": 4.9275
+    },
+    {
+      "fitted": 88.6193,
+      "residual": 2.3807
+    },
+    {
+      "fitted": 90.4092,
+      "residual": -3.4092
+    },
+    {
+      "fitted": 53.5682,
+      "residual": -19.5682
+    },
+    {
+      "fitted": 9.6901,
+      "residual": -6.6901
+    },
+    {
+      "fitted": 24.8499,
+      "residual": -6.8499
+    },
+    {
+      "fitted": 36.0808,
+      "residual": -5.0808
+    },
+    {
+      "fitted": 34.6774,
+      "residual": 7.3226
+    },
+    {
+      "fitted": 18.9268,
+      "residual": -3.9268
+    },
+    {
+      "fitted": 41.8233,
+      "residual": -7.8233
+    },
+    {
+      "fitted": 10.7298,
+      "residual": -2.7298
+    },
+    {
+      "fitted": 37.3184,
+      "residual": -3.3184
+    },
+    {
+      "fitted": 59.4546,
+      "residual": 0.5454
+    },
+    {
+      "fitted": 44.071,
+      "residual": 13.929
+    },
+    {
+      "fitted": 62.7496,
+      "residual": -5.7496
+    },
+    {
+      "fitted": 80.7255,
+      "residual": 2.2745
+    },
+    {
+      "fitted": 112.6111,
+      "residual": -0.6111
+    },
+    {
+      "fitted": 150.7039,
+      "residual": 3.2961
+    },
+    {
+      "fitted": 168.304,
+      "residual": 15.696
+    },
+    {
+      "fitted": 156.288,
+      "residual": -16.288
+    },
+    {
+      "fitted": 138.0292,
+      "residual": 23.9708
+    },
+    {
+      "fitted": 57.1554,
+      "residual": -14.1554
+    },
+    {
+      "fitted": 112.8113,
+      "residual": -22.8113
+    },
+    {
+      "fitted": 86.7823,
+      "residual": -30.7823
+    },
+    {
+      "fitted": 68.6142,
+      "residual": -4.6142
+    },
+    {
+      "fitted": 49.7974,
+      "residual": -15.7974
+    },
+    {
+      "fitted": 50.8173,
+      "residual": 1.1827
+    },
+    {
+      "fitted": 104.6279,
+      "residual": -11.6279
+    },
+    {
+      "fitted": 95.4924,
+      "residual": 19.5076
+    },
+    {
+      "fitted": 93.5948,
+      "residual": -3.5948
+    },
+    {
+      "fitted": 149.3609,
+      "residual": -19.3609
+    },
+    {
+      "fitted": 181.0878,
+      "residual": -30.0878
+    },
+    {
+      "fitted": 227.1943,
+      "residual": 1.8057
+    },
+    {
+      "fitted": 234.1868,
+      "residual": 31.8132
+    },
+    {
+      "fitted": 212.1152,
+      "residual": 32.8848
+    },
+    {
+      "fitted": 46.0833,
+      "residual": 5.9167
+    },
+    {
+      "fitted": 97.8193,
+      "residual": 7.1807
+    },
+    {
+      "fitted": 46.5154,
+      "residual": -2.5154
+    },
+    {
+      "fitted": 48.4938,
+      "residual": -15.4938
+    },
+    {
+      "fitted": 53.6864,
+      "residual": -8.6864
+    },
+    {
+      "fitted": 102.6585,
+      "residual": 6.3415
+    },
+    {
+      "fitted": 91.0401,
+      "residual": 6.9599
+    },
+    {
+      "fitted": 107.3949,
+      "residual": -15.3949
+    },
+    {
+      "fitted": 124.7631,
+      "residual": -1.7631
+    },
+    {
+      "fitted": 133.3395,
+      "residual": 27.6605
+    },
+    {
+      "fitted": 152.9442,
+      "residual": -10.9442
+    },
+    {
+      "fitted": 76.9687,
+      "residual": -4.9687
+    },
+    {
+      "fitted": 65.2162,
+      "residual": -2.2162
+    },
+    {
+      "fitted": 44.9103,
+      "residual": 17.0897
+    },
+    {
+      "fitted": 91.7736,
+      "residual": 3.2264
+    },
+    {
+      "fitted": 69.816,
+      "residual": -15.816
+    },
+    {
+      "fitted": 52.2771,
+      "residual": -7.2771
+    },
+    {
+      "fitted": 24.3716,
+      "residual": 47.6284
+    },
+    {
+      "fitted": 64.2464,
+      "residual": 2.7536
+    },
+    {
+      "fitted": 55.9432,
+      "residual": -14.9432
+    },
+    {
+      "fitted": 87.1679,
+      "residual": 56.8321
+    },
+    {
+      "fitted": 86.9872,
+      "residual": -21.9872
+    },
+    {
+      "fitted": 100.1616,
+      "residual": 0.8384
+    },
+    {
+      "fitted": 161.9214,
+      "residual": 25.0786
+    },
+    {
+      "fitted": 52.6341,
+      "residual": -11.6341
+    },
+    {
+      "fitted": 47.4091,
+      "residual": 43.5909
+    },
+    {
+      "fitted": 95.1034,
+      "residual": -0.1034
+    },
+    {
+      "fitted": 67.2007,
+      "residual": -19.2007
+    },
+    {
+      "fitted": 60.7503,
+      "residual": -7.7503
+    },
+    {
+      "fitted": 83.4483,
+      "residual": -8.4483
+    },
+    {
+      "fitted": 101.9452,
+      "residual": -14.9452
+    },
+    {
+      "fitted": 81.3618,
+      "residual": -7.3618
+    },
+    {
+      "fitted": 102.0611,
+      "residual": 1.9389
+    },
+    {
+      "fitted": 76.0214,
+      "residual": 0.9786
+    },
+    {
+      "fitted": 91.673,
+      "residual": -1.673
+    },
+    {
+      "fitted": 145.2985,
+      "residual": 2.7015
+    },
+    {
+      "fitted": 136.2185,
+      "residual": 11.7815
+    },
+    {
+      "fitted": 36.1461,
+      "residual": -11.1461
+    },
+    {
+      "fitted": 36.8821,
+      "residual": -11.8821
+    },
+    {
+      "fitted": 95.1141,
+      "residual": -86.1141
+    },
+    {
+      "fitted": 34.8499,
+      "residual": -12.8499
+    },
+    {
+      "fitted": 88.1021,
+      "residual": -29.1021
+    },
+    {
+      "fitted": 44.1591,
+      "residual": -23.1591
+    },
+    {
+      "fitted": 30.976,
+      "residual": -4.976
+    }
+  ],
+  "wind": [
+    {
+      "cbwd": "cv",
+      "mean": 133.6437
+    },
+    {
+      "cbwd": "NE",
+      "mean": 99.47
+    },
+    {
+      "cbwd": "NW",
+      "mean": 82.6309
+    },
+    {
+      "cbwd": "SE",
+      "mean": 112.5194
+    }
+  ]
+}
