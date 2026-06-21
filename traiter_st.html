@@ -2,9 +2,9 @@
 <html lang="fr">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio - Ylan Harrault</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projet BUT 2 - Modélisation wafer</title>
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600;700&display=swap');
@@ -17,38 +17,89 @@
       --gold: #c89b55;
       --ink: #171410;
       --muted: #6f6258;
-      --olive: #9cbf55;
+      --line: #d7c7ad;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
       background: var(--cream);
       color: var(--ink);
       font-family: Inter, Arial, sans-serif;
-      line-height: 1.55;
+      line-height: 1.6;
     }
 
-    a {
-      color: inherit;
-    }
+    a { color: inherit; }
 
     .container {
-      width: min(1120px, 92%);
+      width: min(1100px, 92%);
       margin: auto;
     }
 
-    .line {
-      height: 1px;
-      background: var(--gold);
-      flex: 1;
+    /* ================= NAV ================= */
+
+    .project-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 4%;
+      background: #fbf7efdd;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 10px 30px #00000010;
+    }
+
+    .brand {
+      font-family: Playfair Display, serif;
+      font-style: italic;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--ink);
+      font-family: Bebas Neue, sans-serif;
+      text-decoration: none;
+      letter-spacing: .05em;
+      transition: transform .25s ease, color .25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--rust);
+      transform: translateY(-2px);
+    }
+
+    /* ================= HERO : même logique visuelle que ton modèle ================= */
+
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(90deg, var(--cream) 0 65%, var(--rust) 65% 100%);
+      padding: 120px 0 70px;
+    }
+
+    .hero-content {
+      background: var(--paper);
+      padding: clamp(30px, 5vw, 54px);
+      border-left: 6px solid var(--rust);
+      box-shadow: 0 24px 70px #0002;
+      max-width: min(1000px, 78vw);
     }
 
     .kicker {
@@ -59,537 +110,541 @@
       font-size: 1.1rem;
     }
 
-    .script {
+    h1 {
       font-family: Playfair Display, serif;
       color: var(--rust);
-      font-size: clamp(2.2rem, 7vw, 6rem);
-      line-height: .9;
+      font-size: clamp(2.5rem, 6vw, 5.1rem);
+      line-height: .95;
+      margin: 14px 0;
     }
 
-    .subtitle {
-      font-size: 1.05rem;
+    h2 {
+      font-family: Playfair Display, serif;
+      color: var(--rust);
+      font-size: clamp(2rem, 4vw, 2.7rem);
+      margin: 0 0 26px;
+    }
+
+    h3 {
+      font-family: Bebas Neue, sans-serif;
+      font-size: 1.7rem;
+      margin: 0 0 10px;
+      letter-spacing: .02em;
+    }
+
+    h4 {
+      font-family: Bebas Neue, sans-serif;
+      color: var(--rust-dark);
+      font-size: 1.35rem;
+      margin: 22px 0 8px;
+      letter-spacing: .02em;
+    }
+
+    p {
       color: var(--muted);
-      max-width: 760px;
+      margin-top: 0;
     }
 
     .btn {
       display: inline-block;
+      margin-top: 24px;
       border-bottom: 2px solid var(--ink);
       font-family: Bebas Neue, sans-serif;
       letter-spacing: .05em;
       text-decoration: none;
-      padding: .3rem 0;
-      margin-right: 2rem;
+      color: var(--ink);
+      padding-bottom: 4px;
       transition: transform .25s ease, color .25s ease;
     }
 
     .btn:hover {
       color: var(--rust);
-      transform: translateY(-2px);
+      transform: translateX(-4px);
     }
 
-    /* HERO */
-
-    .hero {
-      min-height: 100vh;
+    .quick-info {
       display: grid;
-      align-items: center;
-      background: linear-gradient(90deg, var(--cream) 0 62%, var(--rust) 62% 100%);
-      position: relative;
-      overflow: hidden;
-      padding-top: 120px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 32px;
     }
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: auto 0 0 0;
-      height: 150px;
-      background: linear-gradient(180deg, transparent, #00000012);
+    .info-box {
+      background: #efe3cf;
+      padding: 15px;
+      border-left: 4px solid var(--rust);
     }
 
-    .nav {
-      position: absolute;
-      top: 32px;
-      left: 4%;
-      right: 4%;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      z-index: 2;
-      flex-wrap: nowrap;
-    }
-
-    .brand {
-      font-family: Playfair Display, serif;
-      font-style: italic;
-      white-space: nowrap;
-    }
-
-    .nav .line {
-      min-width: 40px;
-    }
-
-    .sr-badge {
-      border: 2px solid var(--cream);
-      background: var(--rust);
-      color: var(--cream);
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      font-family: Playfair Display, serif;
-      font-weight: 700;
-      box-shadow: 0 8px 20px #0002;
-      flex-shrink: 0;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 40px;
-      align-items: center;
-    }
-
-    .hero-card {
-      background: var(--paper);
-      padding: 46px;
-      border-left: 5px solid var(--rust);
-      box-shadow: 0 24px 70px #0002;
-    }
-
-    .portrait {
-      background: linear-gradient(135deg, #c78a5c, #5a290e);
-      border-radius: 28px;
-    
-      height: 510px; /* même présence visuelle que la card */
-      width: 100%;
-    
-      padding: 14px;
-    
-      box-shadow: 0 24px 70px #0004;
-    
-      overflow: hidden;
-    
-      display: flex;
-    }
-    
-    .portrait img {
-      width: 100%;
-      height: 100%;
-    
-      object-fit: cover;
-      object-position: center 10%;    
-      border-radius: 18px;
-      border: 4px solid var(--paper);
-    
+    .info-box span {
       display: block;
+      font-family: Bebas Neue, sans-serif;
+      color: var(--rust-dark);
+      font-size: 1.1rem;
     }
 
-    /* SECTIONS */
+    .info-box strong {
+      font-size: .92rem;
+    }
+
+    /* ================= SECTIONS ================= */
 
     .section {
-      padding: 92px 0;
-      border-bottom: 1px solid #d7c7ad;
-    }
-
-    .section-head {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      margin-bottom: 42px;
-    }
-
-    .section h2 {
-      font-family: Playfair Display, serif;
-      color: var(--rust);
-      font-size: clamp(2rem, 4vw, 3.6rem);
-      margin: 0;
+      padding: 80px 0;
+      border-bottom: 1px solid var(--line);
     }
 
     .section-desc {
-      margin-bottom: 30px;
+      margin-bottom: 28px;
       color: var(--muted);
-      font-size: 1.05rem;
+      max-width: 850px;
     }
 
     .grid-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 34px;
+      gap: 28px;
     }
 
-    .card {
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card,
+    .step,
+    .result-card,
+    .tool-form,
+    .tool-result {
       background: var(--paper);
-      padding: 32px;
-      border-radius: 4px;
       box-shadow: 0 10px 30px #0000000d;
       transition: transform .25s ease, box-shadow .25s ease;
     }
 
-    .card:hover {
-      box-shadow: 0 16px 40px #00000018;
-    }
-    
-    .competence:hover {
-      transform: none;
-    }
-
-    .card h3 {
-      font-family: Bebas Neue, sans-serif;
-      font-size: 2rem;
-      margin: 0 0 14px;
-    }
-
-    .columns {
-      columns: 2;
-      column-gap: 40px;
-    }
-
-    /* SOMMAIRE */
-
-    .toc {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px 80px;
-      margin-top: 34px;
-    }
-
-    .toc a {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-      text-decoration: none;
-      border-bottom: 1px solid var(--gold);
-      padding: 16px 0;
-      font-family: Bebas Neue, sans-serif;
-      font-size: 1.25rem;
-      transition: transform .25s ease, color .25s ease;
-    }
-
-    .toc a:hover {
-      color: var(--rust);
-      transform: translateY(-2px);
-    }
-
-    .toc span {
-      color: var(--rust);
-      font-family: Playfair Display, serif;
-    }
-
-    /* PROFIL */
-
-    .profile-board {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-    }
-
-    .profile-card {
-      background: var(--paper);
+    .card,
+    .result-card {
       padding: 32px;
       border-left: 5px solid var(--rust);
-      box-shadow: 0 10px 30px #0000000d;
-      transition: transform .25s ease, box-shadow .25s ease;
     }
 
-    .profile-card:hover {
+    .card:hover,
+    .step:hover,
+    .result-card:hover,
+    .tool-form:hover,
+    .tool-result:hover {
       transform: translateY(-4px);
       box-shadow: 0 16px 40px #00000018;
     }
 
-    .profile-card h3 {
-      font-family: Bebas Neue, sans-serif;
-      font-size: 2rem;
-      margin: 0 0 18px;
-    }
-
-    .pill-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+    .steps {
+      counter-reset: step;
       display: grid;
-      gap: 12px;
+      gap: 20px;
     }
 
-    .pill-list li {
-      padding: 12px 16px;
+    .step {
+      padding: 26px;
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--rust);
+      color: var(--cream);
+      font-family: Playfair Display, serif;
+      font-weight: 700;
+      font-size: 1.4rem;
+    }
+
+    .method-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .method-chip {
       background: #efe3cf;
+      padding: 16px;
+      border-left: 4px solid var(--rust);
+      color: var(--muted);
+    }
+
+    .method-chip span {
+      display: block;
+      color: var(--rust-dark);
+      font-family: Bebas Neue, sans-serif;
+      font-size: 1.2rem;
+    }
+
+    /* ================= OUTIL INTERACTIF ================= */
+
+    .tool-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .tool-form,
+    .tool-result {
+      background: var(--paper);
+      padding: 32px;
+      border-left: 5px solid var(--rust);
+      box-shadow: 0 10px 30px #0000000d;
+    }
+
+    .tool-form label {
+      display: block;
+      margin-top: 16px;
+      margin-bottom: 6px;
+      font-weight: 700;
+      color: var(--rust-dark);
+    }
+
+    .tool-form input,
+    .tool-form textarea,
+    .tool-form select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--line);
+      background: #fffaf2;
+      font-family: Inter, Arial, sans-serif;
+      color: var(--ink);
+    }
+
+    .tool-form textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .inline-fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .tool-buttons {
+      display: flex;
+      gap: 14px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .tool-form button,
+    .tool-result button {
+      background: var(--rust);
+      color: var(--cream);
+      border: none;
+      padding: 12px 18px;
+      font-family: Bebas Neue, sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: .05em;
+      cursor: pointer;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .tool-form button:hover,
+    .tool-result button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px #00000025;
+    }
+
+    .clear-btn {
+      background: transparent !important;
+      color: var(--rust) !important;
+      border: 2px solid var(--rust) !important;
+    }
+
+    .clear-btn:hover {
+      background: var(--rust) !important;
+      color: var(--cream) !important;
+    }
+
+    .method-badge {
+      display: inline-block;
+      background: #efe3cf;
+      color: var(--rust-dark);
+      padding: 8px 14px;
       border-radius: 999px;
       font-weight: 700;
+      margin: 0 8px 14px 0;
     }
 
-    .improvement-list p {
-      margin: 0 0 16px;
-      padding-left: 16px;
-      border-left: 3px solid var(--gold);
+    .mini-metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 18px 0;
     }
 
-    /* COMPÉTENCES / PROJETS */
-
-    .competence {
-      border-left: 7px solid var(--rust);
-      margin-bottom: 24px;
-      padding-top: 0;
+    .metric {
+      background: #efe3cf;
+      padding: 12px;
+      border-left: 4px solid var(--rust);
     }
 
-    .competence.analyser {
-      border-color: #eb8b3a;
-    }
-
-    .competence.valoriser {
-      border-color: #d6be22;
-    }
-
-    .competence.modeliser {
-      border-color: var(--olive);
-    }
-
-    .project {
-      margin-top: 24px;
-      padding-top: 24px;
-      border-top: 1px solid #d6c6aa;
-    }
-
-    .project h4,
-    .project h3 {
+    .metric span {
+      display: block;
+      color: var(--rust-dark);
       font-family: Bebas Neue, sans-serif;
-      font-size: 1.75rem;
+      font-size: 1rem;
+    }
+
+    .metric strong {
+      font-size: 1.15rem;
+    }
+
+    .result-line {
+      display: grid;
+      grid-template-columns: 1.3fr .8fr .8fr;
+      gap: 12px;
+      border-bottom: 1px solid var(--line);
+      padding: 10px 0;
+      align-items: center;
+    }
+
+    .result-line strong {
+      color: var(--rust);
+    }
+
+    .result-line.selected {
+      background: #efe3cf;
+      padding-left: 10px;
+      border-left: 4px solid var(--rust);
+    }
+
+    .equation,
+    .summary-box {
+      margin-top: 22px;
+      padding: 16px;
+      background: #efe3cf;
+      color: var(--rust-dark);
+      font-weight: 700;
+      line-height: 1.6;
+      overflow-wrap: anywhere;
+    }
+
+    .summary-box {
+      color: var(--ink);
+    }
+
+    .slider-zone {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .slider-row {
+      background: #fffaf2;
+      border: 1px solid var(--line);
+      padding: 12px;
+    }
+
+    .slider-row label {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--rust-dark);
+      font-weight: 700;
       margin: 0 0 8px;
     }
 
-    .project-link {
-      display: block;
-      color: inherit;
-      text-decoration: none;
+    .slider-row input[type="range"] {
+      width: 100%;
+      accent-color: var(--rust);
     }
-    
-    .project-link .project {
-      padding: 24px;
-      cursor: pointer;
-      transition: transform .25s ease;
-    }
-    
-    .project-link:hover .project {
-      transform: translateX(9px);
-    }
-    
 
-    .meta {
-      font-size: .85rem;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      color: var(--rust);
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      background: #efe3cf;
+      color: var(--rust-dark);
+      padding: 8px 12px;
+      border-radius: 999px;
       font-weight: 700;
+      font-size: .9rem;
+      transition: transform .2s ease;
     }
 
-    /* CAPACITÉS TRANSVERSALES */
-
-    .transversal-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 22px;
+    .tag:hover {
+      transform: translateY(-2px);
     }
 
-    .transversal-item {
-      background: var(--paper);
-      padding: 28px;
-      border-left: 5px solid var(--rust);
-      box-shadow: 0 10px 30px #0000000d;
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-
-    .transversal-item:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 40px #00000018;
-    }
-
-    .transversal-item h3 {
-      font-family: Bebas Neue, sans-serif;
-      font-size: 1.7rem;
-      margin: 0 0 10px;
-    }
-
-    /* FOOTER */
-
-    .footer {
-      padding: 54px 0;
+    .highlight {
       background: var(--rust);
       color: var(--cream);
-      text-align: center;
+      padding: clamp(28px, 5vw, 52px);
+      box-shadow: 0 18px 50px #00000020;
     }
 
-    .footer h2 {
-      font-family: Playfair Display, serif;
-      font-size: 3rem;
-      margin: 0 0 10px;
+    .highlight h2,
+    .highlight > p {
+      color: var(--cream);
+    }
+
+    .highlight .result-card p {
+      color: var(--muted);
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin: 30px 0;
+    }
+
+    .result-card {
+      background: var(--paper);
+      border-left: none;
+      border-top: 5px solid var(--gold);
+    }
+
+    .result-card h3 {
+      color: var(--rust-dark);
+    }
+
+    .footer {
+      padding: 44px 0;
+      text-align: center;
+      background: var(--rust);
+      color: var(--cream);
+    }
+
+    .footer p {
+      color: var(--cream);
+      margin: 0;
     }
 
     .footer-content {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 34px;
+      gap: 28px;
       align-items: center;
     }
 
-    .footer-contact {
-      text-align: left;
-      background: #ffffff12;
-      padding: 26px;
-      border-radius: 8px;
-    }
-
-    .footer-contact h3 {
+    .footer h3 {
       font-family: Bebas Neue, sans-serif;
       font-size: 2rem;
-      margin: 0 0 12px;
+      margin: 0 0 8px;
     }
 
-    .footer-contact a {
+    .footer a {
       color: var(--cream);
       text-decoration: none;
       border-bottom: 1px solid var(--gold);
     }
 
-    .top-link {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      background: var(--rust);
-      color: var(--cream);
-      padding: 12px 16px;
-      border-radius: 999px;
-      text-decoration: none;
-      font-family: Bebas Neue, sans-serif;
-      box-shadow: 0 8px 20px #0003;
-      transition: transform .25s ease;
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
     }
 
-    .top-link:hover {
-      transform: translateY(-4px);
+    /* ================= RESPONSIVE ================= */
+
+    @media(max-width:1200px) {
+      .hero-content {
+        max-width: 850px;
+      }
     }
 
-    /* RESPONSIVE */
+    @media(max-width:950px) {
+      .hero {
+        min-height: auto;
+        background: var(--cream);
+        padding: 110px 0 60px;
+      }
 
-    @media(max-width:1000px) {
-      .transversal-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .hero-content {
+        max-width: 100%;
+      }
+
+      .quick-info,
+      .grid-2,
+      .tool-box,
+      .method-row,
+      .result-grid {
+        grid-template-columns: 1fr 1fr;
       }
     }
 
     @media(max-width:800px) {
-      .hero {
-        background: var(--cream);
-        padding-top: 90px;
-      }
-
-      .nav {
-        top: 20px;
-        left: 5%;
-        right: 5%;
-        gap: 12px;
-      }
-
-      .brand {
-        font-size: .95rem;
-      }
-
-      .sr-badge {
-        width: 48px;
-        height: 48px;
-        font-size: .9rem;
-      }
-
-      .hero-grid,
-      .grid-2,
-      .toc,
-      .profile-board,
-      .footer-content {
+      .tool-box {
         grid-template-columns: 1fr;
       }
 
-      .hero-grid {
-        padding-top: 90px;
+      .result-line {
+        grid-template-columns: 1fr;
       }
 
-      .hero-card {
-        padding: 28px;
+      .mini-metrics {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media(max-width:700px) {
+      .project-nav {
+        position: static;
+        flex-direction: column;
+        align-items: flex-start;
       }
 
-      .portrait {
-        min-height: 300px;
+      .hero {
+        padding: 50px 0;
       }
 
-      .columns {
-        columns: 1;
+      .nav-links {
+        gap: 14px;
+      }
+
+      .quick-info,
+      .grid-2,
+      .method-row,
+      .result-grid,
+      .footer-content,
+      .inline-fields {
+        grid-template-columns: 1fr;
+      }
+
+      .step {
+        grid-template-columns: 1fr;
       }
 
       .section {
         padding: 58px 0;
       }
-
-      .section-head {
-        gap: 14px;
-      }
-
-      .transversal-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-content,
-      .footer-contact {
-        text-align: center;
-      }
     }
 
     @media(max-width:520px) {
-      .hero {
-        min-height: auto;
-        padding: 100px 0 60px;
+      .container {
+        width: 94%;
       }
 
-      .script {
-        font-size: 3.1rem;
+      .hero-content,
+      .card,
+      .step,
+      .tool-form,
+      .tool-result {
+        padding: 24px;
       }
 
-      .subtitle {
-        font-size: .98rem;
-      }
-
-      .portrait {
-        min-height: 260px;
-        padding: 18px;
-      }
-
-      .toc a {
-        font-size: 1.1rem;
-        gap: 14px;
-      }
-
-      .project-link .project {
-        padding: 18px;
-      }
-
-      .top-link {
-        right: 12px;
-        bottom: 12px;
-        padding: 10px 14px;
-      }
-    }
-
-    @media(max-width:420px) {
-      .brand {
-        font-size: .8rem;
-      }
-
-      .nav {
-        gap: 8px;
-      }
-
-      .sr-badge {
-        width: 42px;
-        height: 42px;
+      .mini-metrics {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -597,344 +652,419 @@
 
 <body id="top">
 
-  <header class="hero">
-    <nav class="nav">
-      <div class="brand">Ylan Harrault</div>
-      <div class="line"></div>
-      <div class="sr-badge">SD</div>
-    </nav>
+  <nav class="project-nav">
+    <div class="brand">Ylan Harrault</div>
 
-    <div class="container hero-grid">
-      <div class="hero-card">
-        <div class="kicker">Portfolio</div>
-        <h1 class="script">Ylan Harrault</h1>
-        <p class="subtitle">
-          Étudiant en BUT Science des Données Parcours Exploration et Modélisation Statistiques (EMS), passionné par l’informatique, les mathématiques, l’analyse et la valorisation de données.
+    <div class="nav-links">
+      <a href="index.html#traiter">Retour</a>
+      <a href="#objectif">Objectif</a>
+      <a href="#donnees">Données</a>
+      <a href="#methodologie">Méthodologie</a>
+      <a href="#details">Détails</a>
+      <a href="#limites">Limites</a>
+      <a href="#simulation">Simulation</a>
+      <a href="#resultat">Résultat</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="kicker">Projet BUT 2 — Traiter</div>
+        <h1>Modélisation robuste de données wafer</h1>
+
+        <p>
+          Développement d’un script Python qui automatise le nettoyage des données,
+          la sélection des variables corrélées, l’entraînement de modèles polynomiaux
+          régularisés et la recherche d’un minimum théorique.
         </p>
 
-        <a href="#sommaire" class="btn">Voir le sommaire</a>
-        <a href="#apropos" class="btn">À propos</a>
-      </div>
+        <div class="quick-info">
+          <div class="info-box">
+            <span>Langage</span>
+            <strong>Python</strong>
+          </div>
 
-      <div class="portrait">
-        <img src="images/sa_tete.jpg" alt="Photo de profil">
+          <div class="info-box">
+            <span>Données</span>
+            <strong>BIN & _AVERAGE</strong>
+          </div>
+
+          <div class="info-box">
+            <span>Modèles</span>
+            <strong>Ridge / Lasso / ElasticNet</strong>
+          </div>
+
+          <div class="info-box">
+            <span>Sortie</span>
+            <strong>CSV + outil interactif</strong>
+          </div>
+        </div>
+
+        <a href="index.html#traiter" class="btn">← Retour à la compétence Traiter</a>
       </div>
     </div>
   </header>
 
   <main>
 
-    <section class="section" id="sommaire">
-      <div class="container">
-        <div class="section-head">
-          <h2>Sommaire</h2>
-          <div class="line"></div>
-        </div>
-
-        <div class="toc">
-          <a href="#apropos"><span>01</span> À propos de moi</a>
-          <a href="#projet"><span>02</span> Mon projet professionnel</a>
-          <a href="#parcours"><span>03</span> Mon parcours personnel et professionnel</a>
-          <a href="#traiter"><span>04</span> Traiter</a>
-          <a href="#analyser"><span>05</span> Analyser</a>
-          <a href="#valoriser"><span>06</span> Valoriser</a>
-          <a href="#modeliser"><span>07</span> Modéliser</a>
-          <a href="#transversales"><span>08</span> Capacités transversales</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="apropos">
+    <section class="section" id="objectif">
       <div class="container grid-2">
-        <div>
-          <div class="kicker">À propos de moi</div>
-          <h2>Bonjour, je m'appelle Ylan</h2>
-
+        <div class="card">
+          <h3>Objectif du projet</h3>
           <p>
-            Personne impliquée et persévérante, j’ai suivi dès mes 13 ans un cursus spécial en section sportive handball.
-            Cette expérience m’a permis d’acquérir l’investissement, la prise de conscience des engagements, le dépassement
-            de soi et l’esprit d’équipe.
-          </p>
-
-          <p>
-            Au lycée, j’ai intégré le pôle espoir handball en parallèle de mes études. Ce double cursus a renforcé ma rigueur,
-            mon autonomie et ma capacité à travailler dans des environnements exigeants.
+            L’objectif était de construire un pipeline automatisé capable d’analyser plusieurs
+            variables cibles de type BIN et de trouver les paramètres de procédé les plus influents.
           </p>
         </div>
 
         <div class="card">
-          <h3>Profil</h3>
-          <p><strong>Email :</strong> ylan.harrault@gmail.com</p>
-          <p><strong>Domaine :</strong> Science des Données, analyse, traitement et visualisation.</p>
-          <a class="btn" href="#sommaire">Retour au sommaire</a>
+          <h3>Problématique</h3>
+          <p>
+            Comment identifier automatiquement les variables les plus explicatives, comparer
+            plusieurs modèles et obtenir une équation exploitable sans refaire toute l’analyse à la main ?
+          </p>
         </div>
       </div>
     </section>
-
-    <section class="section" id="projet">
+    
+    
+    <section class="section" id="donnees">
       <div class="container">
-        <div class="section-head">
-          <h2>Mon projet professionnel</h2>
-          <div class="line"></div>
-        </div>
-
-        <div class="profile-board">
-          <div class="profile-card">
-            <h3>Forces</h3>
-            <ul class="pill-list">
-              <li>Persévérant</li>
-              <li>Créatif</li>
-              <li>Calme</li>
-              <li>Polyvalent</li>
-              <li>Sérieux</li>
-            </ul>
-          </div>
-
-          <div class="profile-card">
-            <h3>Faiblesses</h3>
-            <div class="improvement-list">
-              <p><strong>Réservé</strong><br>Je travaille sur ma prise de parole et ma confiance en groupe.</p>
-              <p><strong>Obstiné</strong><br>J’apprends à prendre du recul et à écouter d’autres méthodes.</p>
-            </div>
-          </div>
-
-          <div class="profile-card">
-            <h3>Opportunités</h3>
+        <h2>Données utilisées</h2>
+    
+        <p class="section-desc">
+          Le projet repose sur un fichier de données industrielles contenant des variables liées à la production
+          de wafers. Les colonnes de type BIN représentent les variables cibles à analyser, tandis que les colonnes
+          se terminant par _AVERAGE correspondent aux paramètres explicatifs utilisés pour construire les modèles.
+        </p>
+    
+        <div class="grid-3">
+          <div class="card">
+            <h3>Variables cibles</h3>
             <p>
-              Savoir s’adapter dans une entreprise est une compétence recherchée
-              dans une société qui évolue rapidement.
+              Les colonnes BIN sont utilisées comme variables à expliquer. Le programme analyse chaque BIN
+              séparément afin d’identifier les paramètres qui peuvent influencer son comportement.
             </p>
           </div>
-
-          <div class="profile-card">
-            <h3>Menaces</h3>
+    
+          <div class="card">
+            <h3>Variables explicatives</h3>
             <p>
-              Rester attentif à l’évolution constante des outils, méthodes et attentes
-              du secteur de la data.
+              Les colonnes _AVERAGE représentent les mesures moyennes disponibles dans le jeu de données.
+              Elles servent à rechercher les corrélations et à construire les modèles prédictifs.
+            </p>
+          </div>
+    
+          <div class="card">
+            <h3>Contrôle qualité</h3>
+            <p>
+              Avant la modélisation, le script vérifie la cohérence des lignes, notamment en contrôlant que
+              la somme des colonnes BIN reste proche de 100.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="parcours">
+    <section class="section" id="methodologie">
       <div class="container">
-        <div class="section-head">
-          <h2>Mon parcours personnel et professionnel</h2>
-          <div class="line"></div>
-        </div>
-
-        <p class="columns">
-          C’est en me questionnant dès le collège que j’ai compris que le monde de l’informatique et des mathématiques me
-          passionnait. Au lycée, j’ai choisi de suivre ces matières tout en continuant un double cursus dans le handball.
-          Après l’obtention de mon baccalauréat, l’IUT d’Avignon s’est imposé comme un chemin cohérent. J’ai choisi ce
-          parcours pour acquérir la plus grande polyvalence possible et me mettre au service d’une entreprise. Cette
-          polyvalence me permet de basculer d’un domaine à l’autre sans m’ennuyer, même lorsque les sujets sont très
-          différents.
-        </p>
-      </div>
-    </section>
-
-    <section class="section" id="traiter">
-      <div class="container">
-        <div class="section-head">
-          <h2>Traiter</h2>
-          <div class="line"></div>
-        </div>
+        <h2>Méthodologie</h2>
 
         <p class="section-desc">
-          Traiter des données consiste à collecter, nettoyer, transformer, intégrer, réduire et sécuriser des données brutes pour les rendre exploitables dans une analyse fiable.
+          Le projet reprend une logique de pipeline complet : préparation des données, traitement des
+          valeurs aberrantes, sélection de variables, entraînement de modèles et export des résultats.
         </p>
 
-        <div class="card competence">
-          <a href="traiter_but1.html" class="project-link">
-            <div class="project">
-              <div class="meta">BUT 1</div>
-              <h4>Traiter des données structurées</h4>
+        <div class="steps">
+          <div class="step">
+            <div>
+              <h3>Préparation des données</h3>
               <p>
-                Conception d’un reporting à partir de données stockées dans une base relationnelle. Extraction, structuration
-                sous Excel, tableaux croisés dynamiques, formules avancées et comparaison des années 2013 et 2015 pour
-                identifier des tendances de consommation et production.
+                Lecture du fichier CSV, conversion des colonnes numériques, sélection des colonnes BIN
+                et _AVERAGE, puis vérification de la cohérence des lignes.
               </p>
             </div>
-          </a>
-
-          <a href="traiter_st.html" class="project-link">
-            <div class="project">
-              <div class="meta">BUT 2</div>
-              <h4>Automatiser le traitement de données multidimensionnelles</h4>
-              <p>
-                Développement d’un programme Python automatisant la création d’un modèle polynomial explicatif. Le programme
-                identifie les variables corrélées avec Spearman et sélectionne la meilleure loi polynomiale, notamment dans
-                Databricks.
-              </p>
-            </div>
-          </a>
-
-          <a href="traiter_images.html" class="project-link">
-            <div class="project">
-              <div class="meta">BUT 3</div>
-          
-              <h4>Reconnaissances de formes géométriques par modélisation statistique</h4>
-          
-              <p>
-                Projet de classification d’images utilisant plusieurs approches statistiques
-                et algorithmiques : méthode géométrique simple, régression logistique
-                pénalisée (LASSO, Ridge, ElasticNet) et Random Forest afin de reconnaître
-                automatiquement des triangles, carrés et cercles.
-              </p>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="analyser">
-      <div class="container">
-        <div class="section-head">
-          <h2>Analyser</h2>
-          <div class="line"></div>
-        </div>
-
-        <p class="section-desc">
-          L’analyse consiste à explorer les données, produire des statistiques descriptives, identifier des relations et
-          interpréter les résultats pour transformer des données brutes en informations utiles à la décision.
-        </p>
-
-        <div class="card competence analyser">
-          <a href="analyser_acp.html" class="project-link">
-            <div class="project">
-              <div class="meta">BUT 1</div>
-              <h4>Analyser les profils sportifs avec ACP, AFC et classification</h4>
-              <p>
-                Analyse des comportements sportifs à partir d’un jeu de données Kaggle. Le projet combine
-                ACP sur les variables quantitatives, AFC sur les profils sociodémographiques et classification
-                hiérarchique afin d’identifier des profils de pratiquants et leurs habitudes d’entraînement.
-              </p>
-            </div>
-          </a>
-
-          <a href="analyser_temp.html" class="project-link">
-            <div class="project">
-              <div class="meta">BUT 2</div>
-              <h4>Analyser l’évolution temporelle de la pollution</h4>
-              <p>
-                Analyse d’un jeu de données sur la pollution atmosphérique à Pékin. Le projet combine
-                exploration des données, régression linéaire multiple, diagnostic des résidus, ANOVA
-                sur la direction du vent et sélection de variables afin d’expliquer les variations de PM_Dongsi.
-              </p>
-            </div>
-          </a>
-
-          <a href="analyser_datamining.html" class="project-link">
-            <div class="project">
-              <div class="meta">BUT 3</div>
-              <h4>Data Mining — Prédiction des catégories de véhicules</h4>
-              <p>
-                Projet de classification supervisée réalisé à partir du Forza Final Dataset.
-                L’objectif était de prédire la catégorie stock_specs des véhicules à partir de leurs caractéristiques,
-                en comparant plusieurs modèles comme KNN, SVM, Decision Tree, Random Forest et XGBoost.
-              </p>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="valoriser">
-      <div class="container">
-        <div class="section-head">
-          <h2>Valoriser</h2>
-          <div class="line"></div>
-        </div>
-
-        <p class="section-desc">
-          Valoriser signifie mettre en avant les résultats, conclusions et recommandations afin de maximiser l’impact d’un
-          travail et de le rendre utile pour un public cible.
-        </p>
-
-        <div class="card competence valoriser">
-          <a href="valoriser_but1.html" class="project-link">
-            <div class="project">
-              <div class="meta">BUT 1</div>
-            
-              <h4>Analyse des ménages et catégories socioprofessionnelles</h4>
-            
-              <p>
-                Projet d’analyse de données INSEE sur les couples, familles et ménages entre 2014 et 2020.
-                Étude des liens entre structure familiale, catégorie socioprofessionnelle et région à travers
-                des traitements SQL, des analyses statistiques avec R et des visualisations interactives.
-              </p>
-            </div>
-          </a>
-
-          <a href="valoriser_dataviz.html" class="project-link">
-            <div class="project">
-              <div class="meta">Concours</div>
-              <h4>Concours de Datavisualisation</h4>
-              <p>
-                Analyse de données météorologiques fournies par Météo France. Le travail de groupe a permis de contextualiser
-                les données et de mettre en évidence des résultats clés à l’aide d’indicateurs pertinents dans un délai imparti.
-              </p>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="modeliser">
-      <div class="container">
-        <div class="section-head">
-          <h2>Modéliser</h2>
-          <div class="line"></div>
-        </div>
-
-        <div class="card competence modeliser">
-          <a href="modeliser_echan.html" class="project-link">
-            <div class="project">
-              <div class="meta">BUT 2</div>
-              <h4>Développer une solution décisionnelle</h4>
-              <p>
-                Évaluation de méthodes statistiques comme le sondage aléatoire simple, la stratification et le redressement. Le
-                projet a renforcé la manipulation de données complexes, le calcul d’estimations fiables, la comparaison de
-                méthodes et la formulation de recommandations chiffrées.
-              </p>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="transversales">
-      <div class="container">
-        <div class="section-head">
-          <h2>Capacités transversales</h2>
-          <div class="line"></div>
-        </div>
-
-        <p class="section-desc">
-          Au-delà des compétences techniques, mon parcours m’a permis de développer des qualités utiles dans les projets de data, en autonomie comme en équipe.
-        </p>
-
-        <div class="transversal-grid">
-          <div class="transversal-item">
-            <h3>Travail d’équipe</h3>
-            <p>Capacité à collaborer, écouter et contribuer efficacement dans un projet collectif.</p>
           </div>
 
-          <div class="transversal-item">
-            <h3>Organisation</h3>
-            <p>Gestion du temps, respect des échéances et structuration du travail.</p>
+          <div class="step">
+            <div>
+              <h3>Gestion des valeurs aberrantes</h3>
+              <p>
+                Le script propose plusieurs traitements robustes : winsorisation par quantiles,
+                clipping par MAD ou suppression des lignes extrêmes avec l’IQR.
+              </p>
+            </div>
           </div>
 
-          <div class="transversal-item">
-            <h3>Communication</h3>
-            <p>Présentation claire des résultats et adaptation du discours au public visé.</p>
+          <div class="step">
+            <div>
+              <h3>Sélection et modélisation</h3>
+              <p>
+                Pour chaque cible, les variables les plus corrélées sont sélectionnées avec Spearman
+                ou Pearson, puis testées dans des modèles Ridge, Lasso et ElasticNet.
+              </p>
+            </div>
           </div>
 
-          <div class="transversal-item">
-            <h3>Adaptabilité</h3>
-            <p>Capacité à apprendre rapidement de nouveaux outils et à s’adapter aux contraintes.</p>
+          <div class="step">
+            <div>
+              <h3>Validation et interprétation</h3>
+              <p>
+                Les modèles sont comparés avec validation croisée, R² et MAE. Les meilleurs résultats
+                sont exportés avec leurs équations et coefficients.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="method-row">
+          <div class="method-chip"><span>Nettoyage</span>Contrôle des valeurs invalides et des sommes BIN.</div>
+          <div class="method-chip"><span>Corrélation</span>Classement des variables explicatives.</div>
+          <div class="method-chip"><span>Validation</span>Train/test + validation croisée répétée.</div>
+          <div class="method-chip"><span>Optimisation</span>Recherche d’un minimum théorique simulé.</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="section" id="details">
+      <div class="container">
+        <h2>Fonctionnement détaillé</h2>
+    
+        <p class="section-desc">
+          Le script a été conçu pour limiter les manipulations manuelles. Il enchaîne automatiquement les étapes
+          de préparation, de sélection, d’entraînement et d’export des résultats.
+        </p>
+    
+        <div class="steps">
+          <div class="step">
+            <div>
+              <h3>Filtrage des colonnes</h3>
+              <p>
+                Le programme repère automatiquement les colonnes BIN et _AVERAGE, puis conserve uniquement
+                les variables exploitables pour l’analyse.
+              </p>
+            </div>
+          </div>
+    
+          <div class="step">
+            <div>
+              <h3>Traitement des valeurs extrêmes</h3>
+              <p>
+                Plusieurs méthodes de gestion des outliers sont proposées : clipping par quantiles,
+                méthode MAD ou suppression des lignes extrêmes avec l’IQR.
+              </p>
+            </div>
+          </div>
+    
+          <div class="step">
+            <div>
+              <h3>Recherche du meilleur modèle</h3>
+              <p>
+                Pour chaque cible, le script teste plusieurs modèles régularisés avec différents degrés
+                polynomiaux, puis classe les résultats selon leurs performances.
+              </p>
+            </div>
+          </div>
+    
+          <div class="step">
+            <div>
+              <h3>Export des résultats</h3>
+              <p>
+                Les modèles retenus sont exportés dans un fichier CSV contenant les métriques,
+                les variables utilisées, les coefficients et les équations exploitables.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="simulation">
+      <div class="container">
+        <h2>Simulation de l’outil</h2>
+
+        <p class="section-desc">
+          Cette simulation garde l’esprit de l’interface interactive du projet : choix de la cible,
+          choix de la méthode, sélection automatique des variables, génération d’un modèle et test
+          des paramètres avec des curseurs.
+        </p>
+
+        <div class="tool-box">
+          <div class="tool-form">
+            <h3>Paramètres d’entrée</h3>
+
+            <label for="target">Variable cible BIN</label>
+            <input type="text" id="target" value="BIN_28">
+
+            <div class="inline-fields">
+              <div>
+                <label for="method">Corrélation</label>
+                <select id="method">
+                  <option value="spearman">Spearman</option>
+                  <option value="pearson">Pearson</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="model">Modèle</label>
+                <select id="model">
+                  <option value="auto">Auto</option>
+                  <option value="ridge">Ridge</option>
+                  <option value="lasso">Lasso</option>
+                  <option value="elasticnet">ElasticNet</option>
+                </select>
+              </div>
+            </div>
+
+            <label for="variables">Variables _AVERAGE disponibles</label>
+            <textarea id="variables">CD_AVERAGE, THICKNESS_AVERAGE, TEMP_AVERAGE, PRESSURE_AVERAGE, HUMIDITY_AVERAGE, VOLTAGE_AVERAGE, ETCH_TIME_AVERAGE, ROTATION_SPEED_AVERAGE, COOLING_RATE_AVERAGE, CURRENT_AVERAGE</textarea>
+
+            <div class="tool-buttons">
+              <button type="button" onclick="simulateModel()">Lancer la simulation</button>
+              <button type="button" class="clear-btn" onclick="clearSimulation()">Réinitialiser</button>
+            </div>
+          </div>
+
+          <div class="tool-result">
+            <h3>Résultat simulé</h3>
+            <div id="result">
+              Lance la simulation pour générer un classement des variables et un modèle interactif.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="outils">
+      <div class="container grid-2">
+        <div>
+          <h2>Outils utilisés</h2>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">NumPy</span>
+            <span class="tag">SciPy</span>
+            <span class="tag">SymPy</span>
+            <span class="tag">Scikit-learn</span>
+            <span class="tag">ipywidgets</span>
+            <span class="tag">Databricks</span>
+          </div>
+        </div>
+
+        <div>
+          <h2>Compétences développées</h2>
+          <div class="tags">
+            <span class="tag">Traitement de données</span>
+            <span class="tag">Statistiques</span>
+            <span class="tag">Validation croisée</span>
+            <span class="tag">Modélisation</span>
+            <span class="tag">Optimisation</span>
+            <span class="tag">Automatisation</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="section" id="limites">
+      <div class="container grid-2">
+        <div class="card">
+          <h3>Difficultés rencontrées</h3>
+          <p>
+            Une des principales difficultés a été de construire un pipeline robuste capable de fonctionner
+            sur plusieurs variables cibles sans devoir adapter le code manuellement à chaque analyse.
+          </p>
+          <p>
+            Il a aussi fallu gérer les valeurs aberrantes, éviter la fuite de données entre l’entraînement
+            et le test, puis comparer les modèles de manière fiable.
+          </p>
+        </div>
+    
+        <div class="card">
+          <h3>Solutions apportées</h3>
+          <p>
+            Pour répondre à ces problèmes, le script sépare clairement les données d’entraînement et de test,
+            applique une validation croisée répétée et conserve uniquement les modèles ayant des performances
+            suffisantes.
+          </p>
+          <p>
+            L’ajout d’une interface interactive permet ensuite de tester rapidement différentes valeurs
+            de paramètres et de visualiser leur effet sur la prédiction.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="resultat">
+      <div class="container">
+        <div class="highlight">
+          <h2>Résultat du projet</h2>
+
+          <p>
+            Le programme permet de parcourir automatiquement les variables cibles, de comparer plusieurs
+            modèles et d’exporter un fichier de synthèse prêt à être utilisé pour l’analyse ou la visualisation.
+          </p>
+
+          <div class="result-grid">
+            <div class="result-card">
+              <h3>Modèles classés</h3>
+              <p>
+                Les meilleurs modèles sont conservés par cible avec leurs métriques : R² CV, MAE CV,
+                R² train et R² test.
+              </p>
+            </div>
+
+            <div class="result-card">
+              <h3>Équations exploitables</h3>
+              <p>
+                Le script produit des équations standardisées et dénormalisées afin de faciliter
+                l’interprétation métier.
+              </p>
+            </div>
+
+            <div class="result-card">
+              <h3>Décision facilitée</h3>
+              <p>
+                L’outil interactif aide à tester des valeurs de paramètres et à estimer un gain potentiel.
+              </p>
+            </div>
+          </div>
+
+          <p>
+            Cette approche rend l’analyse plus rapide, plus reproductible et plus fiable qu’une exploration
+            manuelle, tout en gardant une présentation claire pour un portfolio.
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <section class="section" id="apports">
+      <div class="container">
+        <h2>Ce que ce projet m’a apporté</h2>
+    
+        <div class="grid-3">
+          <div class="card">
+            <h3>Autonomie</h3>
+            <p>
+              Ce projet m’a permis de construire une solution complète, depuis le nettoyage des données
+              jusqu’à l’export des résultats.
+            </p>
+          </div>
+    
+          <div class="card">
+            <h3>Rigueur statistique</h3>
+            <p>
+              J’ai renforcé ma compréhension de la validation croisée, de la régularisation et de l’évaluation
+              des modèles avec des métriques comme le R² et la MAE.
+            </p>
+          </div>
+    
+          <div class="card">
+            <h3>Valorisation des résultats</h3>
+            <p>
+              L’objectif n’était pas seulement de créer un modèle, mais aussi de produire des résultats lisibles,
+              interprétables et réutilisables dans un contexte métier.
+            </p>
           </div>
         </div>
       </div>
@@ -942,23 +1072,285 @@
 
   </main>
 
-  <footer class="footer" id="contact">
+  <footer class="footer">
     <div class="container footer-content">
       <div>
-        <h2>Ylan Harrault</h2>
-        <p>Portfolio — Science des Données</p>
+        <h3>Contactez-moi</h3>
+        <p>Une question sur ce projet ou mon portfolio ?</p>
+        <p>
+          <a href="mailto:ylan.harrault@gmail.com">ylan.harrault@gmail.com</a>
+        </p>
       </div>
 
-      <div class="footer-contact">
-        <h3>Contact</h3>
-        <p><strong>Email :</strong> <a href="mailto:ylan.harrault@gmail.com">ylan.harrault@gmail.com</a></p>
-        <p><strong>Domaine :</strong> Data, analyse, modélisation et visualisation</p>
-        <p><strong>Formation :</strong> BUT Science des Données — EMS</p>
+      <div class="footer-links">
+        <a href="index.html#traiter">← Retour aux projets</a>
+        <a href="#top">↑ Retour en haut</a>
       </div>
     </div>
   </footer>
 
-  <a href="#sommaire" class="top-link">Sommaire</a>
+  <script>
+    const defaultTarget = "BIN_28";
+    const defaultVariables =
+      "CD_AVERAGE, THICKNESS_AVERAGE, TEMP_AVERAGE, PRESSURE_AVERAGE, HUMIDITY_AVERAGE, VOLTAGE_AVERAGE, ETCH_TIME_AVERAGE, ROTATION_SPEED_AVERAGE, COOLING_RATE_AVERAGE, CURRENT_AVERAGE";
+
+    let currentModel = null;
+
+    function randomFromText(text) {
+      let hash = 0;
+      for (let i = 0; i < text.length; i++) {
+        hash = ((hash << 5) - hash) + text.charCodeAt(i);
+        hash |= 0;
+      }
+      const x = Math.sin(Math.abs(hash)) * 10000;
+      return x - Math.floor(x);
+    }
+
+    function formatNumber(value, digits = 3) {
+      return Number(value).toFixed(digits);
+    }
+
+    function safeId(text) {
+      return text.replace(/[^a-zA-Z0-9_-]/g, "_");
+    }
+
+    function clamp(value, min, max) {
+      return Math.max(min, Math.min(max, value));
+    }
+
+    function getVariables() {
+      return document.getElementById("variables").value
+        .split(",")
+        .map(variable => variable.trim())
+        .filter(variable => variable.length > 0);
+    }
+
+    function simulateModel() {
+      const target = document.getElementById("target").value.trim() || defaultTarget;
+      const method = document.getElementById("method").value;
+      const selectedModel = document.getElementById("model").value;
+      const variables = getVariables();
+      const result = document.getElementById("result");
+
+      if (variables.length === 0) {
+        result.innerHTML = "Ajoute au moins une variable _AVERAGE.";
+        return;
+      }
+
+      const methodName = method === "spearman" ? "Spearman" : "Pearson";
+      const symbol = method === "spearman" ? "ρ" : "r";
+
+      const analyzed = variables.map((variable, index) => {
+        const r = randomFromText(target + method + variable + index);
+        const correlation = Number(((r * 1.8) - 0.9).toFixed(3));
+        const absCorrelation = Math.abs(correlation);
+        return {
+          variable,
+          correlation,
+          absCorrelation,
+          retained: false,
+          q1: 10 + r * 25,
+          q3: 45 + r * 35,
+          median: 25 + r * 35
+        };
+      }).sort((a, b) => b.absCorrelation - a.absCorrelation);
+
+      const retainedVariables = analyzed.slice(0, Math.min(3, analyzed.length));
+      const retainedNames = new Set(retainedVariables.map(item => item.variable));
+
+      analyzed.forEach(item => {
+        item.retained = retainedNames.has(item.variable);
+      });
+
+      const modelType =
+        selectedModel === "auto"
+          ? ["ridge", "lasso", "elasticnet"][Math.floor(randomFromText(target + method) * 3)]
+          : selectedModel;
+
+      const degree = Math.floor(randomFromText(target + modelType) * 3) + 1;
+      const r2 = clamp(0.45 + retainedVariables[0].absCorrelation * 0.45, 0, 0.96);
+      const mae = clamp((1 - r2) * 8, 0.2, 7.5);
+      const alpha = Math.pow(10, -3 + randomFromText(target + modelType + "alpha") * 4);
+
+      currentModel = {
+        target,
+        modelType,
+        degree,
+        intercept: 35 + randomFromText(target + "intercept") * 20,
+        variables: retainedVariables.map((item, index) => ({
+          ...item,
+          coef: (item.correlation >= 0 ? 1 : -1) * (0.4 + item.absCorrelation * 1.6),
+          degree: Math.max(1, degree - index)
+        }))
+      };
+
+      const correlationRows = analyzed.map(item => `
+        <div class="result-line ${item.retained ? "selected" : ""}">
+          <span>${item.variable}</span>
+          <strong>${symbol} = ${formatNumber(item.correlation, 3)}</strong>
+          <span>${item.retained ? "retenue" : "écartée"}</span>
+        </div>
+      `).join("");
+
+      const equation = buildEquation();
+
+      result.innerHTML = `
+        <span class="method-badge">Méthode : ${methodName}</span>
+        <span class="method-badge">Modèle : ${modelType.toUpperCase()}</span>
+
+        <div class="mini-metrics">
+          <div class="metric"><span>R² CV</span><strong>${formatNumber(r2, 3)}</strong></div>
+          <div class="metric"><span>MAE CV</span><strong>${formatNumber(mae, 3)}</strong></div>
+          <div class="metric"><span>Degré</span><strong>${degree}</strong></div>
+          <div class="metric"><span>Alpha</span><strong>${alpha.toExponential(1)}</strong></div>
+        </div>
+
+        <h4>1. Variables classées</h4>
+        ${correlationRows}
+
+        <h4>2. Équation simulée</h4>
+        <div class="equation">${equation}</div>
+
+        <h4>3. Test interactif des paramètres</h4>
+        <div class="slider-zone">
+          ${buildSliders()}
+        </div>
+
+        <div id="prediction" class="summary-box"></div>
+
+        <div class="tool-buttons">
+          <button type="button" onclick="findMinimum()">Trouver le minimum théorique</button>
+        </div>
+
+        <div id="minimum" class="summary-box" style="display:none;"></div>
+      `;
+
+      updatePrediction();
+    }
+
+    function buildEquation() {
+      if (!currentModel) return "";
+
+      let equation = `${currentModel.target} = ${formatNumber(currentModel.intercept, 2)}`;
+
+      currentModel.variables.forEach(item => {
+        const sign = item.coef >= 0 ? " + " : " - ";
+        equation += `${sign}${formatNumber(Math.abs(item.coef), 3)} × ${item.variable}`;
+        if (item.degree > 1) {
+          equation += `<sup>${item.degree}</sup>`;
+        }
+      });
+
+      return equation;
+    }
+
+    function buildSliders() {
+      return currentModel.variables.map(item => {
+        const id = safeId(item.variable);
+        const min = Math.min(item.q1, item.q3);
+        const max = Math.max(item.q1, item.q3);
+        const step = Math.max((max - min) / 1000, 0.001);
+
+        return `
+          <div class="slider-row">
+            <label for="slider-${id}">
+              <span>${item.variable}</span>
+              <span id="value-${id}">${formatNumber(item.median, 3)}</span>
+            </label>
+            <input
+              type="range"
+              id="slider-${id}"
+              min="${min}"
+              max="${max}"
+              step="${step}"
+              value="${item.median}"
+              oninput="updatePrediction()"
+            >
+          </div>
+        `;
+      }).join("");
+    }
+
+    function getSliderValues() {
+      const values = {};
+
+      currentModel.variables.forEach(item => {
+        const id = safeId(item.variable);
+        const slider = document.getElementById(`slider-${id}`);
+        values[item.variable] = slider ? Number(slider.value) : item.median;
+      });
+
+      return values;
+    }
+
+    function predict(values) {
+      let prediction = currentModel.intercept;
+
+      currentModel.variables.forEach(item => {
+        const value = values[item.variable];
+        const scale = Math.max((item.q3 - item.q1) / 2, 0.001);
+        const normalized = (value - item.median) / scale;
+        prediction += item.coef * Math.pow(normalized, item.degree) * 5;
+      });
+
+      return clamp(prediction, 0, 100);
+    }
+
+    function updatePrediction() {
+      if (!currentModel) return;
+
+      const values = getSliderValues();
+
+      currentModel.variables.forEach(item => {
+        const id = safeId(item.variable);
+        const span = document.getElementById(`value-${id}`);
+        if (span) {
+          span.textContent = formatNumber(values[item.variable], 3);
+        }
+      });
+
+      const prediction = predict(values);
+
+      document.getElementById("prediction").innerHTML = `
+        <strong>Prédiction actuelle clipée :</strong> ${formatNumber(prediction, 4)}
+      `;
+    }
+
+    function findMinimum() {
+      if (!currentModel) return;
+
+      const currentPrediction = predict(getSliderValues());
+      const optimum = {};
+
+      currentModel.variables.forEach(item => {
+        optimum[item.variable] = item.coef >= 0
+          ? Math.min(item.q1, item.q3)
+          : Math.max(item.q1, item.q3);
+      });
+
+      const minimumPrediction = predict(optimum);
+      const gain = Math.max(0, currentPrediction - minimumPrediction);
+
+      const minimumBox = document.getElementById("minimum");
+      minimumBox.style.display = "block";
+
+      minimumBox.innerHTML = `
+        <strong>Minimum théorique simulé :</strong> ${formatNumber(minimumPrediction, 4)}<br>
+        <strong>Gain potentiel :</strong> ${formatNumber(gain, 4)}
+      `;
+    }
+
+    function clearSimulation() {
+      document.getElementById("target").value = defaultTarget;
+      document.getElementById("variables").value = defaultVariables;
+      document.getElementById("method").value = "spearman";
+      document.getElementById("model").value = "auto";
+      currentModel = null;
+
+      document.getElementById("result").innerHTML =
+        "Lance la simulation pour générer un classement des variables et un modèle interactif.";
+    }
+  </script>
 
 </body>
 
